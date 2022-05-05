@@ -80,6 +80,7 @@ namespace QLThuVien.Areas.Admin.Controllers
             ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
             ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
+            ViewData["trangthai"] = new SelectList(db.TrangThais, "IDTrangThai", "TenTrangThai", cT_PM.TrangThai);
             return View(cT_PM);
         }
 
@@ -91,7 +92,8 @@ namespace QLThuVien.Areas.Admin.Controllers
         public ActionResult Edit([Bind(Include = "ID,IDPM,IDDG,TenDG,IDSach,TenSach,SoLuong,TrangThai,NgayTraThucTe")] CT_PM cT_PM)
         {
             if (ModelState.IsValid)
-            {
+            {              
+                
                 db.Entry(cT_PM).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

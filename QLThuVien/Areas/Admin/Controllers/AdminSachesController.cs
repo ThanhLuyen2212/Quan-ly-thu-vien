@@ -16,7 +16,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
 
         // GET: Admin/AdminSaches
-        public ActionResult Index()
+        public ActionResult Index(string tensach)
         {
             if (Session["UserName"] == null)
             {
@@ -24,8 +24,15 @@ namespace QLThuVien.Areas.Admin.Controllers
             }
             else
             {
-                var saches = db.Saches.Include(s => s.TheLoai1);
-                return View(saches.ToList());
+                if(tensach == null)
+                {
+                    return View(db.Saches.Include(s => s.TheLoai1));
+                }
+                else
+                {
+                    return View(db.Saches.Where(s => s.TenSach.Equals(tensach)).ToList());
+                }
+               
             }           
         }
 
