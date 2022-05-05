@@ -10,112 +10,107 @@ using QLThuVien.Models;
 
 namespace QLThuVien.Areas.Admin.Controllers
 {
-    public class AdminPhieuMuonsController : Controller
+    public class AdminsRegisterController : Controller
     {
         private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
 
-        // GET: Admin/AdminPhieuMuons
+        // GET: Admin/AdminsRegister
         public ActionResult Index()
         {
-            var phieuMuons = db.PhieuMuons.Include(p => p.DocGia);
-            return View(phieuMuons.ToList());
+            return View(db.Admins.ToList());
         }
 
-        // GET: Admin/AdminPhieuMuons/Details/5
+        // GET: Admin/AdminsRegister/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhieuMuon phieuMuon = db.PhieuMuons.Find(id);
-            if (phieuMuon == null)
+            Models.Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            return View(phieuMuon);
+            return View(admin);
         }
 
-        // GET: Admin/AdminPhieuMuons/Create
+        // GET: Admin/AdminsRegister/Create
         public ActionResult Create()
         {
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG");
             return View();
         }
 
-        // POST: Admin/AdminPhieuMuons/Create
+        // POST: Admin/AdminsRegister/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDPM,IDDG,TenDG,NgayMuon,NgayTra,TienPhat,GhiChu,TrangThai")] PhieuMuon phieuMuon)
+        public ActionResult Create([Bind(Include = "IDAdmin,TenAdmin,DienThoai,DiaChi,UserName,Password")] Models.Admin admin)
         {
             if (ModelState.IsValid)
             {
-                db.PhieuMuons.Add(phieuMuon);
+                db.Admins.Add(admin);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", phieuMuon.IDDG);
-            return View(phieuMuon);
+            return View(admin);
         }
 
-        // GET: Admin/AdminPhieuMuons/Edit/5
+        // GET: Admin/AdminsRegister/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhieuMuon phieuMuon = db.PhieuMuons.Find(id);
-            if (phieuMuon == null)
+            Models.Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", phieuMuon.IDDG);
-            return View(phieuMuon);
+            return View(admin);
         }
 
-        // POST: Admin/AdminPhieuMuons/Edit/5
+        // POST: Admin/AdminsRegister/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDPM,IDDG,TenDG,NgayMuon,NgayTra,TienPhat,GhiChu,TrangThai")] PhieuMuon phieuMuon)
+        public ActionResult Edit([Bind(Include = "IDAdmin,TenAdmin,DienThoai,DiaChi,UserName,Password")] Models.Admin admin)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(phieuMuon).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(admin).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", phieuMuon.IDDG);
-            return View(phieuMuon);
+            return View(admin);
         }
 
-        // GET: Admin/AdminPhieuMuons/Delete/5
+        // GET: Admin/AdminsRegister/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhieuMuon phieuMuon = db.PhieuMuons.Find(id);
-            if (phieuMuon == null)
+            Models.Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            return View(phieuMuon);
+            return View(admin);
         }
 
-        // POST: Admin/AdminPhieuMuons/Delete/5
+        // POST: Admin/AdminsRegister/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PhieuMuon phieuMuon = db.PhieuMuons.Find(id);
-            db.PhieuMuons.Remove(phieuMuon);
+            Models.Admin admin = db.Admins.Find(id);
+            db.Admins.Remove(admin);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

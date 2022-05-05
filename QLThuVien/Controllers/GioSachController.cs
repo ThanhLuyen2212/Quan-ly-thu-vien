@@ -55,7 +55,7 @@ namespace QLThuVien.Controllers
 
             var username = Session["UserName"];
             var password = Session["Password"];
-            DocGia dg = data.DocGias.Where(s => s.Password == password).FirstOrDefault(s => s.UserName == username);
+            DocGia dg = data.DocGias.FirstOrDefault(s => s.UserName == username && s.Password == password );
 
             if (dg != null)
             {
@@ -125,6 +125,7 @@ namespace QLThuVien.Controllers
                 muon.IDDG = int.Parse(form["IDdocgia"]);
                 muon.TienPhat = 0;
                 muon.GhiChu = "";
+                muon.TrangThai = 1;
                 muon.NgayTra = DateTime.Parse(form["NgayTra"]);
 
                 DateTime ngaymuon = Convert.ToDateTime(muon.NgayMuon);
@@ -150,7 +151,11 @@ namespace QLThuVien.Controllers
                     return Content("<script language='javascript' type='text/javascript'>alert     ('Tối đa được mượn 3 loại/quyển sách');</script>");
                     //return Content("Tối đa được mượn 3 loại sách");
                 }
-                              
+
+                //Add phiếu mượn
+                data.PhieuMuons.Add(muon);
+                data.SaveChanges();
+
 
                 foreach (var item in gio.Item)
                 {
@@ -176,13 +181,14 @@ namespace QLThuVien.Controllers
                     Detail.IDDG = muon.IDDG;
                     Detail.TenDG = muon.TenDG;
                     Detail.SoLuong = item._soluongSach;
-                    Detail.TrangThai = "Đang Mượn";
+                    Detail.TrangThai = 1;
+          
 
                     
 
                     foreach (var ct in data.CT_PM.Where(s => s.IDDG == muon.IDDG))
                     {
-                        if (ct.TrangThai != "Đã Trả")
+                        if (ct.TrangThai != 3)
                         {
                             //return Content("Độc giả chưa trả sách thì không được mượn thêm sách!");
                             return Content("<script language='javascript' type='text/javascript'>alert     ('Độc giả chưa trả sách thì không được mượn thêm sách!');</script>");
@@ -212,9 +218,7 @@ namespace QLThuVien.Controllers
                         }
                     }
 
-                    //Add phiếu mượn
-                    data.PhieuMuons.Add(muon);
-                    data.SaveChanges();
+                  
                     //Add chi tiết phiếu mượn
                     data.CT_PM.Add(Detail);
                     data.SaveChanges();

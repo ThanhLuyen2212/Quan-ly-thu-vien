@@ -21,9 +21,9 @@ namespace QLThuVien.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult LoginAdmin(DangNhap admin)
+        public ActionResult LoginAdmin(Models.Admin admin)
         {
-            var check = data.DangNhaps.Where(s => s.UserName == admin.UserName && s.Password == admin.Password).FirstOrDefault();
+            var check = data.Admins.Where(s => s.UserName == admin.UserName && s.Password == admin.Password).FirstOrDefault();
             if (check == null)
             {
                 ViewBag.ErrorInfo = "Sai thông tin tài khoản";
@@ -38,39 +38,5 @@ namespace QLThuVien.Areas.Admin.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Resister(DocGia user)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var check = data.DocGias.Where(s => s.IDDG == user.IDDG).FirstOrDefault();
-                    if (check == null)
-                    {
-                        /*Disable entity validation tắt xác thực thực thể*/
-                        data.Configuration.ValidateOnSaveEnabled = false;
-                        data.DocGias.Add(user);
-                        data.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        ViewBag.ErrorRegister = "ID này đã tồn tại";
-                        return View();
-                    }
-                }
-            }
-            catch
-            {
-                ViewBag.ErrorMessage = "Vui lòng nhập đầy đủ thông tin";
-            }
-            return View();
-        }
     }
 }

@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminPhieuMuonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminRegisterController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminSachesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminsRegisterController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTheLoaisController.cs" />
     <Compile Include="Controllers\ChiTietCuonSachController.cs" />
     <Compile Include="Controllers\GioSachController.cs" />
@@ -149,13 +150,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChiTietSach.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CT_PM.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DangNhap.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DocGia.cs">
@@ -184,6 +185,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TheLoai.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrangThai.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1117,16 +1121,6 @@
     <Content Include="Areas\Admin\Views\AdminChiTietSaches\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminChiTietSaches\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminChiTietSaches\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDocGias\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDocGias\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDocGias\Details.cshtml" />
@@ -1138,13 +1132,6 @@
     <Content Include="Areas\Admin\Views\AdminTheLoais\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTheLoais\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTheLoais\Index.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\AdminSaches\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminSaches\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminSaches\Details.cshtml" />
@@ -1152,6 +1139,28 @@
     <Content Include="Areas\Admin\Views\AdminSaches\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminFooter.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\AdminNavLeft.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminsRegister\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminsRegister\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminsRegister\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminsRegister\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminsRegister\Index.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

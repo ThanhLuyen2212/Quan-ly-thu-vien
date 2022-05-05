@@ -24,32 +24,20 @@
 </head>
 <body>
     <div class="container-scroller">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="~/Admin/AdminHome/Index" style="width:100%">
-                    <img style="height: 30px; width:30px; float:left" src="~/Areas/Admin/Assets/images/bookshelf.png" alt="logo" /> <h5 style="color:white" >QL THƯ VIỆN</h5>
-                </a>
-               
-                <a class="sidebar-brand brand-logo-mini" href="~/Admin/AdminHome/Index">
-                        <p style="color:white; width:100%" >
-                            <img style="height: 30px; width:30px; float:left" src="~/Areas/Admin/Assets/images/bookshelf.png" alt="logo" />
-                       </p>
-                </a>
-            </div>
-            @Html.Partial("AdminNavLeft");
-        </nav>
+        <!-- partial:partials/_sidebar.html -->      
+
+        @Html.Partial("AdminNavLeft")
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_navbar.html -->
-            @Html.Partial("_AdminHeader");
+            @Html.Partial("_AdminHeader")
             <!-- partial -->
             <div class="main-panel">
                 <!-- content-wrapper Start -->
                 @RenderBody()
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
-                @Html.Partial("_AdminFooter");
+                @Html.Partial("_AdminFooter")
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->

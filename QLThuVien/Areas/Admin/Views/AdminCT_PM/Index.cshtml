@@ -22,19 +22,19 @@
             @Html.DisplayNameFor(model => model.SoLuong)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.NgayTraThucTe)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DocGia.TenDG)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhieuMuon.IDDG)
+            @Html.DisplayNameFor(model => model.PhieuMuon.TenDG)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Sach.TenSach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThai)
         </th>
         <th></th>
     </tr>
@@ -51,19 +51,19 @@
             @Html.DisplayFor(modelItem => item.SoLuong)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.NgayTraThucTe)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DocGia.TenDG)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhieuMuon.IDDG)
+            @Html.DisplayFor(modelItem => item.PhieuMuon.TenDG)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Sach.TenSach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

@@ -1,4 +1,4 @@
-﻿@model QLThuVien.Models.DangNhap
+﻿@model QLThuVien.Models.Admin
 @{
     Layout = null;
 }
@@ -33,44 +33,41 @@
                     <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
                         <div class="card col-lg-4 mx-auto">
                             <div class="card-body px-5 py-5">
-                                <h3 class="card-title text-left mb-3">Login</h3>
+                                <div>
+                                    <h2 class="card-title text-left mb-3" style="justify-content: center; display: flex;">Login admin</h2>
+                                </div>
+                               
                                 <form>
-
                                     <div class="form-group">
 
 
                                         <label>UserName</label> <br />
                                         <input id="UserName" name="UserName" style="field-validation-error" class="form-control p_input" type="text" value="">
 
-                                        
+
 
                                         <td>@Html.ValidationMessageFor(model => model.UserName)</td>
                                     </div>
 
                                     <div class="form-group">
-
                                         <td>@Html.LabelFor(model => model.Password)</td> <br />
 
                                         <input id="Password" name="Password" type="password" class="form-control p_input">
-                                        
+
                                         <td>@Html.ValidationMessageFor(model => model.Password)</td>
 
                                     </div>
 
                                     @if (ViewBag.ErrorInfo != null)
-                                    {
-                                        <p>@ViewBag.ErrorInfo</p>
+                                    {                            
+                                        <p class="text-danger">@ViewBag.ErrorInfo</p>
                                     }
 
-                                    <div class="form-group d-flex align-items-center justify-content-between">
-                                        <a href="#" class="forgot-pass">Forgot password</a>
+
+                                    <div class="text-center" style="margin-top:30px; justify-content: center; display: flex">
+                                        <input type="submit" class="btn btn-primary btn-block enter-btn" value="Login" style="height: 50px; width: 200px"/>
                                     </div>
 
-                                    <div class="text-center">
-                                        <input type="submit" class="btn btn-primary btn-block enter-btn" value="Login" />
-                                    </div>
-
-                                    <p class="sign-up">Don't have an Account?<a href="#"> Sign Up</a></p>
                                 </form>
                             </div>
                         </div>

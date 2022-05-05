@@ -21,11 +21,12 @@ namespace QLThuVien.Models
         public string IDSach { get; set; }
         public string TenSach { get; set; }
         public Nullable<int> SoLuong { get; set; }
-        public string TrangThai { get; set; }
+        public Nullable<int> TrangThai { get; set; }
         public Nullable<System.DateTime> NgayTraThucTe { get; set; }
     
         public virtual DocGia DocGia { get; set; }
         public virtual PhieuMuon PhieuMuon { get; set; }
         public virtual Sach Sach { get; set; }
+        public virtual TrangThai TrangThai1 { get; set; }
     }
 }

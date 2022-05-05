@@ -16,10 +16,10 @@ namespace QLThuVien.Models
 
     public partial class Sach
     {
-        QuanLyThuVienEntities1 data = new QuanLyThuVienEntities1();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sach()
         {
+            this.ChiTietSaches = new HashSet<ChiTietSach>();
             this.CT_PM = new HashSet<CT_PM>();
             HinhAnh = "~/Image/sach.jpg";
         }
@@ -39,9 +39,8 @@ namespace QLThuVien.Models
         public virtual ICollection<CT_PM> CT_PM { get; set; }
         public virtual TheLoai TheLoai1 { get; set; }
 
+
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }
-
-         
     }
 }

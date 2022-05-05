@@ -17,16 +17,8 @@ namespace QLThuVien.Areas.Admin.Controllers
         // GET: Admin/AdminCT_PM
         public ActionResult Index()
         {
-            if (Session["UserName"] == null)
-            {
-                return RedirectToAction("Index", "AdminLogin", new { Areas = "Admin" });
-            }
-            else
-            {
-                var cT_PM = db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach);
+            var cT_PM = db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach);
             return View(cT_PM.ToList());
-            }
-           
         }
 
         // GET: Admin/AdminCT_PM/Details/5
@@ -48,9 +40,8 @@ namespace QLThuVien.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG");
-            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "IDDG");
+            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG");
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach");
-           
             return View();
         }
 
@@ -69,9 +60,8 @@ namespace QLThuVien.Areas.Admin.Controllers
             }
 
             ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
-            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "IDDG", cT_PM.IDPM);
+            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
-         
             return View(cT_PM);
         }
 
@@ -88,9 +78,8 @@ namespace QLThuVien.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
-            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "IDDG", cT_PM.IDPM);
+            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
-       
             return View(cT_PM);
         }
 
@@ -108,7 +97,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
-            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "IDDG", cT_PM.IDPM);
+            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
             return View(cT_PM);
         }
