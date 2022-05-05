@@ -1,0 +1,80 @@
+﻿@model IEnumerable<QLThuVien.Models.Sach>
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .box-book {
+        background-color: greenyellow;
+        text-align: center;
+        width: 250px;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+    }
+
+        .box-book:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+
+    a {
+        font-size: 20px;
+        text-decoration: none;
+        color: #ff6a00;
+    }
+
+    h2 {
+        text-align: center;
+        padding: 10px 10px;
+    }
+
+    #card {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    html input[type="text"] {
+        margin-left: 70px;
+        width: 300px;
+    }
+
+    html input[type="submit"] {
+        width: 150px
+    }
+</style>
+
+<div class=" container">
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+        <a href="~/ChiTietCuonSach/Index/@pro.IDSach">
+            <div class=" col-sm-12 col-sm-6 col-md-4 col-lg-3" id="card">
+                <div class="box-book">
+                    @*<p> @Html.DisplayFor(Model => pro.IDSach)</p>*@
+                    <img src=" @Url.Content(pro.HinhAnh)" height="150" width="150" />
+                    <p>  @Html.DisplayFor(Model => pro.TenSach)</p>
+                    <p>Số Lượng : @Html.DisplayFor(Model => pro.SoLuong)</p>
+
+                    <p class="btn btn-primary">
+
+        
+                    
+                        @Html.ActionLink("Mượn sách", "Addto", "GioSach", new { id = pro.IDSach }, "")
+                    
+                        </p>
+                        @*<p><a href="/GioSach/AddTo/@pro.IDSach" class="btn btn-primary">Mượn Sách</a></p>*@
+
+                    </div>
+
+            </div>
+        </a>
+        }
+    </div>
+</div>
+
+

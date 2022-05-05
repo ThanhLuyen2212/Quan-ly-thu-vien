@@ -1,0 +1,92 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="~/Scripts/scripts.js"></script>
+
+    <style>
+
+        #div-footer {
+            bottom: 0px;
+            left: 0;
+        }
+
+        .footer {
+            width: 100%;
+            background-color: black;
+            color: white;
+            position: absolute;
+        }
+
+
+        #animation-top5 {
+            color: white;
+            text-shadow: 1px 1px 2px gray, 0 0 25px red, 0 0 5px red;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Quản Lý Thư Viện", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","QLDocGia")">Độc giả</a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","QLSach")"> Quản lý Sách</a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","QLPhieuMuon")">Phiếu Mượn</a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","ChiTiet")"> Chi Tiết Phiếu Mượn</a>
+                    </li>
+                    <li>
+                        <a href="/ThongKe/ThongKe">Thống Kê Sách Cho Mượn</a>
+                    </li>
+                    <li>
+                        <a href="/Categories/Index">Thể Loại</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@Url.Action("Index","Login")">LogOut</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

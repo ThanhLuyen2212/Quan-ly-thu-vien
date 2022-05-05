@@ -1,0 +1,64 @@
+﻿@model IEnumerable<QLThuVien.Models.PhieuMuon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayMuon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayTra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TienPhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DocGia.TenDG)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayMuon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayTra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TienPhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DocGia.TenDG)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDPM }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDPM }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDPM })
+        </td>
+    </tr>
+}
+
+</table>

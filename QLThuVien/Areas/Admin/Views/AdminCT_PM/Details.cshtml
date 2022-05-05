@@ -1,0 +1,83 @@
+﻿@model QLThuVien.Models.CT_PM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CT_PM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTraThucTe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTraThucTe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocGia.TenDG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocGia.TenDG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhieuMuon.IDDG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhieuMuon.IDDG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sach.TenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sach.TenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai1.TT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai1.TT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

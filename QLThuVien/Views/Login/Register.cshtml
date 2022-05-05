@@ -1,0 +1,92 @@
+﻿@model QLThuVien.Models.DocGia
+@{
+    ViewBag.Title = "Register";
+}
+
+<!doctype HTML>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <div id="form-register">
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { enctype = "multi/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                <Table>
+                    <tr class="title-form">
+                        <th colspan="2">Register</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <p>@Html.LabelFor(model => model.IDDG)</p>
+                            <p> @Html.EditorFor(model => model.IDDG)</p>
+                            <p>@Html.ValidationMessageFor(model => model.IDDG)</p>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2">
+                            <p>@Html.LabelFor(model => model.TenDG)</p>
+                            <p>@Html.EditorFor(model => model.TenDG) </p>
+                            <p>@Html.ValidationMessageFor(model => model.TenDG)</p>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2">
+                            <p>@Html.LabelFor(model => model.DienThoai)</p>
+                            <p>@Html.EditorFor(model => model.DienThoai) </p>
+                            <p>@Html.ValidationMessageFor(model => model.DienThoai)</p>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2">
+                            <p>@Html.LabelFor(model => model.DiaChi)</p>
+                            <p>@Html.EditorFor(model => model.DiaChi) </p>
+                            <p>@Html.ValidationMessageFor(model => model.DiaChi)</p>
+                        </th>
+                    </tr>
+
+
+
+                    <tr>
+                        <th colspan="2">
+                            <p>@Html.LabelFor(model => model.UserName)</p>
+                            <p>@Html.EditorFor(model => model.UserName) </p>
+                            <p>@Html.ValidationMessageFor(model => model.UserName)</p>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2">
+                            <p>@Html.LabelFor(model => model.Password)</p>
+                            <p>@Html.EditorFor(model => model.Password)</p>
+                            <p>@Html.ValidationMessageFor(model => model.Password)</p>
+                        </th>
+                    </tr>
+
+                    <tr>
+
+                        <th colspan="2">
+                            <input type="submit" class="btn" value="Register" />
+                            <input type="reset" class="btn" value="Reset" />
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <p style="text-align:center;">
+                                <a href="@Url.Action("Index","Login")">Login</a>
+                            </p>
+                        </th>
+                    </tr>
+                </Table>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+

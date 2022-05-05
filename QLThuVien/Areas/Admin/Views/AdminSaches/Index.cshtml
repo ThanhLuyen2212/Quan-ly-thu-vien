@@ -1,0 +1,70 @@
+﻿@model IEnumerable<QLThuVien.Models.Sach>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TacGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayXuatBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TheLoai1.NameCate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TacGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayXuatBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            <img src="@Url.Content(item.HinhAnh)" style="width: 150px; height: 150px; border-radius:none" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TheLoai1.NameCate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDSach }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDSach }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDSach })
+        </td>
+    </tr>
+}
+
+</table>

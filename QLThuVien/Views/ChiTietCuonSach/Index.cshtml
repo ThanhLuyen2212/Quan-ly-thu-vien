@@ -1,0 +1,28 @@
+﻿@using QLThuVien.Models;
+@{
+    ViewBag.Title = "Chi tiet cuon sach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Sach sach = ViewBag.sach;
+}
+
+<h2>Chi tiet cuon sach</h2>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Chi tiet cuon sach</title>
+
+</head>
+<body>
+   
+    <img src="@Url.Content(sach.HinhAnh)" style="width:5000px; height:700px" alt="hinh anh cuon sach" />
+
+    <a href="~/ListBook/Index">content</a>
+
+    <button>
+        back to list
+    </button>
+</body>
+</html>
+
+
+

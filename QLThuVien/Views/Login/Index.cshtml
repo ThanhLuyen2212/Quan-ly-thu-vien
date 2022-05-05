@@ -1,0 +1,62 @@
+﻿@model QLThuVien.Models.DocGia
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Index</title>
+    
+</head>
+<body>
+    <div id="form-login">
+        @using (Html.BeginForm("LoginAcc", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <!--This is a security to help protect your application against cross-site request forgery.-->
+            <div>
+                <table>
+                    <tr class="title-form">
+                        <th colspan="2">LoginUser</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.UserName)</td>
+                        <td>@Html.TextBoxFor(model => model.UserName, new { style = "field-validation-error" })</td>
+                        <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Password)</td>
+                        <td>@Html.PasswordFor(model => model.Password)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Password)</td>                        
+                    </tr>
+                    <tr>
+                        @if (ViewBag.ErrorInfor != null)
+                        {
+                            <td>@ViewBag.ErrorInfor</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th colspan="4">
+                            <input type="submit" class="btn" value="Login" />                           
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <p style="text-align:left; float:left">
+                                <a href="@Url.Action("Register","Login")">Register</a>
+                            </p>
+                            <p style="text-align:right;">
+                                <a href="@Url.Action("IndexAdmin","Login")">Admin</a>
+                            </p>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+
+
