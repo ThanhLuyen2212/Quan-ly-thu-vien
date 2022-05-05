@@ -28,7 +28,7 @@ namespace QLThuVien.Controllers
             else
             {
                 data.Configuration.ValidateOnSaveEnabled = false;
-                Session["UserNmae"] = user.UserName;
+                Session["UserName"] = user.UserName;
                 Session["Password"] = user.Password;
                 return RedirectToAction("Index", "ListBook");
             }

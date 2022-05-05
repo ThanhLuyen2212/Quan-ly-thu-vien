@@ -136,10 +136,7 @@ namespace QLThuVien.Controllers
                     return Content("<script language='javascript' type='text/javascript'>alert     ('Tối đa được mượn 3 loại/quyển sách');</script>");
                     //return Content("Tối đa được mượn 3 loại sách");
                 }
-
-
-                data.PhieuMuons.Add(muon);
-                data.SaveChanges();
+                              
 
                 foreach (var item in gio.Item)
                 {
@@ -200,6 +197,11 @@ namespace QLThuVien.Controllers
                             return Content("<script language='javascript' type='text/javascript'>alert     ('Không đủ sách theo yêu cầu của Độc Giả!');</script>");
                         }
                     }
+
+                    //Add phiếu mượn
+                    data.PhieuMuons.Add(muon);
+                    data.SaveChanges();
+                    //Add chi tiết phiếu mượn
                     data.CT_PM.Add(Detail);
                     data.SaveChanges();
                 }

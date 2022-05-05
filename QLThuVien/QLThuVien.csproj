@@ -249,6 +249,7 @@
     <Content Include="Areas\Admin\Assets\images\faces\face7.jpg" />
     <Content Include="Areas\Admin\Assets\images\faces\face8.jpg" />
     <Content Include="Areas\Admin\Assets\images\faces\face9.jpg" />
+    <Content Include="Areas\Admin\Assets\images\faces\user.png" />
     <Content Include="Areas\Admin\Assets\images\favicon.png" />
     <Content Include="Areas\Admin\Assets\images\file-icons\128\001-interface-1.png" />
     <Content Include="Areas\Admin\Assets\images\file-icons\128\002-tool.png" />
@@ -1130,8 +1131,7 @@
     <Content Include="Areas\Admin\Views\AdminDocGias\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDocGias\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDocGias\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_AdminMenuBar.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\AdminHeaderView.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminHeader.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTheLoais\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTheLoais\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTheLoais\Details.cshtml" />
@@ -1149,6 +1149,8 @@
     <Content Include="Areas\Admin\Views\AdminSaches\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminSaches\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminSaches\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminFooter.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\AdminNavLeft.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

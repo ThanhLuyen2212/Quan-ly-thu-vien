@@ -77,7 +77,7 @@
             @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="UploadImage" onchange="showimagePreview(this, document.getElementById('previewImage'))" />
-                <img src="@Url.Content(Model.HinhAnh)" style="width:200px;height200px;margin:10px" id="previewImage" />
+                <img src="@Url.Content(Model.HinhAnh)" style="width:200px;height:200px;margin:10px" id="previewImage" />
                 @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
 
 
