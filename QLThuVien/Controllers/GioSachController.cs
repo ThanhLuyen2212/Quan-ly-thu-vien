@@ -52,6 +52,20 @@ namespace QLThuVien.Controllers
             {
                 return RedirectToAction("Show", "GioSach");
             }
+
+            var username = Session["UserName"];
+            var password = Session["Password"];
+            DocGia dg = data.DocGias.Where(s => s.Password == password).FirstOrDefault(s => s.UserName == username);
+
+            if (dg != null)
+            {
+               
+                ViewBag.IDDG = dg.IDDG;
+                ViewBag.TenDG = dg.TenDG;
+            }
+
+
+
             GioSach gio = Session["GioSach"] as GioSach;
             return View(gio);
         }

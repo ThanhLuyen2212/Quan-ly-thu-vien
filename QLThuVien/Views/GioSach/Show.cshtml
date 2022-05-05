@@ -1,7 +1,10 @@
 ﻿@model QLThuVien.Models.GioSach
 @{
     ViewBag.Title = "Show";
+   
 }
+
+
 
 
 <h1 style="text-align:center; color:royalblue">Phiếu Mượn Sách</h1>
@@ -54,14 +57,14 @@
                     @using (Html.BeginForm("MuonSach", "GioSach", FormMethod.Post, new { enctype = "multipart/formdata" }))
                     {
                         <table style="border-collapse:separate;border-spacing:5px">
-
+              
                             <tr>
-                                <td>ID Đoc Giả:</td>
-                                <td> <input type="text" name="IDdocgia" /></td>
+                                <td>ID độc giả:</td>
+                                <td> <input type="text" name="IDdocgia" value="@ViewBag.IDDG" /></td>
                             </tr>
                             <tr>
-                                <td>Tên Đọc Giả:</td>
-                                <td><input type="text" name="Tendg" /></td>
+                                <td>Tên độc giả:</td>
+                                <td><input type="text" name="Tendg" value="@ViewBag.TenDG"/></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -69,9 +72,6 @@
                                 <td><input type="datetime" value="@DateTime.Now" /></td>
                                 <td></td>
                             </tr>
-
-
-
                             <tr>
                                 <td>Ngày Trả:</td>
                                 <td><input type="datetime-local" name="NgayTra" /></td>
