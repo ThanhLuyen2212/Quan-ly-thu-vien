@@ -139,6 +139,11 @@ namespace QLThuVien.Controllers
                     //return Content("Lỗi ! Thời gian mượn tối đa là 15 ngày");
                     return Content("<script language='javascript' type='text/javascript'>alert     ('Lỗi ! Thời gian mượn tối đa là 15 ngày');</script>");
                 }
+                if (muon.TrangThai == 2)
+                {
+                    //return Content("Lỗi ! Thời gian mượn tối đa là 15 ngày");
+                    return Content("<script language='javascript' type='text/javascript'>alert     ('Lỗi ! Bạn chưa trả sách đã mượn nên không được mượn');</script>");
+                }
                 if (TongSoNgay <= 0)
                 {
                     //return Content("Lỗi ! Vui lòng kiểm tra lại mốc thời gian");
@@ -173,7 +178,7 @@ namespace QLThuVien.Controllers
                     {
                         return Content("<script language='javascript' type='text/javascript'>alert     ('Không có sách thì không thể tạo phiếu mượn!');</script>");
                     }
-
+                   
                     CT_PM Detail = new CT_PM();                  
                     Detail.IDPM = muon.IDPM;
                     Detail.IDSach = item.giosach.IDSach;
@@ -181,20 +186,8 @@ namespace QLThuVien.Controllers
                     Detail.IDDG = muon.IDDG;
                     Detail.TenDG = muon.TenDG;
                     Detail.SoLuong = item._soluongSach;
-                    Detail.TrangThai = 1;
-          
-
                     
-
-                    foreach (var ct in data.CT_PM.Where(s => s.IDDG == muon.IDDG))
-                    {
-                        if (ct.TrangThai != 3)
-                        {
-                            //return Content("Độc giả chưa trả sách thì không được mượn thêm sách!");
-                            return Content("<script language='javascript' type='text/javascript'>alert     ('Độc giả chưa trả sách thì không được mượn thêm sách!');</script>");
-                        }
-                    }
-
+          
                     foreach (var pm in data.PhieuMuons.Where(s => s.IDDG == muon.IDDG))
                     {
                         if (pm.TienPhat != 0)

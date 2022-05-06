@@ -17,8 +17,17 @@ namespace QLThuVien.Areas.Admin.Controllers
         // GET: Admin/AdminCT_PM
         public ActionResult Index()
         {
-            var cT_PM = db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach);
-            return View(cT_PM.ToList());
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "AdminLogin", new { Areas = "Admin" });
+            }          
+        
+            else
+            {
+                var cT_PM = db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach);
+                return View(cT_PM.ToList());
+            }
+            
         }
 
         // GET: Admin/AdminCT_PM/Details/5
@@ -50,7 +59,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,IDPM,IDDG,TenDG,IDSach,TenSach,SoLuong,TrangThai,NgayTraThucTe")] CT_PM cT_PM)
+        public ActionResult Create([Bind(Include = "ID,IDPM,IDDG,TenDG,IDSach,TenSach,SoLuong,NgayTraThucTe")] CT_PM cT_PM)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +89,6 @@ namespace QLThuVien.Areas.Admin.Controllers
             ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
             ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
-            ViewData["trangthai"] = new SelectList(db.TrangThais, "IDTrangThai", "TenTrangThai", cT_PM.TrangThai);
             return View(cT_PM);
         }
 
@@ -89,11 +97,10 @@ namespace QLThuVien.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,IDPM,IDDG,TenDG,IDSach,TenSach,SoLuong,TrangThai,NgayTraThucTe")] CT_PM cT_PM)
+        public ActionResult Edit([Bind(Include = "ID,IDPM,IDDG,TenDG,IDSach,TenSach,SoLuong,NgayTraThucTe")] CT_PM cT_PM)
         {
             if (ModelState.IsValid)
-            {              
-                
+            {
                 db.Entry(cT_PM).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

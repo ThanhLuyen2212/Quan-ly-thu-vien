@@ -5,14 +5,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Create</h2>
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Sach</h4>
+        <h2>Tạo sách mới</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -79,9 +77,6 @@
                 <input type="file" name="UploadImage" onchange="showimagePreview(this, document.getElementById('previewImage'))" />
                 <img src="@Url.Content(Model.HinhAnh)" style="width:200px;height:200px;margin:10px" id="previewImage" />
                 @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
-
-
-
             </div>
         </div>
 

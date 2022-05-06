@@ -10,31 +10,46 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên sách" name="tensach">
+</form>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TinhTrang)
+            @Html.DisplayNameFor(model => model.IDSach)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Sach.TenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDChiTietSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TinhTrang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sach.TenSach)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDChiTietSach }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDChiTietSach }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDChiTietSach })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sach.TenSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDChiTietSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TinhTrang)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.IDChiTietSach }) |
+        @Html.ActionLink("Details", "Details", new { id = item.IDChiTietSach }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.IDChiTietSach })
+    </td>
+</tr>
 }
 
 </table>

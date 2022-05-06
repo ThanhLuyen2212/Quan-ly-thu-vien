@@ -17,15 +17,12 @@ namespace QLThuVien.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TrangThai()
         {
-            this.CT_PM = new HashSet<CT_PM>();
             this.PhieuMuons = new HashSet<PhieuMuon>();
         }
     
         public int IDTrangThai { get; set; }
         public string TenTrangThai { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CT_PM> CT_PM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }
     }

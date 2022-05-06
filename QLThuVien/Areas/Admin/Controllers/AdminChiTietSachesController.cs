@@ -15,7 +15,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
 
         // GET: Admin/AdminChiTietSaches
-        public ActionResult Index()
+        public ActionResult Index(string tensach)
         {
             if (Session["UserName"] == null)
             {
@@ -23,10 +23,19 @@ namespace QLThuVien.Areas.Admin.Controllers
             }
             else
             {
-                 var chiTietSaches = db.ChiTietSaches.Include(c => c.Sach);
-            return View(chiTietSaches.ToList());
-            }
-           
+                if (tensach == null)
+                {
+                    return View(db.ChiTietSaches.Include(c => c.Sach));
+                }
+                else if (tensach.Equals(""))
+                {
+                    return View(db.ChiTietSaches.Include(c => c.Sach));
+                }
+                else
+                {
+                    return View(db.ChiTietSaches.Where(c => c.Sach.TenSach == tensach).ToList());
+                }                 
+            }           
         }
 
         // GET: Admin/AdminChiTietSaches/Details/5

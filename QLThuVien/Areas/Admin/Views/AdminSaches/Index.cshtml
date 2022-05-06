@@ -54,7 +54,7 @@
     <td>
         @Html.DisplayFor(modelItem => item.TenSach)
     </td>
-    <td>
+    <td  style="white-space: normal">
         @Html.DisplayFor(modelItem => item.MoTa)
     </td>
     <td>
@@ -75,7 +75,8 @@
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.IDSach }) |
         @Html.ActionLink("Details", "Details", new { id = item.IDSach }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IDSach })
+        @Html.ActionLink("Delete", "Delete", new { id = item.IDSach }) |
+        <a href="~/Admin/AdminChiTietSaches/Index/?tensach=@item.TenSach">Chi tiết của cuốn sách</a>
     </td>
 </tr>
 }

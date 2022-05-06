@@ -16,9 +16,7 @@ namespace QLThuVien.Areas.Admin.Controllers
 
         // GET: Admin/AdminPhieuMuons
         public ActionResult Index(string trangthai)
-        {
-            
-
+        {    
             var phieuMuons = db.PhieuMuons.Include(p => p.DocGia);
             return View(phieuMuons.ToList());
         }
@@ -95,7 +93,8 @@ namespace QLThuVien.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", phieuMuon.IDDG);
+            ViewData["trangthai"] = new SelectList(db.TrangThais, "IDTrangThai", "TenTrangThai", phieuMuon.TrangThai);
+
             return View(phieuMuon);
         }
 

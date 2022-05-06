@@ -39,7 +39,6 @@ namespace QLThuVien.Models
         public virtual ICollection<CT_PM> CT_PM { get; set; }
         public virtual TheLoai TheLoai1 { get; set; }
 
-
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }
     }

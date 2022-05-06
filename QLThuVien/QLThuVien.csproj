@@ -1144,6 +1144,11 @@
     <Content Include="Areas\Admin\Views\AdminsRegister\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminsRegister\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminsRegister\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Index.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -1151,11 +1156,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Details.cshtml" />

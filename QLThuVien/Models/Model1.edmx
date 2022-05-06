@@ -35,7 +35,6 @@
           <Property Name="IDSach" Type="nvarchar" MaxLength="10" />
           <Property Name="TenSach" Type="nvarchar" MaxLength="50" />
           <Property Name="SoLuong" Type="int" />
-          <Property Name="TrangThai" Type="int" />
           <Property Name="NgayTraThucTe" Type="datetime" />
         </EntityType>
         <EntityType Name="DocGia">
@@ -137,18 +136,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CT_PM_TrangThai">
-          <End Role="TrangThai" Type="Self.TrangThai" Multiplicity="0..1" />
-          <End Role="CT_PM" Type="Self.CT_PM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TrangThai">
-              <PropertyRef Name="IDTrangThai" />
-            </Principal>
-            <Dependent Role="CT_PM">
-              <PropertyRef Name="TrangThai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PHIEUMUON_DOCGIA">
           <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
@@ -210,10 +197,6 @@
             <End Role="Sach" EntitySet="Sach" />
             <End Role="CT_PM" EntitySet="CT_PM" />
           </AssociationSet>
-          <AssociationSet Name="FK_CT_PM_TrangThai" Association="Self.FK_CT_PM_TrangThai">
-            <End Role="TrangThai" EntitySet="TrangThai" />
-            <End Role="CT_PM" EntitySet="CT_PM" />
-          </AssociationSet>
           <AssociationSet Name="FK_PHIEUMUON_DOCGIA" Association="Self.FK_PHIEUMUON_DOCGIA">
             <End Role="DocGia" EntitySet="DocGia" />
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
@@ -263,12 +246,10 @@
           <Property Name="IDSach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="TenSach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoLuong" Type="Int32" />
-          <Property Name="TrangThai" Type="Int32" />
           <Property Name="NgayTraThucTe" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DocGia" Relationship="Self.FK_CT_PM_DocGia" FromRole="CT_PM" ToRole="DocGia" />
           <NavigationProperty Name="PhieuMuon" Relationship="Self.FK_CT_PM_PhieuMuon" FromRole="CT_PM" ToRole="PhieuMuon" />
           <NavigationProperty Name="Sach" Relationship="Self.FK_CT_PM_Sach" FromRole="CT_PM" ToRole="Sach" />
-          <NavigationProperty Name="TrangThai1" Relationship="Self.FK_CT_PM_TrangThai" FromRole="CT_PM" ToRole="TrangThai" />
         </EntityType>
         <EntityType Name="DocGia">
           <Key>
@@ -329,7 +310,6 @@
           </Key>
           <Property Name="IDTrangThai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenTrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CT_PM" Relationship="Self.FK_CT_PM_TrangThai" FromRole="TrangThai" ToRole="CT_PM" />
           <NavigationProperty Name="PhieuMuons" Relationship="Self.FK_PHIEUMUON_TRANGTHAI" FromRole="TrangThai" ToRole="PhieuMuon" />
         </EntityType>
         <Association Name="FK_ChiTietSach_Sach">
@@ -377,18 +357,6 @@
             </Principal>
             <Dependent Role="CT_PM">
               <PropertyRef Name="IDSach" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CT_PM_TrangThai">
-          <End Role="TrangThai" Type="Self.TrangThai" Multiplicity="0..1" />
-          <End Role="CT_PM" Type="Self.CT_PM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TrangThai">
-              <PropertyRef Name="IDTrangThai" />
-            </Principal>
-            <Dependent Role="CT_PM">
-              <PropertyRef Name="TrangThai" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -453,10 +421,6 @@
             <End Role="Sach" EntitySet="Saches" />
             <End Role="CT_PM" EntitySet="CT_PM" />
           </AssociationSet>
-          <AssociationSet Name="FK_CT_PM_TrangThai" Association="Self.FK_CT_PM_TrangThai">
-            <End Role="TrangThai" EntitySet="TrangThais" />
-            <End Role="CT_PM" EntitySet="CT_PM" />
-          </AssociationSet>
           <AssociationSet Name="FK_PHIEUMUON_DOCGIA" Association="Self.FK_PHIEUMUON_DOCGIA">
             <End Role="DocGia" EntitySet="DocGias" />
             <End Role="PhieuMuon" EntitySet="PhieuMuons" />
@@ -507,7 +471,6 @@
                 <ScalarProperty Name="IDSach" ColumnName="IDSach" />
                 <ScalarProperty Name="TenSach" ColumnName="TenSach" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="NgayTraThucTe" ColumnName="NgayTraThucTe" />
               </MappingFragment>
             </EntityTypeMapping>
