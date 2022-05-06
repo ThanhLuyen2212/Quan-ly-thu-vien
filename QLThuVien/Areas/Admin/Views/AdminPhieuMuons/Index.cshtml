@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.IDPM)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TenDG)
         </th>
         <th>
@@ -20,6 +23,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NgayTra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayTraThucTe)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TrangThai)
@@ -38,6 +44,9 @@
 @foreach (var item in Model) {
 <tr>
     <td>
+        @Html.DisplayFor(modelItem => item.IDPM)
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.TenDG)
     </td>
     <td>
@@ -45,6 +54,9 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.NgayTra)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayTraThucTe)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.TrangThai1.TenTrangThai)
@@ -60,7 +72,8 @@
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.IDPM }) |
         @Html.ActionLink("Details", "Details", new { id = item.IDPM }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IDPM })
+        @Html.ActionLink("Delete", "Delete", new { id = item.IDPM }) |
+        <a href="~/Admin/AdminCT_PM/Index/?IDPM=@item.IDPM.ToString()">Chi tiết các phiếu mượn</a>
     </td>
 </tr>
 }

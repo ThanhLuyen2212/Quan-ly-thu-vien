@@ -17,8 +17,8 @@ namespace QLThuVien.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DocGia()
         {
-            this.CT_PM = new HashSet<CT_PM>();
             this.PhieuMuons = new HashSet<PhieuMuon>();
+            this.CT_PM = new HashSet<CT_PM>();
         }
     
         public int IDDG { get; set; }
@@ -29,8 +29,8 @@ namespace QLThuVien.Models
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CT_PM> CT_PM { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CT_PM> CT_PM { get; set; }
     }
 }

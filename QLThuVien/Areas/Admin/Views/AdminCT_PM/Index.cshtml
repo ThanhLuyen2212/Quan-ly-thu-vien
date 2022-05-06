@@ -10,8 +10,14 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+    <input type="text" class="form-control" placeholder="Tìm kiếm theo IDPM" name="IDPM">
+</form>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDPM)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.TenDG)
         </th>
@@ -22,13 +28,7 @@
             @Html.DisplayNameFor(model => model.SoLuong)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayTraThucTe)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DocGia.TenDG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhieuMuon.TenDG)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Sach.TenSach)
@@ -37,34 +37,31 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenDG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenSach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoLuong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayTraThucTe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DocGia.TenDG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhieuMuon.TenDG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sach.TenSach)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDPM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenDG)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoLuong)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DocGia.TenDG)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sach.TenSach)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
 }
 
 </table>

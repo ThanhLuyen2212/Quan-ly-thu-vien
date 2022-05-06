@@ -68,9 +68,10 @@ namespace QLThuVien.Areas.Admin.Controllers
         // POST: Admin/AdminSaches/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+       
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDSach,TenSach,TheLoai,MoTa,TacGia,NgayXuatBan,SoLuong,HinhAnh")] Sach sach)
+        [HttpPost]
+        public ActionResult Create(Sach sach)
         {
             try
             {
@@ -94,6 +95,8 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 return Content("<script language='javascript' type='text/javascript'>alert     ('Vui lòng kiểm tra lại thông tin!');</script>");
             }
+
+
         }
 
         // GET: Admin/AdminSaches/Edit/5

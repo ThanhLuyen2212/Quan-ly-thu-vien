@@ -21,7 +21,7 @@ namespace QLThuVien.Models
         {
             this.ChiTietSaches = new HashSet<ChiTietSach>();
             this.CT_PM = new HashSet<CT_PM>();
-            HinhAnh = "~/Image/sach.jpg";
+            HinhAnh = "~/Content/Image/sach.jpg";
         }
     
         public string IDSach { get; set; }
@@ -35,11 +35,14 @@ namespace QLThuVien.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSach> ChiTietSaches { get; set; }
+        public virtual TheLoai TheLoai1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_PM> CT_PM { get; set; }
-        public virtual TheLoai TheLoai1 { get; set; }
 
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }
+
+
+
     }
 }

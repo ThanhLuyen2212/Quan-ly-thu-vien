@@ -35,7 +35,7 @@
                     <td>@Html.DisplayFor(Model => item.giosach.TenSach)</td>
                     <td>@Html.DisplayFor(Model => item.giosach.TacGia)</td>
                     <td><img src="@Url.Content(item.giosach.HinhAnh)" style="width:150px;height:150px" /></td>
-                    <td>@Html.DisplayFor(Model => item.giosach.TheLoai)</td>
+                    <td>@Html.DisplayFor(Model => item.giosach.TheLoai1.NameCate)</td>
                     <td>@Html.DisplayFor(Model => item.giosach.NgayXuatBan)</td>
                     <td>
                         @using (Html.BeginForm("Update_quantity", "GioSach"))

@@ -56,7 +56,8 @@ namespace QLThuVien.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            List<PhieuMuon> phieuMuons = db.PhieuMuons.Where(c => c.TrangThai == 1).ToList();
+            Session["PhieuMuonDangCho"] = phieuMuons.Count();
             ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", phieuMuon.IDDG);
             return View(phieuMuon);
         }
@@ -73,7 +74,8 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-
+            List<PhieuMuon> phieuMuons = db.PhieuMuons.Where(c => c.TrangThai == 1).ToList();
+            Session["PhieuMuonDangCho"] = phieuMuons.Count();
             ViewData["trangthai"] = new SelectList(db.TrangThais, "IDTrangThai", "TenTrangThai", phieuMuon.TrangThai);
             
             return View(phieuMuon);
@@ -84,7 +86,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDPM,IDDG,TenDG,NgayMuon,NgayTra,TienPhat,GhiChu,TrangThai")] PhieuMuon phieuMuon)
+        public ActionResult Edit(PhieuMuon phieuMuon)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +95,8 @@ namespace QLThuVien.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            List<PhieuMuon> phieuMuons = db.PhieuMuons.Where(c => c.TrangThai == 1).ToList();
+            Session["PhieuMuonDangCho"] = phieuMuons.Count();
             ViewData["trangthai"] = new SelectList(db.TrangThais, "IDTrangThai", "TenTrangThai", phieuMuon.TrangThai);
 
             return View(phieuMuon);
@@ -110,6 +114,8 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            List<PhieuMuon> phieuMuons = db.PhieuMuons.Where(c => c.TrangThai == 1).ToList();
+            Session["PhieuMuonDangCho"] = phieuMuons.Count();
             return View(phieuMuon);
         }
 
@@ -121,7 +127,10 @@ namespace QLThuVien.Areas.Admin.Controllers
             PhieuMuon phieuMuon = db.PhieuMuons.Find(id);
             db.PhieuMuons.Remove(phieuMuon);
             db.SaveChanges();
+            List<PhieuMuon> phieuMuons = db.PhieuMuons.Where(c => c.TrangThai == 1).ToList();
+            Session["PhieuMuonDangCho"] = phieuMuons.Count();
             return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)
@@ -129,6 +138,7 @@ namespace QLThuVien.Areas.Admin.Controllers
             if (disposing)
             {
                 db.Dispose();
+             
             }
             base.Dispose(disposing);
         }

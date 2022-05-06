@@ -15,7 +15,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
 
         // GET: Admin/AdminCT_PM
-        public ActionResult Index()
+        public ActionResult Index(string IDPM)
         {
             if (Session["UserName"] == null)
             {
@@ -24,8 +24,20 @@ namespace QLThuVien.Areas.Admin.Controllers
         
             else
             {
-                var cT_PM = db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach);
-                return View(cT_PM.ToList());
+                if(IDPM == null)
+                {
+                    return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach));
+                }
+                else if (IDPM.Equals(""))
+                {
+                    return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach));
+                }
+                else
+                {
+                    int id = int.Parse(IDPM);
+                    return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach).Where(c => c.IDPM == id));
+                }
+                
             }
             
         }
