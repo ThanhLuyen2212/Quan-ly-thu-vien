@@ -19,7 +19,7 @@ namespace QLThuVien.Controllers
         [HttpPost]
         public ActionResult LoginAcc(DocGia user)
         {
-            var check = data.DocGias.Where(s => s.UserName == user.UserName && s.Password == user.Password).FirstOrDefault();
+            DocGia check = data.DocGias.Where(s => s.UserName == user.UserName && s.Password == user.Password).FirstOrDefault();
             if (check == null)
             {
                 ViewBag.ErrorInfor = "Sai thông tin tài khoản";
@@ -28,13 +28,52 @@ namespace QLThuVien.Controllers
             else
             {
                 data.Configuration.ValidateOnSaveEnabled = false;
+
                 Session["UserName"] = user.UserName;
                 Session["Password"] = user.Password;
+                Session["TenDocGia"] = check.TenDG;
+                
                 return RedirectToAction("Index", "ListBook");
             }
         }
 
-        
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(DocGia user)
+        {
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    DocGia check = data.DocGias.Where(s => s.IDDG == user.IDDG).FirstOrDefault();
+                    if (check == null)
+                    {
+                        data.Configuration.ValidateOnSaveEnabled = false;
+                        data.DocGias.Add(user);
+                        data.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.ErrorRegister = "Kiểm tra lại thông tin";
+                        return View();
+                    }
+                }
+            }
+            catch
+            {
+                ViewBag.ErrorRegister = "Vui lòng điền đầy đủ và kiểm tra lại thông tin !";
+            }
+            return View();
+
+        }
+
 
     }
 }

@@ -15,9 +15,27 @@ namespace QLThuVien.Areas.Admin.Controllers
         private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
 
         // GET: Admin/AdminPhieuMuons
-        public ActionResult Index(string trangthai)
+        public ActionResult Index(string timkiem)
         {    
-            var phieuMuons = db.PhieuMuons.Include(p => p.DocGia);
+           if(timkiem != null)
+            {
+                List<PhieuMuon> pm = new List<PhieuMuon>();
+                if (int.TryParse(timkiem, out int id))
+                {
+                   pm = db.PhieuMuons.Where(c => c.IDPM == id).ToList();                                
+                }
+                else
+                {
+                   pm = db.PhieuMuons.Where(c => c.TrangThai1.TenTrangThai == timkiem || c.TenDG == timkiem).ToList();
+                }
+                
+                if (pm.Count>0)
+                {
+                    return View(pm);
+                }
+            }
+
+            var phieuMuons = db.PhieuMuons;
             return View(phieuMuons.ToList());
         }
 

@@ -136,11 +136,19 @@ namespace QLThuVien.Controllers
                     //return Content("Lỗi ! Thời gian mượn tối đa là 15 ngày");
                     return Content("<script language='javascript' type='text/javascript'>alert     ('Lỗi ! Thời gian mượn tối đa là 15 ngày');</script>");
                 }
-                if (muon.TrangThai == 2)
+
+
+                // check status phieumuon is return
+                List<PhieuMuon> listphieuMuon = data.PhieuMuons.Where(c => c.IDDG == muon.IDDG).ToList();
+                foreach(PhieuMuon item in listphieuMuon)
                 {
-                    //return Content("Lỗi ! Thời gian mượn tối đa là 15 ngày");
-                    return Content("<script language='javascript' type='text/javascript'>alert     ('Lỗi ! Bạn chưa trả sách đã mượn nên không được mượn');</script>");
+                    if (item.TrangThai == 2 || muon.TrangThai == 1)
+                    {
+                        //return Content("Lỗi ! Chưa trả sách mượn lần trước");
+                        return Content("<script language='javascript' type='text/javascript'>alert     ('Lỗi ! Bạn chưa trả sách đã mượn nên không được mượn');</script>");
+                    }
                 }
+               
                 if (TongSoNgay <= 0)
                 {
                     //return Content("Lỗi ! Vui lòng kiểm tra lại mốc thời gian");

@@ -1,92 +1,115 @@
 ﻿@model QLThuVien.Models.DocGia
 @{
     ViewBag.Title = "Register";
+    Layout = null;
 }
 
-<!doctype HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Register</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Areas/Admin/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Areas/Admin/Assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/Areas/Admin/Assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/favicon.png" />
 </head>
 <body>
     <div id="form-register">
         @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { enctype = "multi/form-data" }))
         {
+
+            
             @Html.AntiForgeryToken()
-            <div>
-                <Table>
-                    <tr class="title-form">
-                        <th colspan="2">Register</th>
-                    </tr>
-                    <tr>
-                        <th colspan="2">
-                            <p>@Html.LabelFor(model => model.IDDG)</p>
-                            <p> @Html.EditorFor(model => model.IDDG)</p>
-                            <p>@Html.ValidationMessageFor(model => model.IDDG)</p>
-                        </th>
-                    </tr>
+            <div class="container-scroller">
+                <div class="container-fluid page-body-wrapper full-page-wrapper">
+                    <div class="row w-100 m-0">
+                        <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+                            <div class="card col-lg-4 mx-auto">
+                                <div class="card-body px-5 py-5">
+                                    <div>
+                                        <h2 class="card-title text-left mb-3" style="justify-content: center; display: flex;">Register</h2>
+                                    </div>
 
-                    <tr>
-                        <th colspan="2">
-                            <p>@Html.LabelFor(model => model.TenDG)</p>
-                            <p>@Html.EditorFor(model => model.TenDG) </p>
-                            <p>@Html.ValidationMessageFor(model => model.TenDG)</p>
-                    </tr>
+                                    <form>
+                                        <div class="form-group">
+                                            <label>Tên độc giả</label> <br />
+                                            <input id="TenDG" name="TenDG" style="field-validation-error" class="form-control p_input" type="text" value="">
+                                            <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                                        </div>
 
-                    <tr>
-                        <th colspan="2">
-                            <p>@Html.LabelFor(model => model.DienThoai)</p>
-                            <p>@Html.EditorFor(model => model.DienThoai) </p>
-                            <p>@Html.ValidationMessageFor(model => model.DienThoai)</p>
-                        </th>
-                    </tr>
+                                        <div class="form-group">
+                                            <label>Điện thoại</label><br />
+                                            <input id="DienThoai" name="DienThoai" type="DienThoai" class="form-control p_input">
+                                            <td>@Html.ValidationMessageFor(model => model.DienThoai)</td>
+                                        </div>
 
-                    <tr>
-                        <th colspan="2">
-                            <p>@Html.LabelFor(model => model.DiaChi)</p>
-                            <p>@Html.EditorFor(model => model.DiaChi) </p>
-                            <p>@Html.ValidationMessageFor(model => model.DiaChi)</p>
-                        </th>
-                    </tr>
+                                        <div class="form-group">
+                                            <label>Địa chỉ</label><br />
+                                            <input id="DiaChi" name="DiaChi" type="DiaChi" class="form-control p_input">
+                                            <td>@Html.ValidationMessageFor(model => model.DiaChi)</td>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>UserName</label><br />
+                                            <input id="UserName" name="UserName" type="UserName" class="form-control p_input">
+                                            <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Password</label><br />
+                                            <input id="Password" name="Password" type="Password" class="form-control p_input">
+                                            <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                                        </div>
+                                        @if (ViewBag.ErrorInfo != null)
+                                        {
+                                            <p class="text-danger">@ViewBag.ErrorInfor</p>
+                                        }
 
 
+                                        <div class="text-center" style="margin-top:30px; justify-content: center; display: flex">                                           
+                                            <input type="submit" class="btn btn-primary btn-block enter-btn" value="Register" style="height: 50px; width: 200px" />
+                                        </div>
+                                        <p style="margin-top:30px">Bạn đã có tài khoản???<a href="@Url.Action("Index","Login")"> Login</a></p>
+                                        
 
-                    <tr>
-                        <th colspan="2">
-                            <p>@Html.LabelFor(model => model.UserName)</p>
-                            <p>@Html.EditorFor(model => model.UserName) </p>
-                            <p>@Html.ValidationMessageFor(model => model.UserName)</p>
-                        </th>
-                    </tr>
 
-                    <tr>
-                        <th colspan="2">
-                            <p>@Html.LabelFor(model => model.Password)</p>
-                            <p>@Html.EditorFor(model => model.Password)</p>
-                            <p>@Html.ValidationMessageFor(model => model.Password)</p>
-                        </th>
-                    </tr>
-
-                    <tr>
-
-                        <th colspan="2">
-                            <input type="submit" class="btn" value="Register" />
-                            <input type="reset" class="btn" value="Reset" />
-
-                        </th>
-                    </tr>
-                    <tr>
-                        <th colspan="2">
-                            <p style="text-align:center;">
-                                <a href="@Url.Action("Index","Login")">Login</a>
-                            </p>
-                        </th>
-                    </tr>
-                </Table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- content-wrapper ends -->
+                    </div>
+                    <!-- row ends -->
+                </div>
+                <!-- page-body-wrapper ends -->
             </div>
         }
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="~/Areas/Admin/Assets/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="~/Areas/Admin/Assets/js/off-canvas.js"></script>
+        <script src="~/Areas/Admin/Assets/js/hoverable-collapse.js"></script>
+        <script src="~/Areas/Admin/Assets/js/misc.js"></script>
+        <script src="~/Areas/Admin/Assets/js/settings.js"></script>
+        <script src="~/Areas/Admin/Assets/js/todolist.js"></script>
+        <!-- endinject -->
+
     </div>
-</body>
+    </body>
 </html>
 
 

@@ -23,7 +23,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult LoginAdmin(Models.Admin admin)
         {
-            var check = data.Admins.Where(s => s.UserName == admin.UserName && s.Password == admin.Password).FirstOrDefault();
+            Models.Admin  check = data.Admins.Where(s => s.UserName == admin.UserName && s.Password == admin.Password).FirstOrDefault();
             if (check == null)
             {
                 ViewBag.ErrorInfo = "Sai thông tin tài khoản";
@@ -34,9 +34,9 @@ namespace QLThuVien.Areas.Admin.Controllers
                 data.Configuration.ValidateOnSaveEnabled = false;
                 Session["Username"] = admin.UserName;
                 Session["Password"] = admin.Password;
+                Session["TenAdmin"] = check.TenAdmin;
                 return RedirectToAction("Index", "AdminHome", new {Areas = "Admin"});
             }
         }
-
     }
 }

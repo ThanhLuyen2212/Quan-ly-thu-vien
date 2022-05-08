@@ -25,6 +25,7 @@ create table PhieuMuon
 	TenDG nvarchar(50)  ,
 	NgayMuon datetime  ,
 	NgayTra datetime  ,
+	NgayTraThucTe datetime ,
 	TienPhat int ,
 	GhiChu nvarchar(50) ,
 	TrangThai int,
@@ -99,16 +100,14 @@ create table CT_PM
 	TenDG nvarchar(50)  ,
 	IDSach nvarchar(10) ,
 	TenSach nvarchar(50) ,
-	SoLuong int ,
-	TrangThai int,
-	NgayTraThucTe datetime ,
-
+	SoLuong int,	
 	CONSTRAINT FK_CT_PM_DocGia FOREIGN KEY (IDDG) REFERENCES DocGia(IDDG),
 	CONSTRAINT FK_CT_PM_PhieuMuon FOREIGN KEY (IDPM) REFERENCES PhieuMuon(IDPM),
-	CONSTRAINT FK_CT_PM_Sach FOREIGN KEY (IDSach) REFERENCES Sach(IDSach),
-	CONSTRAINT FK_CT_PM_TrangThai FOREIGN KEY (TrangThai) REFERENCES TrangThai(IDTrangThai),
+	CONSTRAINT FK_CT_PM_Sach FOREIGN KEY (IDSach) REFERENCES Sach(IDSach)
 )
 go
+
+
 
 insert into TrangThai(TenTrangThai)
 values(N'Đang chờ mượn')
@@ -129,6 +128,9 @@ create table Admin
 
 insert into Admin(TenAdmin, DienThoai, DiaChi, UserName ,Password)
 values('Thanh Luyen','123456789','TPHCM','123','123')
+
+insert into Admin(TenAdmin, DienThoai, DiaChi, UserName ,Password)
+values('Thai Tuan','123456789','TPHCM','tuan','123')
 
 select * from Admin
 
@@ -170,3 +172,37 @@ begin
 
 	EXEC ThemTuDongChiTietSach @soluong = @SoLuong, @idSach = @idSach
 end
+
+
+create trigger TuDongSuaDoiTrangThaiMuonSachKhiTraHoanThanh
+on CT_PM
+after update 
+as 
+begin 
+	DECLARE @IDPM NVARCHAR(10), @SoSachChuaTra int
+	select @IDPM = IDPM from inserted
+	select @SoSachChuaTra = count(id) from CT_PM where IDPM = @IDPM and TrangThai = N'Đang mượn'
+
+   if(@SoSachChuaTra = 0)
+   begin 
+		update PhieuMuon set TrangThai = N'Đã trả' where IDPM = @IDPM
+   end 	
+end
+
+
+
+create trigger CapnhatsoluongsachsaukhiUpdate
+on phieumuon
+ after update 
+as 
+begin 
+	DECLARE @trangthai1 int, @trangthai2 int
+	select @trangthai1 = TrangThai from deleted
+	select @trangthai2 = TrangThai from inserted
+	if((@trangthai1 = 1 and @trangthai2 = 3) or (@trangthai1 = 2 and @trangthai2 = 3))
+	begin
+		<-- cong sachs leen --/>
+	end
+end
+
+select * from PhieuMuon
