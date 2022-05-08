@@ -64,8 +64,6 @@ namespace QLThuVien.Controllers
                 ViewBag.TenDG = dg.TenDG;
             }
 
-
-
             GioSach gio = Session["GioSach"] as GioSach;
             return View(gio);
         }
@@ -119,10 +117,9 @@ namespace QLThuVien.Controllers
             {
                 GioSach gio = Session["GioSach"] as GioSach;
                 PhieuMuon muon = new PhieuMuon();
-                muon.IDDG = int.Parse(form["IDDocgia"]);
-                muon.TenDG = form["Tendg"];
-                muon.NgayMuon = DateTime.Now;
                 muon.IDDG = int.Parse(form["IDdocgia"]);
+                muon.TenDG = form["Tendg"];
+                muon.NgayMuon = DateTime.Now;               
                 muon.TienPhat = 0;
                 muon.GhiChu = "";
                 muon.TrangThai = 1;
@@ -197,6 +194,8 @@ namespace QLThuVien.Controllers
                         }
                     }
 
+
+                    // update số lượng sách
                     foreach (var p in data.Saches.Where(s => s.IDSach == Detail.IDSach))
                     {
                         var update_soluong = p.SoLuong - item._soluongSach;

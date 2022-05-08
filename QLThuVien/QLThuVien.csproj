@@ -962,6 +962,51 @@
     <Content Include="Areas\Admin\Assets\vendors\select2\select2.min.css" />
     <Content Include="Areas\Admin\Assets\vendors\select2\select2.min.js" />
     <Content Include="Areas\Admin\Assets\vendors\typeahead.js\typeahead.bundle.min.js" />
+    <Content Include="Assets\css\cs-skin-elastic.css" />
+    <Content Include="Assets\css\lib\chosen\chosen-sprite%402x.png" />
+    <Content Include="Assets\css\lib\chosen\chosen-sprite.png" />
+    <Content Include="Assets\css\lib\chosen\chosen.css" />
+    <Content Include="Assets\css\lib\chosen\chosen.min.css" />
+    <Content Include="Assets\css\lib\datatable\buttons.bootstrap.min.css" />
+    <Content Include="Assets\css\lib\datatable\buttons.dataTables.min.css" />
+    <Content Include="Assets\css\lib\datatable\dataTables.bootstrap.min.css" />
+    <Content Include="Assets\css\lib\vector-map\jqvmap.min.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\fonts\icomoon\icomoon.svg" />
+    <Content Include="Assets\fonts\icomoon\index.html" />
+    <Content Include="Assets\js\dashboard.js" />
+    <Content Include="Assets\js\init\chartjs-init.js" />
+    <Content Include="Assets\js\init\datatables-init.js" />
+    <Content Include="Assets\js\init\flot-chart-init.js" />
+    <Content Include="Assets\js\init\fullcalendar-init.js" />
+    <Content Include="Assets\js\init\gmap-init.js" />
+    <Content Include="Assets\js\init\peitychart-init.js" />
+    <Content Include="Assets\js\init\vector-init.js" />
+    <Content Include="Assets\js\init\weather-init.js" />
+    <Content Include="Assets\js\lib\chosen\chosen.jquery.js" />
+    <Content Include="Assets\js\lib\chosen\chosen.jquery.min.js" />
+    <Content Include="Assets\js\lib\chosen\chosen.proto.js" />
+    <Content Include="Assets\js\lib\chosen\chosen.proto.min.js" />
+    <Content Include="Assets\js\lib\data-table\buttons.bootstrap.min.js" />
+    <Content Include="Assets\js\lib\data-table\buttons.colVis.min.js" />
+    <Content Include="Assets\js\lib\data-table\buttons.flash.min.js" />
+    <Content Include="Assets\js\lib\data-table\buttons.html5.min.js" />
+    <Content Include="Assets\js\lib\data-table\buttons.print.min.js" />
+    <Content Include="Assets\js\lib\data-table\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\js\lib\data-table\dataTables.buttons.min.js" />
+    <Content Include="Assets\js\lib\data-table\datatables.min.js" />
+    <Content Include="Assets\js\lib\data-table\jquery-1.12.4.js" />
+    <Content Include="Assets\js\lib\data-table\jquery.dataTables.min.js" />
+    <Content Include="Assets\js\lib\data-table\jszip.min.js" />
+    <Content Include="Assets\js\lib\data-table\pdfmake.min.js" />
+    <Content Include="Assets\js\lib\data-table\vfs_fonts.js" />
+    <Content Include="Assets\js\lib\gmap\gmapApi.js" />
+    <Content Include="Assets\js\lib\gmap\gmaps.js" />
+    <Content Include="Assets\js\lib\gmap\gmaps.min.js" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\vmap.sampledata.js" />
+    <Content Include="Assets\js\widgets.js" />
+    <Content Include="Assets\scss\style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -970,6 +1015,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\.gitignore" />
+    <Content Include="Images\admin.jpg" />
+    <Content Include="Images\avatar\1.jpg" />
+    <Content Include="Images\avatar\2.jpg" />
+    <Content Include="Images\avatar\3.jpg" />
+    <Content Include="Images\avatar\4.jpg" />
+    <Content Include="Images\avatar\5.jpg" />
+    <Content Include="Images\avatar\6.jpg" />
+    <Content Include="Images\avatar\64-1.jpg" />
+    <Content Include="Images\avatar\64-2.jpg" />
+    <Content Include="Images\favicon.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo2.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -985,7 +1043,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
     <Content Include="Areas\Admin\Assets\css\maps\style.css.map" />
     <Content Include="Areas\Admin\Assets\fonts\Assistant\Assistant-Bold.eot" />
     <Content Include="Areas\Admin\Assets\fonts\Assistant\Assistant-Bold.ttf" />
@@ -1161,6 +1218,14 @@
     <Content Include="Areas\Admin\Views\AdminCT_PM\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Assets\css\style.css.map" />
+    <Content Include="Assets\fonts\icomoon\icomoon.eot" />
+    <Content Include="Assets\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Assets\fonts\icomoon\icomoon.woff" />
+    <Content Include="Assets\scss\style.css.map" />
+    <Content Include="Assets\scss\style.scss" />
+    <Content Include="Images\logo.psd" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1196,12 +1261,13 @@
     <Content Include="Views\GioSach\Muon_Success.cshtml" />
     <Content Include="Views\ChiTietCuonSach\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Shared\LeftPanel.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Model\" />
-    <Folder Include="Areas\Admin\Views\AdminRegister\" />
-    <Folder Include="Image\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

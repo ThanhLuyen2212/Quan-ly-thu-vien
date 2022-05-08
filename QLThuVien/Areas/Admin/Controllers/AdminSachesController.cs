@@ -82,8 +82,8 @@ namespace QLThuVien.Areas.Admin.Controllers
                     string filename = Path.GetFileNameWithoutExtension(sach.UploadImage.FileName);
                     string ex = Path.GetExtension(sach.UploadImage.FileName);
                     filename = filename + ex;
-                    sach.HinhAnh = "~/Image/" + filename;
-                    sach.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Image/"), filename));
+                    sach.HinhAnh = "~/Images/" + filename;
+                    sach.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Images/"), filename));
 
                 }
                 ViewBag.listcate = new SelectList(list, "IDCate", "NameCate", 1);

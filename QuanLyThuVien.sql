@@ -170,21 +170,3 @@ begin
 
 	EXEC ThemTuDongChiTietSach @soluong = @SoLuong, @idSach = @idSach
 end
-
-
-
-
-create trigger TuDongSuaDoiTrangThaiMuonSachKhiTraHoanThanh
-on CT_PM
-after update 
-as 
-begin 
-	DECLARE @IDPM NVARCHAR(10), @SoSachChuaTra int
-	select @IDPM = IDPM from inserted
-	select @SoSachChuaTra = count(id) from CT_PM where IDPM = @IDPM and TrangThai = N'Đang mượn'
-
-   if(@SoSachChuaTra = 0)
-   begin 
-		update PhieuMuon set TrangThai = N'Đã trả' where IDPM = @IDPM
-   end 	
-end

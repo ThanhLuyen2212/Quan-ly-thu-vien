@@ -21,7 +21,7 @@ namespace QLThuVien.Models
         {
             this.ChiTietSaches = new HashSet<ChiTietSach>();
             this.CT_PM = new HashSet<CT_PM>();
-            HinhAnh = "~/Content/Image/sach.jpg";
+            HinhAnh = "~/Images/sach.jpg";
         }
     
         public string IDSach { get; set; }

@@ -61,12 +61,17 @@
                     <p>Số Lượng : @Html.DisplayFor(Model => pro.SoLuong)</p>
 
                     <p class="btn btn-primary">
+                        @if (Session["UserName"] != null)
+                        {
+                            @Html.ActionLink("Mượn sách", "Addto", "GioSach", new { id = pro.IDSach }, "")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Mượn sách", "Addto", "GioSach")
+                        }
 
-        
-                    
-                        @Html.ActionLink("Mượn sách", "Addto", "GioSach", new { id = pro.IDSach }, "")
-                    
-                        </p>
+
+                    </p>
                         @*<p><a href="/GioSach/AddTo/@pro.IDSach" class="btn btn-primary">Mượn Sách</a></p>*@
 
                     </div>

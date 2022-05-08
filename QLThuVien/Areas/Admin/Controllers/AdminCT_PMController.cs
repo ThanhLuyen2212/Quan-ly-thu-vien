@@ -20,11 +20,11 @@ namespace QLThuVien.Areas.Admin.Controllers
             if (Session["UserName"] == null)
             {
                 return RedirectToAction("Index", "AdminLogin", new { Areas = "Admin" });
-            }          
-        
+            }
+
             else
             {
-                if(IDPM == null)
+                if (IDPM == null)
                 {
                     return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach));
                 }
@@ -37,9 +37,9 @@ namespace QLThuVien.Areas.Admin.Controllers
                     int id = int.Parse(IDPM);
                     return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach).Where(c => c.IDPM == id));
                 }
-                
+
             }
-            
+
         }
 
         // GET: Admin/AdminCT_PM/Details/5
@@ -109,7 +109,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,IDPM,IDDG,TenDG,IDSach,TenSach,SoLuong,NgayTraThucTe")] CT_PM cT_PM)
+        public ActionResult Edit(CT_PM cT_PM)
         {
             if (ModelState.IsValid)
             {
@@ -122,6 +122,7 @@ namespace QLThuVien.Areas.Admin.Controllers
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
             return View(cT_PM);
         }
+
 
         // GET: Admin/AdminCT_PM/Delete/5
         public ActionResult Delete(int? id)
