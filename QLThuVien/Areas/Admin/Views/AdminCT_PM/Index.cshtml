@@ -5,63 +5,79 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-    <input type="text" class="form-control" placeholder="Tìm kiếm theo IDPM" name="IDPM">
-</form>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDPM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenDG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenSach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoLuong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DocGia.TenDG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sach.TenSach)
-        </th>
-        <th></th>
-    </tr>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Danh sách chi tiết các phiếu mượn</h2>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDPM)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TenDG)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TenSach)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SoLuong)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DocGia.TenDG)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Sach.TenSach)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-    </td>
-</tr>
-}
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" class="form-control" placeholder="Tìm kiếm theo IDPM" name="IDPM">
+            </form>
 
-</table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                IDPM
+                            </th>
+                            <th style="color:white">
+                                Tên độc giả
+                            </th>
+                            <th style="color:white">
+                                Tên sách
+                            </th>
+                            <th style="color:white">
+                                Số lượng
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDPM)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDG)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenSach)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuong)
+                                </td>
+
+                                <td>
+
+                                    <a href="~/Admin/AdminCT_PM/Details/@item.ID">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminCT_PM/Edit/@item.ID">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminCT_PM/Delete/@item.ID">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="~/Admin/AdminPhieuMuons/Index">    
+                <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+
+            </a>
+
+        </div>
+    </div>
+</div>

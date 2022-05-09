@@ -15,8 +15,17 @@ namespace QLThuVien.Areas.Admin.Controllers
         private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
 
         // GET: Admin/AdminsRegister
-        public ActionResult Index()
+        public ActionResult Index(string TenAdmin)
         {
+            if(TenAdmin != null)
+            {
+                List<Models.Admin> admin = db.Admins.Where(c => c.TenAdmin == TenAdmin).ToList();
+                if (admin.Count > 0)
+                {
+                    return View(admin);
+                }
+                return View(db.Admins.ToList());
+            }
             return View(db.Admins.ToList());
         }
 

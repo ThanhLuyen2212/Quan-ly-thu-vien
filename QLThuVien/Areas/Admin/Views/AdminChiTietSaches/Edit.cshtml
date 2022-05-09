@@ -10,37 +10,44 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ChiTietSach</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IDChiTietSach)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IDSach, "IDSach", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IDSach", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IDSach, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal">
+    <h4>ChiTietSach</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.IDChiTietSach)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TinhTrang, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="form-group">
+        <label>ID chi tiết cuốn sách: @Html.DisplayFor(model => model.IDChiTietSach)</label>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    </div>
+
+
+    <div class="form-group">
+        <label>ID chi tiết cuốn sách: @Html.DisplayFor(model => model.Sach.TenSach)</label>
+
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TinhTrang, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-outline-info btn-fw">Save</button>
+        </div>
+    </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+<a href="~/Admin/AdminChiTietSaches/Index">
+    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:20px">Trở về</button>
+
+</a>

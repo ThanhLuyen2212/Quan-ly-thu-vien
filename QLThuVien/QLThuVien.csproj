@@ -137,7 +137,6 @@
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminPhieuMuonsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminRegisterController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminSachesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminsRegisterController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTheLoaisController.cs" />
@@ -1200,7 +1199,6 @@
     <Content Include="Areas\Admin\Views\AdminsRegister\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminsRegister\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminsRegister\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminPhieuMuons\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhieuMuons\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhieuMuons\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhieuMuons\Edit.cshtml" />
@@ -1212,7 +1210,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCT_PM\Edit.cshtml" />

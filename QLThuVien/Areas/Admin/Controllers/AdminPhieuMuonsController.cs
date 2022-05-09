@@ -54,35 +54,6 @@ namespace QLThuVien.Areas.Admin.Controllers
             return View(phieuMuon);
         }
 
-        // GET: Admin/AdminPhieuMuons/Create
-        public ActionResult Create()
-        {
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG");
-            return View();
-        }
-
-        // POST: Admin/AdminPhieuMuons/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDPM,IDDG,TenDG,NgayMuon,NgayTra,TienPhat,GhiChu,TrangThai")] PhieuMuon phieuMuon)
-        {
-            List<PhieuMuon> phieuMuons = new List<PhieuMuon>();
-            if (ModelState.IsValid)
-            {
-                db.PhieuMuons.Add(phieuMuon);
-                db.SaveChanges();
-                phieuMuons = db.PhieuMuons.Where(c => c.TrangThai == 1).ToList();
-                Session["PhieuMuonDangCho"] = phieuMuons.Count();
-                return RedirectToAction("Index");
-            }
-            phieuMuons = db.PhieuMuons.Where(c => c.TrangThai == 1).ToList();
-            Session["PhieuMuonDangCho"] = phieuMuons.Count();
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", phieuMuon.IDDG);
-            return View(phieuMuon);
-        }
-
         // GET: Admin/AdminPhieuMuons/Edit/5
         public ActionResult Edit(int? id)
         {

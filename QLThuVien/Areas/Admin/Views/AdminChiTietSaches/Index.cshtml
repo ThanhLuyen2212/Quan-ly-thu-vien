@@ -5,51 +5,82 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên sách" name="tensach">
-</form>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDSach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sach.TenSach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IDChiTietSach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TinhTrang)
-        </th>
-        <th></th>
-    </tr>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Danh sách chi tiết các cuốn sách</h2>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDSach)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Sach.TenSach)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDChiTietSach)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TinhTrang)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.IDChiTietSach }) |
-        @Html.ActionLink("Details", "Details", new { id = item.IDChiTietSach }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IDChiTietSach })
-    </td>
-</tr>
-}
 
-</table>
+            <a href="~/Admin/AdminChiTietSaches/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo một cuốn sách mới</button>
+            </a>
+
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" class="form-control" placeholder="Tìm kiếm theo ID của cuốn sách" name="IDsach">
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                ID Sách
+                            </th>
+                            <th style="color:white">
+                                Tên sách
+                            </th>
+                            <th style="color:white">
+                                ID Chi tiết các cuốn sách
+                            </th>
+                            <th style="color:white">
+                                Tình trạng
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDSach)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sach.TenSach)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDChiTietSach)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TinhTrang)
+                                </td>
+                                <td>
+
+                                    <a href="~/Admin/AdminChiTietSaches/Details/@item.IDChiTietSach">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminChiTietSaches/Edit/@item.IDChiTietSach">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminChiTietSaches/Delete/@item.IDChiTietSach">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="~/Admin/AdminSaches/Index">
+                <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+
+            </a>
+
+        </div>
+    </div>
+</div>

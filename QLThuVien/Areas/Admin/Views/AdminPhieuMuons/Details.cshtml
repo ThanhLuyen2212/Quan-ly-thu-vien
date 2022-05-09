@@ -5,71 +5,57 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết của cuốn sách</h4>
 
-<div>
-    <h4>PhieuMuon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenDG)
-        </dt>
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên độc giả</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenDG)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày mượn</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NgayMuon)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày trả</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NgayTra)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tiền phạt</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TienPhat)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ghi chú</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.GhiChu)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Trạng thái</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TrangThai)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenDG)
-        </dd>
+                <a href="~/Admin/AdminPhieuMuons/Edit/@Model.IDPM">
+                    <button style="width:100px; type="submit" class="btn btn-primary mr-2">Edit</button>
+                </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayMuon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayMuon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTra)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayTra)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TienPhat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TienPhat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GhiChu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DocGia.TenDG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DocGia.TenDG)
-        </dd>
-
-    </dl>
+                <a href="~/Admin/AdminPhieuMuons/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
+            </form>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDPM }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -7,75 +7,65 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>PhieuMuon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenDG)
-        </dt>
+<h3>Bạn có muốn xóa chi tiết phiếu mượn này không???</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenDG)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayMuon)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayMuon)
-        </dd>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết của cuốn sách</h4>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTra)
-        </dt>
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên độc giả</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenDG)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày mượn</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NgayMuon)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày trả</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NgayTra)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tiền phạt</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TienPhat)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ghi chú</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.GhiChu)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Trạng thái</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TrangThai)
+                    </div>
+                </div>              
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayTra)
-        </dd>
+            </form>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TienPhat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TienPhat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GhiChu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DocGia.TenDG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DocGia.TenDG)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">               
+                    <button style="width:180px" type="submit" value="Delete" class="btn btn-primary mr-2">Delete</button>
+                </div>
+            }
+            <a href="~/Admin/AdminPhieuMuons/Index">
+                <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+            </a>
         </div>
-    }
+    </div>
 </div>

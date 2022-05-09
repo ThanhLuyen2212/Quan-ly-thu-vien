@@ -5,55 +5,55 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Admin</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenAdmin)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenAdmin)
-        </dd>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết của Admin</h4>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </dt>
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên độc giả</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenAdmin)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Điện thoại </label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.DienThoai)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Địa chỉ </label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.DiaChi)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">UserName</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.UserName)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Passowrd </label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.Password)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DienThoai)
-        </dd>
+                <a href="~/Admin/AdminsRegister/Edit/@Model.IDAdmin">
+                    <button style="width:100px; type="button" class="btn btn-primary mr-2">Edit</button>
+                </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
+                <a href="~/Admin/AdminsRegister/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-    </dl>
+            </form>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDAdmin }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

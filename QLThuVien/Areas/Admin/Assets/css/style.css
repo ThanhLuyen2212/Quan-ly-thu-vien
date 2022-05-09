@@ -7621,6 +7621,7 @@ caption {
 
 th {
   text-align: inherit;
+  color:white;
   text-align: -webkit-match-parent; }
 
 label {
@@ -17887,7 +17888,7 @@ div.tagsinput {
     border-top: 0;
     border-bottom-width: 1px;
     font-weight: 500;
-    color: #6c7293; }
+    color: white; }
     .table thead th i, .jsgrid .jsgrid-table thead th i {
       margin-left: 0.325rem; }
   .table th, .jsgrid .jsgrid-table th,

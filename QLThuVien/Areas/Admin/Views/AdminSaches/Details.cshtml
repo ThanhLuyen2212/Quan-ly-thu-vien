@@ -5,71 +5,67 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Sach</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSach)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenSach)
-        </dd>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết của cuốn sách</h4>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên sách</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenSach)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Mô tả </label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.MoTa)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tác giả</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TacGia)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày xuất bản</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NgayXuatBan)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.SoLuong)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Hình ảnh</label>
+                    <div class="col-sm-9">
+                        <img src="@Url.Content(Model.HinhAnh)" style="width: 100px; height: 150px; border-radius:0%" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Thể loại</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TheLoai1.NameCate)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
+                <a href="~/Admin/AdminSaches/Edit/@Model.IDSach">
+                    <button style="width:100px; type="button" class="btn btn-primary mr-2">Edit</button>
+                </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TacGia)
-        </dt>
+                <a href="~/Admin/AdminSaches/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
 
-        <dd>
-            @Html.DisplayFor(model => model.TacGia)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayXuatBan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayXuatBan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SoLuong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TheLoai1.NameCate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TheLoai1.NameCate)
-        </dd>
-
-    </dl>
+            </form>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDSach }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

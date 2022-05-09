@@ -25,7 +25,7 @@ namespace QLThuVien.Areas.Admin.Controllers
             else
             {
                 if(tensach == null)
-                {
+                {                    
                     return View(db.Saches.Include(s => s.TheLoai1));
                 }
                 else if (tensach.Equals(""))
@@ -33,7 +33,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                     return View(db.Saches.Include(s => s.TheLoai1));
                 }
                 else
-                {
+                {                    
                     return View(db.Saches.Where(s => s.TenSach.Equals(tensach)).ToList());
                 }
                

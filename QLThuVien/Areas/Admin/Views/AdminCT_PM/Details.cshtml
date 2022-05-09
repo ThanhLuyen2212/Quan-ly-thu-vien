@@ -5,71 +5,42 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>CT_PM</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenDG)
-        </dt>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết phiếu mượn</h4>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenDG)
-        </dd>
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên độc giả</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenDG)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên sách</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.Sach.TenSach)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng </label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.SoLuong)
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSach)
-        </dt>
+                <a href="~/Admin/AdminCT_PM/Edit/@Model.ID">
+                    <button style="width:100px; type="button" class="btn btn-primary mr-2">Edit</button>
+                </a>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenSach)
-        </dd>
+                <a href="~/Admin/AdminCT_PM/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SoLuong)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SoLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTraThucTe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayTraThucTe)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DocGia.TenDG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DocGia.TenDG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhieuMuon.TenDG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhieuMuon.TenDG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sach.TenSach)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sach.TenSach)
-        </dd>
-
-    </dl>
+            </form>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

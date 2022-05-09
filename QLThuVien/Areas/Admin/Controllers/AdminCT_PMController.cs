@@ -57,35 +57,6 @@ namespace QLThuVien.Areas.Admin.Controllers
             return View(cT_PM);
         }
 
-        // GET: Admin/AdminCT_PM/Create
-        public ActionResult Create()
-        {
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG");
-            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG");
-            ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach");
-            return View();
-        }
-
-        // POST: Admin/AdminCT_PM/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,IDPM,IDDG,TenDG,IDSach,TenSach,SoLuong,NgayTraThucTe")] CT_PM cT_PM)
-        {
-            if (ModelState.IsValid)
-            {
-                db.CT_PM.Add(cT_PM);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
-            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
-            ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
-            return View(cT_PM);
-        }
-
         // GET: Admin/AdminCT_PM/Edit/5
         public ActionResult Edit(int? id)
         {

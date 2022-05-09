@@ -15,7 +15,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
 
         // GET: Admin/AdminChiTietSaches
-        public ActionResult Index(string tensach)
+        public ActionResult Index(string IDSach)
         {
             if (Session["UserName"] == null)
             {
@@ -23,17 +23,22 @@ namespace QLThuVien.Areas.Admin.Controllers
             }
             else
             {
-                if (tensach == null)
+                if (IDSach == null)
                 {
                     return View(db.ChiTietSaches.Include(c => c.Sach));
                 }
-                else if (tensach.Equals(""))
+                else if (IDSach.Equals(""))
                 {
                     return View(db.ChiTietSaches.Include(c => c.Sach));
                 }
                 else
                 {
-                    return View(db.ChiTietSaches.Where(c => c.Sach.TenSach == tensach).ToList());
+                    List<ChiTietSach> chiTietSachList = db.ChiTietSaches.Where(c => c.IDSach == IDSach).ToList();    
+                    if(chiTietSachList.Count > 0)
+                    {
+                        return View(chiTietSachList);
+                    }
+                    return View(db.ChiTietSaches.Where(c => c.Sach.TenSach == IDSach).ToList());
                 }                 
             }           
         }
@@ -90,6 +95,8 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", chiTietSach.IDSach);
             return View(chiTietSach);
         }
@@ -105,6 +112,7 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 db.Entry(chiTietSach).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", chiTietSach.IDSach);
@@ -129,11 +137,19 @@ namespace QLThuVien.Areas.Admin.Controllers
         // POST: Admin/AdminChiTietSaches/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed([Bind(Include = "IDChiTietSach,IDSach,TinhTrang")] string id)
         {
             ChiTietSach chiTietSach = db.ChiTietSaches.Find(id);
+
+            int soluongsahc = db.ChiTietSaches.Count(c => c.IDSach == chiTietSach.IDSach && c.TinhTrang == "Đang dùng");
+            Sach sach = db.Saches.Find(chiTietSach.IDSach);
+            sach.SoLuong = soluongsahc;
+
             db.ChiTietSaches.Remove(chiTietSach);
+         
+            
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
