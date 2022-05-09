@@ -13,44 +13,100 @@ namespace QLThuVien.Controllers
         QuanLyThuVienEntities1 data = new QuanLyThuVienEntities1();
         public ActionResult Index()
         {
-            return View();
-            ViewBag.NewBook = data.Saches.Take(5).OrderByDescending(s => s.IDSach).ToList();
-
-            // muon nhieu nhat 
-            string[] idsach = new string[5];
-            
-            //lấy 5 cuốn sách mới nhất
-            ViewBag.MostBorrowBook = data.Saches.Take(5).OrderByDescending((s) => s.IDSach).ToList();
-            // lấy 5 cuốn sách được mượn nhiều nhất
-
-            // tin tức
-
-            // Số độc giả có trong thư viện
-            ViewBag.CountDocGia = data.DocGias.Count();
-
-            // Số cuốn sách được mượn
-            ViewBag.CountPhieuMuon = data.PhieuMuons.Count();
-
-            // Số cuốn sách có trong thư viện
-            ViewBag.CountBook = data.Saches.Count();
-
-            // Số 
-            
-
+            return View(data.Saches.ToList());
         }
 
-        public ActionResult About()
+        public ActionResult SachDocNhieu()
         {
-            ViewBag.Message = "Your application description page.";
+            List<sosachmuon> list = new List<sosachmuon>();
 
-            return View();
+            List<Sach> sach = new List<Sach>();
+            sach = data.Saches.ToList();
+
+            foreach (Sach item in sach)
+            {
+                var sum = data.CT_PM.Where(c => c.IDSach == item.IDSach).Sum(c => c.SoLuong);
+
+                int tem = (sum == null ? 0 : sum.Value);
+
+                if (tem > 0)
+                {
+                    list.Add(new sosachmuon(item.IDSach, tem));
+                }
+            }
+            list.Sort((a, b) => a.SoPhieuMuon.CompareTo(b.SoPhieuMuon));
+
+            List<Sach> sachs = new List<Sach>();
+
+            foreach (sosachmuon item in list.Take(5))
+            {
+                sachs.Add(data.Saches.FirstOrDefault(c => c.IDSach == item.IDsach));
+            }
+
+            return View(sachs.Take(5));
         }
-
-        public ActionResult Contact()
+        public ActionResult SachMoiCapNhat()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(data.Saches.Take(5).OrderByDescending(s => s.NgayXuatBan).ToList());
         }
+
+        public ActionResult SachMuonNhieu()
+        {
+            List<sosachmuon> list = new List<sosachmuon>();
+
+            List<Sach> sach = new List<Sach>();
+            sach = data.Saches.ToList();
+
+            foreach(Sach item in sach)
+            {
+                var sum = data.CT_PM.Where(c => c.IDSach == item.IDSach).Sum(c => c.SoLuong);
+                
+                int tem = (sum == null ? 0 : sum.Value);
+
+                if(tem > 0)
+                {                    
+                    list.Add(new sosachmuon(item.IDSach, tem));          
+                }                
+            }
+            list.Sort((a,b) => a.SoPhieuMuon.CompareTo(b.SoPhieuMuon));
+            
+            List<Sach> sachs = new List<Sach>();
+            
+            foreach(sosachmuon item in list.Take(5))
+            {
+                sachs.Add(data.Saches.FirstOrDefault(c => c.IDSach == item.IDsach));
+            }
+
+            return View( sachs.Take(5));           
+
+        }       
+
+        
+        public ActionResult SachTheoTheLoai(string theloai)
+        {
+            if(theloai == null)
+            {
+                return View(data.Saches.ToList());
+            }
+            else
+            {
+                return View(data.Saches.Where(c => c.TheLoai1.NameCate == theloai).ToList());
+            }
+        }
+
+
+    }
+    class sosachmuon
+    {
+        public string IDsach { get; set; }
+        public int SoPhieuMuon { get; set; }
+        
+        public sosachmuon(string idsach , int sophieumuon)
+        {
+            this.IDsach = idsach;
+            this.SoPhieuMuon=sophieumuon;
+        }
+
+
     }
 }

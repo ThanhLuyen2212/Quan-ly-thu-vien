@@ -7,35 +7,33 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>TheLoai</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ID)
-        </dt>
+<h3>Bạn có muốn xóa thể loại sách này không???</h3>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết của cuốn sách</h4>
 
-        <dd>
-            @Html.DisplayFor(model => model.ID)
-        </dd>
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên thể loại</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NameCate)
+                    </div>
+                </div>                
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NameCate)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NameCate)
-        </dd>
+            </form>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <button style="width:180px; type="submit" value="Delete" class="btn btn-primary mr-2">Delete</button>
+                </div>
+            }
+            <a href="~/Admin/AdminTheLoais/Index">
+                <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+            </a>
         </div>
-    }
+    </div>
 </div>

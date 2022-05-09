@@ -5,31 +5,30 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết thể loại</h2>
 
-<div>
-    <h4>TheLoai</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ID)
-        </dt>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết của cuốn sách</h4>
 
-        <dd>
-            @Html.DisplayFor(model => model.ID)
-        </dd>
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên thể loại</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NameCate)
+                    </div>
+                </div>                
+                <a href="~/Admin/AdminTheLoais/Edit/@Model.IDCate">
+                    <button style="width:100px; type="button" class="btn btn-primary mr-2">Edit</button>
+                </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NameCate)
-        </dt>
+                <a href="~/Admin/AdminTheLoais/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
 
-        <dd>
-            @Html.DisplayFor(model => model.NameCate)
-        </dd>
 
-    </dl>
+            </form>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCate }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

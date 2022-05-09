@@ -1023,9 +1023,11 @@
     <Content Include="Images\avatar\6.jpg" />
     <Content Include="Images\avatar\64-1.jpg" />
     <Content Include="Images\avatar\64-2.jpg" />
+    <Content Include="Images\bookshelf.png" />
     <Content Include="Images\favicon.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo2.png" />
+    <Content Include="Images\user.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -1182,11 +1184,6 @@
     <Content Include="Areas\Admin\Views\AdminDocGias\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDocGias\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminHeader.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminSaches\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminSaches\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminSaches\Details.cshtml" />
@@ -1222,6 +1219,11 @@
     <Content Include="Assets\scss\style.css.map" />
     <Content Include="Assets\scss\style.scss" />
     <Content Include="Images\logo.psd" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1244,8 +1246,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
@@ -1258,6 +1258,10 @@
     <Content Include="Views\Shared\LeftPanel.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Home\SachMoiCapNhat.cshtml" />
+    <Content Include="Views\Home\SachMuonNhieu.cshtml" />
+    <Content Include="Views\Home\SachDocNhieu.cshtml" />
+    <Content Include="Views\Home\SachTheoTheLoai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
