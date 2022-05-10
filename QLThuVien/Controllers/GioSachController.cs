@@ -12,7 +12,7 @@ namespace QLThuVien.Controllers
         QuanLyThuVienEntities1 data = new QuanLyThuVienEntities1();
         // GET: GioSach
         public GioSach GetSach()
-        {
+        {            
             GioSach gio = Session["GioSach"] as GioSach;
             if (gio == null || Session["GioSach"] == null)
             {
@@ -26,6 +26,11 @@ namespace QLThuVien.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -48,6 +53,10 @@ namespace QLThuVien.Controllers
 
         public ActionResult Show()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (Session["GioSach"] == null)
             {
                 return RedirectToAction("Show", "GioSach");

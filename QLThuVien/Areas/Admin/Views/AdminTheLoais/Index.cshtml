@@ -5,30 +5,56 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NameCate)
-        </th>
-        <th></th>
-    </tr>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Danh sách thể loại sách trong thư viện</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameCate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDCate }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDCate }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDCate })
-        </td>
-    </tr>
-}
+            <a href="~/Admin/AdminTheLoais/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo một thể loại mới</button>
+            </a>
 
-</table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                ID thể loại
+                            </th>
+                            <th style="color:white">
+                                Tên thể loại
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IDCate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NameCate)
+                            </td>
+                            <td>
+                                <a href="~/Admin/AdminTheLoais/Details/@item.IDCate">
+                                    <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                </a>
+                                <a href="~/Admin/AdminTheLoais/Edit/@item.IDCate">
+                                    <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                </a>
+                                <a href="~/Admin/AdminTheLoais/Delete/@item.IDCate">
+                                    <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
