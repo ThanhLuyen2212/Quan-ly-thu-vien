@@ -190,19 +190,7 @@ begin
 end
 
 
-
-create trigger CapnhatsoluongsachsaukhiUpdate
-on phieumuon
- after update 
-as 
-begin 
-	DECLARE @trangthai1 int, @trangthai2 int
-	select @trangthai1 = TrangThai from deleted
-	select @trangthai2 = TrangThai from inserted
-	if((@trangthai1 = 1 and @trangthai2 = 3) or (@trangthai1 = 2 and @trangthai2 = 3))
-	begin
-		<-- cong sachs leen --/>
-	end
-end
-
+select * from CT_PM
 select * from PhieuMuon
+delete CT_PM 
+delete PhieuMuon
