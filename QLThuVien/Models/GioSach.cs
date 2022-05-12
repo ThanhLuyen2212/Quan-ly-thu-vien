@@ -36,6 +36,7 @@ namespace QLThuVien.Models
             }
         }
 
+        //update số lượng sách
         public void Update (string id, int _quantity)
         {
             var i = item.Find(s => s.giosach.IDSach.Contains(id.ToString()));

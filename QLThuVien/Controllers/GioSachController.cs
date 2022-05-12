@@ -38,7 +38,7 @@ namespace QLThuVien.Controllers
         {
             if (Session["UserName"] == null)
             {
-                return Content("<script language='javascript' type='text/javascript'>alert     ('Bạn phải đăng nhập để thực hiện chức năng này');</script>");
+                return RedirectToAction("Index", "Login");
             }
             else
             {

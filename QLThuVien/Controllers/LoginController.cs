@@ -33,7 +33,7 @@ namespace QLThuVien.Controllers
                 Session["Password"] = user.Password;
                 Session["TenDocGia"] = check.TenDG;
                 
-                return RedirectToAction("Index", "ListBook");
+                return RedirectToAction("Index", "Home");
             }
         }
 

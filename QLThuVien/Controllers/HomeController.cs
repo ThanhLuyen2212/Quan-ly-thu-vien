@@ -78,20 +78,27 @@ namespace QLThuVien.Controllers
             }
 
             return View( sachs.Take(5));           
-
         }       
 
         
-        public ActionResult SachTheoTheLoai(string theloai)
+        public ActionResult SachTheoTheLoai(string theloai,string tensach)
         {
-            if(theloai == null)
+            if(theloai == null && tensach == null)
             {
                 return View(data.Saches.ToList());
             }
             else
             {
-                return View(data.Saches.Where(c => c.TheLoai1.NameCate == theloai).ToList());
-            }
+                if(theloai != null)
+                {
+                    return View(data.Saches.Where(c => c.TheLoai1.NameCate == theloai).ToList());
+                }
+                if (tensach != null)
+                {
+                    return View(data.Saches.Where(c => c.TenSach == tensach).ToList());
+                }
+                return View(data.Saches.ToList());
+            }            
         }
 
 
