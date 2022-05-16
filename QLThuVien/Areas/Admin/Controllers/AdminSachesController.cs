@@ -95,8 +95,6 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 return Content("<script language='javascript' type='text/javascript'>alert     ('Vui lòng kiểm tra lại thông tin!');</script>");
             }
-
-
         }
 
         // GET: Admin/AdminSaches/Edit/5

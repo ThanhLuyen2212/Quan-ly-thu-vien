@@ -22,8 +22,7 @@ namespace QLThuVien.Models
             this.ChiTietSaches = new HashSet<ChiTietSach>();
             this.CT_PM = new HashSet<CT_PM>();
             HinhAnh = "~/Images/sach.jpg";
-        }
-    
+        }    
         public string IDSach { get; set; }
         public string TenSach { get; set; }
         public Nullable<int> TheLoai { get; set; }
@@ -41,8 +40,5 @@ namespace QLThuVien.Models
 
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }
-
-
-
     }
 }
