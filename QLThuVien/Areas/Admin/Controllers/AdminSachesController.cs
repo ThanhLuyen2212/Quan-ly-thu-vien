@@ -150,10 +150,18 @@ namespace QLThuVien.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Sach sach = db.Saches.Find(id);
-            db.Saches.Remove(sach);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Sach sach = db.Saches.Find(id);
+                db.Saches.Remove(sach);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("<script language='javascript' type='text/javascript'>alert     ('Cuốn sách này đang đươc mượn!');</script>");
+            }
+    
         }
 
         protected override void Dispose(bool disposing)
