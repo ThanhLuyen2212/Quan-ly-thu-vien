@@ -1,109 +1,147 @@
-﻿
-<header id="header" class="header">
-    <div class="top-left">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="./"><img style="width:42px; float:left" src="~/Images/bookshelf.png" alt="Logo">
-                                              <p style="margin:8px; color:black">  Thư viện</p>
-            </a>
-           
-            <a class="navbar-brand hidden" href="./"><img src="~/Images/user.png" alt="Logo"></a>
+﻿@using QLThuVien.Models;
+@{
+    DocGia docGia = Session["DocGia"] as DocGia;
 
-            <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+
+}
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="~/Home/Index">
+                        <img src="~/Areas/Admin/Assets/images/bookshelf.png" width="55px" style="display:inline-block; padding-right:10px;margin-left:30px" />
+                        <h4 style="font-style:initial ;display:inline-block">Thư Viện</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+                <nav class="header__menu" style="margin-left:200px">
+                    <ul>
+                        <li><a href="~/Home/index">Home</a></li>
+                        <li><a href="~/Sach/index">Sách</a></li>
+                        @if (Session["DocGia"] != null)
+                        {
+                            if (Session["GioSach"] != null)
+                            {
+                                <li><a href="~/GioSach/show">Giỏ sách</a></li>
+                            }
+                            <li><a href="~/CacCuonSachDaMuon/Index">Các cuốn sách đã mượn</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/GioSach/show">Giỏ sách</a></li>
+                            <li><a href="~/CacCuonSachDaMuon/Index">Các cuốn sách đã mượn</a></li>
+                        }
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__right" style="margin-right:50px">
+
+                    @if (Session["DocGia"] == null)
+                    {
+                        <div class="header__right__auth">
+                            <a href="~/Login/Index">Login</a>
+                            <a href="~/Login/Register">Register</a>
+                        </div>
+                    }
+                    else
+                    {
+                <div class="header__right__auth">
+                    <p style="float:right; margin:5px">@docGia.TenDG</p>
+                    <div class="dropdown">
+                        <button class="dropbtn" />
+
+                        <div class="dropdown-content">
+                            <ul style="list-style:none">
+                                <li>
+                                    <a href="~/Login/index">
+                                        Logout
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/ThongTinCaNhan/index">
+                                        Thông tin cá nhân
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                    }
+
+@*
+                    @if (Session["SoLuongHangTrongGioHang"] != null)
+                    {
+                        <ul class="header__right__widget">
+                            <li>
+                                <a href="~/GioHang/show">
+                                    <span class="icon_bag_alt"></span>
+                                    <div class="tip">@Session["SoLuongHangTrongGioHang"]</div>
+                                </a>
+                            </li>
+                        </ul>
+                    }*@
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="top-right">
-        <div class="header-menu">
-            <div class="header-left">
-                <button class="search-trigger"><i class="fa fa-search"></i></button>
-                <div class="form-inline">
-                    <form class="search-form">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                        <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                    </form>
-                </div>
-
-                <div class="dropdown for-notification">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-bell"></i>
-                        <span class="count bg-danger">3</span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="notification">
-                        <p class="red">You have 3 Notification</p>
-                        <a class="dropdown-item media" href="#">
-                            <i class="fa fa-check"></i>
-                            <p>Server #1 overloaded.</p>
-                        </a>
-                        <a class="dropdown-item media" href="#">
-                            <i class="fa fa-info"></i>
-                            <p>Server #2 overloaded.</p>
-                        </a>
-                        <a class="dropdown-item media" href="#">
-                            <i class="fa fa-warning"></i>
-                            <p>Server #3 overloaded.</p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="dropdown for-message">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-envelope"></i>
-                        <span class="count bg-primary">4</span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="message">
-                        <p class="red">You have 4 Mails</p>
-                        <a class="dropdown-item media" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="~/Images/avatar/1.jpg"></span>
-                            <div class="message media-body">
-                                <span class="name float-left">Jonathan Smith</span>
-                                <span class="time float-right">Just now</span>
-                                <p>Hello, this is an example msg</p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item media" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="~/~/Images/avatar/2.jpg"></span>
-                            <div class="message media-body">
-                                <span class="name float-left">Jack Sanders</span>
-                                <span class="time float-right">5 minutes ago</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur</p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item media" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="~/Images/avatar/3.jpg"></span>
-                            <div class="message media-body">
-                                <span class="name float-left">Cheryl Wheeler</span>
-                                <span class="time float-right">10 minutes ago</span>
-                                <p>Hello, this is an example msg</p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item media" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="~/Images/avatar/4.jpg"></span>
-                            <div class="message media-body">
-                                <span class="name float-left">Rachel Santos</span>
-                                <span class="time float-right">15 minutes ago</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="user-area dropdown float-right">
-                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle" src="~/Images/user.png" alt="User Avatar">
-                    
-                </a>
-
-                <div class="user-menu dropdown-menu">
-@*                    <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
-                    <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
-
-                    <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>*@
-
-                    <a class="nav-link" href="~/Login"><i class="fa fa-power -off"></i>Logout</a>
-                </div>
-            </div>
-
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
         </div>
     </div>
 </header>
+
+
+<style>
+    /* Dropdown Button */
+    .dropbtn {
+
+        background-image : url('@Url.Content("~/Images/user.png")');
+        background-color:white;
+        font-size: 12px;
+        border: none;
+       width:30px;
+       height:30px;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: floralwhite;
+            }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: floralwhite;
+    }
+</style>

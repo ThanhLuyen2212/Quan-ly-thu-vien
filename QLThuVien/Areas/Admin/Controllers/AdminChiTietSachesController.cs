@@ -12,7 +12,7 @@ namespace QLThuVien.Areas.Admin.Controllers
 {
     public class AdminChiTietSachesController : Controller
     {
-        private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
+        private QuanLyThuVienEntities db = new QuanLyThuVienEntities();
 
         // GET: Admin/AdminChiTietSaches
         public ActionResult Index(string IDSach)

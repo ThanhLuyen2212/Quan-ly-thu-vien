@@ -18,7 +18,6 @@ namespace QLThuVien.Models
         public DocGia()
         {
             this.PhieuMuons = new HashSet<PhieuMuon>();
-            this.CT_PM = new HashSet<CT_PM>();
         }
     
         public int IDDG { get; set; }
@@ -30,7 +29,5 @@ namespace QLThuVien.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CT_PM> CT_PM { get; set; }
     }
 }

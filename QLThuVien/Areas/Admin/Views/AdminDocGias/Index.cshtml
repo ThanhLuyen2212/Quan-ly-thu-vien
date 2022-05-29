@@ -51,44 +51,47 @@
 
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IDDG)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TenDG)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DienThoai)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DiaChi)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Password)
-                            </td>       
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDDG)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDG)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DienThoai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DiaChi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
 
-                            <td>
+                                <td>
 
-                                <a href="~/Admin/AdminDocGias/Details/@item.IDDG">
-                                    <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
-                                </a>
-                                <a href="~/Admin/AdminDocGias/Edit/@item.IDDG">
-                                    <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
-                                </a>
-                                <a href="~/Admin/AdminDocGias/Delete/@item.IDDG">
-                                    <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
-                                </a>
-
-                            </td>
-                        </tr>
+                                    <a href="~/Admin/AdminDocGias/Details/@item.IDDG">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminDocGias/Edit/@item.IDDG">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminDocGias/Delete/@item.IDDG">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+                                    <a href="~/Admin/AdminDocGias/PrintViewToPdf/@item.IDDG">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-light btn-fw">Làm thẻ sinh viên</button>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
-            </div>
+            </div>          
         </div>
     </div>
 </div>

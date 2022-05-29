@@ -21,10 +21,7 @@
                         <tr>
                             <th style="color:white">
                                 IDPM
-                            </th>
-                            <th style="color:white">
-                                Tên độc giả
-                            </th>
+                            </th>                          
                             <th style="color:white">
                                 Tên sách
                             </th>
@@ -43,12 +40,9 @@
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.IDPM)
-                                </td>
+                                </td>                               
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.TenDG)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenSach)
+                                    @Html.DisplayFor(modelItem => item.Sach.TenSach)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.SoLuong)

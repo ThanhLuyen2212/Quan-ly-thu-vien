@@ -13,10 +13,10 @@ namespace QLThuVien.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuanLyThuVienEntities1 : DbContext
+    public partial class QuanLyThuVienEntities : DbContext
     {
-        public QuanLyThuVienEntities1()
-            : base("name=QuanLyThuVienEntities1")
+        public QuanLyThuVienEntities()
+            : base("name=QuanLyThuVienEntities")
         {
         }
     
@@ -27,11 +27,11 @@ namespace QLThuVien.Models
     
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<ChiTietSach> ChiTietSaches { get; set; }
+        public virtual DbSet<CT_PM> CT_PM { get; set; }
         public virtual DbSet<DocGia> DocGias { get; set; }
         public virtual DbSet<PhieuMuon> PhieuMuons { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TrangThai> TrangThais { get; set; }
-        public virtual DbSet<CT_PM> CT_PM { get; set; }
     }
 }

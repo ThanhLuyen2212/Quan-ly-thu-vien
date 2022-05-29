@@ -12,7 +12,7 @@ namespace QLThuVien.Areas.Admin.Controllers
 {
     public class AdminsRegisterController : Controller
     {
-        private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
+        private QuanLyThuVienEntities db = new QuanLyThuVienEntities();
 
         // GET: Admin/AdminsRegister
         public ActionResult Index(string TenAdmin)

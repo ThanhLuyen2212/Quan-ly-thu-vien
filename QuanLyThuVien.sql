@@ -95,15 +95,11 @@ go
 create table CT_PM
 (
 	ID int Identity(1,1) primary key ,
-	IDPM int ,
-	IDDG int ,
-	TenDG nvarchar(50)  ,
-	IDSach nvarchar(10) ,
+	IDPM int ,	
+	IDSach nvarchar(10) UNIQUE FOREIGN KEY REFERENCES Sach(IDSach),
 	TenSach nvarchar(50) ,
 	SoLuong int,	
-	CONSTRAINT FK_CT_PM_DocGia FOREIGN KEY (IDDG) REFERENCES DocGia(IDDG),
 	CONSTRAINT FK_CT_PM_PhieuMuon FOREIGN KEY (IDPM) REFERENCES PhieuMuon(IDPM),
-	CONSTRAINT FK_CT_PM_Sach FOREIGN KEY (IDSach) REFERENCES Sach(IDSach)
 )
 go
 
@@ -172,23 +168,6 @@ begin
 
 	EXEC ThemTuDongChiTietSach @soluong = @SoLuong, @idSach = @idSach
 end
-
-
-create trigger TuDongSuaDoiTrangThaiMuonSachKhiTraHoanThanh
-on CT_PM
-after update 
-as 
-begin 
-	DECLARE @IDPM NVARCHAR(10), @SoSachChuaTra int
-	select @IDPM = IDPM from inserted
-	select @SoSachChuaTra = count(id) from CT_PM where IDPM = @IDPM and TrangThai = N'Đang mượn'
-
-   if(@SoSachChuaTra = 0)
-   begin 
-		update PhieuMuon set TrangThai = N'Đã trả' where IDPM = @IDPM
-   end 	
-end
-
 
 select * from CT_PM
 select * from PhieuMuon

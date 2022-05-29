@@ -10,21 +10,19 @@ namespace QLThuVien.Controllers
     public class ChiTietCuonSachController : Controller
     {
 
-        private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
+        private QuanLyThuVienEntities db = new QuanLyThuVienEntities();
         // GET: ChiTietCuonSach
         public ActionResult Index(string id)
         {
             
             if (id == null)
             {
-                return RedirectToAction("Index", "ListBook");
+                return RedirectToAction("Index", "Sach");
             }
             else
             {
-                Sach sach = new Sach();
-                sach =  db.Saches.FirstOrDefault( n => n.IDSach.Equals(id));               
-                ViewBag.sach = sach;
-                return View();
+
+                return View(db.Saches.FirstOrDefault(n => n.IDSach.Equals(id)));
             }
         }
     }

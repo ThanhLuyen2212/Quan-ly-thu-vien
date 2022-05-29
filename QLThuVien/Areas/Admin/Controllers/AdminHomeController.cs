@@ -9,7 +9,7 @@ namespace QLThuVien.Areas.Admin.Controllers
 {
     public class AdminHomeController : Controller
     {
-        QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
+        QuanLyThuVienEntities db = new QuanLyThuVienEntities();
 
         // GET: Admin/AdminHome
         public ActionResult Index()

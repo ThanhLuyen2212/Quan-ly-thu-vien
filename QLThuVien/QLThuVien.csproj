@@ -52,13 +52,42 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=6.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.6.0.4\lib\net452\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.6.0.0\lib\net452\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.0.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.6.0.0\lib\net452\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -140,11 +169,13 @@
     <Compile Include="Areas\Admin\Controllers\AdminSachesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminsRegisterController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTheLoaisController.cs" />
+    <Compile Include="Controllers\CacCuonSachDaMuonController.cs" />
     <Compile Include="Controllers\ChiTietCuonSachController.cs" />
     <Compile Include="Controllers\GioSachController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ListBookController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SachController.cs" />
+    <Compile Include="Controllers\ThongTinCaNhanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -960,55 +991,112 @@
     <Content Include="Areas\Admin\Assets\vendors\select2\select2.min.css" />
     <Content Include="Areas\Admin\Assets\vendors\select2\select2.min.js" />
     <Content Include="Areas\Admin\Assets\vendors\typeahead.js\typeahead.bundle.min.js" />
-    <Content Include="Assets\css\cs-skin-elastic.css" />
-    <Content Include="Assets\css\lib\chosen\chosen-sprite%402x.png" />
-    <Content Include="Assets\css\lib\chosen\chosen-sprite.png" />
-    <Content Include="Assets\css\lib\chosen\chosen.css" />
-    <Content Include="Assets\css\lib\chosen\chosen.min.css" />
-    <Content Include="Assets\css\lib\datatable\buttons.bootstrap.min.css" />
-    <Content Include="Assets\css\lib\datatable\buttons.dataTables.min.css" />
-    <Content Include="Assets\css\lib\datatable\dataTables.bootstrap.min.css" />
-    <Content Include="Assets\css\lib\vector-map\jqvmap.min.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\elegant-icons.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\jquery-ui.min.css" />
+    <Content Include="Assets\css\magnific-popup.css" />
+    <Content Include="Assets\css\owl.carousel.min.css" />
+    <Content Include="Assets\css\slicknav.min.css" />
     <Content Include="Assets\css\style.css" />
-    <Content Include="Assets\fonts\icomoon\icomoon.svg" />
-    <Content Include="Assets\fonts\icomoon\index.html" />
-    <Content Include="Assets\js\dashboard.js" />
-    <Content Include="Assets\js\init\chartjs-init.js" />
-    <Content Include="Assets\js\init\datatables-init.js" />
-    <Content Include="Assets\js\init\flot-chart-init.js" />
-    <Content Include="Assets\js\init\fullcalendar-init.js" />
-    <Content Include="Assets\js\init\gmap-init.js" />
-    <Content Include="Assets\js\init\peitychart-init.js" />
-    <Content Include="Assets\js\init\vector-init.js" />
-    <Content Include="Assets\js\init\weather-init.js" />
-    <Content Include="Assets\js\lib\chosen\chosen.jquery.js" />
-    <Content Include="Assets\js\lib\chosen\chosen.jquery.min.js" />
-    <Content Include="Assets\js\lib\chosen\chosen.proto.js" />
-    <Content Include="Assets\js\lib\chosen\chosen.proto.min.js" />
-    <Content Include="Assets\js\lib\data-table\buttons.bootstrap.min.js" />
-    <Content Include="Assets\js\lib\data-table\buttons.colVis.min.js" />
-    <Content Include="Assets\js\lib\data-table\buttons.flash.min.js" />
-    <Content Include="Assets\js\lib\data-table\buttons.html5.min.js" />
-    <Content Include="Assets\js\lib\data-table\buttons.print.min.js" />
-    <Content Include="Assets\js\lib\data-table\dataTables.bootstrap.min.js" />
-    <Content Include="Assets\js\lib\data-table\dataTables.buttons.min.js" />
-    <Content Include="Assets\js\lib\data-table\datatables.min.js" />
-    <Content Include="Assets\js\lib\data-table\jquery-1.12.4.js" />
-    <Content Include="Assets\js\lib\data-table\jquery.dataTables.min.js" />
-    <Content Include="Assets\js\lib\data-table\jszip.min.js" />
-    <Content Include="Assets\js\lib\data-table\pdfmake.min.js" />
-    <Content Include="Assets\js\lib\data-table\vfs_fonts.js" />
-    <Content Include="Assets\js\lib\gmap\gmapApi.js" />
-    <Content Include="Assets\js\lib\gmap\gmaps.js" />
-    <Content Include="Assets\js\lib\gmap\gmaps.min.js" />
+    <Content Include="Assets\fonts\ElegantIcons.svg" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\img\banner\banner-1.jpg" />
+    <Content Include="Assets\img\banner\banner-2.jpg" />
+    <Content Include="Assets\img\banner\banner-2.png" />
+    <Content Include="Assets\img\banner\banner-3.jpg" />
+    <Content Include="Assets\img\blog\blog-1.jpg" />
+    <Content Include="Assets\img\blog\blog-10.jpg" />
+    <Content Include="Assets\img\blog\blog-2.jpg" />
+    <Content Include="Assets\img\blog\blog-3.jpg" />
+    <Content Include="Assets\img\blog\blog-4.jpg" />
+    <Content Include="Assets\img\blog\blog-5.jpg" />
+    <Content Include="Assets\img\blog\blog-6.jpg" />
+    <Content Include="Assets\img\blog\blog-7.jpg" />
+    <Content Include="Assets\img\blog\blog-8.jpg" />
+    <Content Include="Assets\img\blog\blog-9.jpg" />
+    <Content Include="Assets\img\blog\details\blog-details.jpg" />
+    <Content Include="Assets\img\blog\details\comment-1.jpg" />
+    <Content Include="Assets\img\blog\details\comment-2.jpg" />
+    <Content Include="Assets\img\blog\details\comment-3.jpg" />
+    <Content Include="Assets\img\blog\sidebar\fp-1.jpg" />
+    <Content Include="Assets\img\blog\sidebar\fp-2.jpg" />
+    <Content Include="Assets\img\blog\sidebar\fp-3.jpg" />
+    <Content Include="Assets\img\categories\category-1.jpg" />
+    <Content Include="Assets\img\categories\category-2.jpg" />
+    <Content Include="Assets\img\categories\category-3.jpg" />
+    <Content Include="Assets\img\categories\category-4.jpg" />
+    <Content Include="Assets\img\categories\category-5.jpg" />
+    <Content Include="Assets\img\discount.jpg" />
+    <Content Include="Assets\img\instagram\insta-1.jpg" />
+    <Content Include="Assets\img\instagram\insta-2.jpg" />
+    <Content Include="Assets\img\instagram\insta-3.jpg" />
+    <Content Include="Assets\img\instagram\insta-4.jpg" />
+    <Content Include="Assets\img\instagram\insta-5.jpg" />
+    <Content Include="Assets\img\instagram\insta-6.jpg" />
+    <Content Include="Assets\img\logo.png" />
+    <Content Include="Assets\img\payment\payment-1.png" />
+    <Content Include="Assets\img\payment\payment-2.png" />
+    <Content Include="Assets\img\payment\payment-3.png" />
+    <Content Include="Assets\img\payment\payment-4.png" />
+    <Content Include="Assets\img\payment\payment-5.png" />
+    <Content Include="Assets\img\product\details\product-1.jpg" />
+    <Content Include="Assets\img\product\details\product-2.jpg" />
+    <Content Include="Assets\img\product\details\product-3.jpg" />
+    <Content Include="Assets\img\product\details\product-4.jpg" />
+    <Content Include="Assets\img\product\details\thumb-1.jpg" />
+    <Content Include="Assets\img\product\details\thumb-2.jpg" />
+    <Content Include="Assets\img\product\details\thumb-3.jpg" />
+    <Content Include="Assets\img\product\details\thumb-4.jpg" />
+    <Content Include="Assets\img\product\product-1.jpg" />
+    <Content Include="Assets\img\product\product-2.jpg" />
+    <Content Include="Assets\img\product\product-3.jpg" />
+    <Content Include="Assets\img\product\product-4.jpg" />
+    <Content Include="Assets\img\product\product-5.jpg" />
+    <Content Include="Assets\img\product\product-6.jpg" />
+    <Content Include="Assets\img\product\product-7.jpg" />
+    <Content Include="Assets\img\product\product-8.jpg" />
+    <Content Include="Assets\img\product\related\rp-1.jpg" />
+    <Content Include="Assets\img\product\related\rp-2.jpg" />
+    <Content Include="Assets\img\product\related\rp-3.jpg" />
+    <Content Include="Assets\img\product\related\rp-4.jpg" />
+    <Content Include="Assets\img\shop-cart\cp-1.jpg" />
+    <Content Include="Assets\img\shop-cart\cp-2.jpg" />
+    <Content Include="Assets\img\shop-cart\cp-3.jpg" />
+    <Content Include="Assets\img\shop-cart\cp-4.jpg" />
+    <Content Include="Assets\img\shop\shop-1.jpg" />
+    <Content Include="Assets\img\shop\shop-2.jpg" />
+    <Content Include="Assets\img\shop\shop-3.jpg" />
+    <Content Include="Assets\img\shop\shop-4.jpg" />
+    <Content Include="Assets\img\shop\shop-5.jpg" />
+    <Content Include="Assets\img\shop\shop-6.jpg" />
+    <Content Include="Assets\img\shop\shop-7.jpg" />
+    <Content Include="Assets\img\shop\shop-8.jpg" />
+    <Content Include="Assets\img\shop\shop-9.jpg" />
+    <Content Include="Assets\img\trend\bs-1.jpg" />
+    <Content Include="Assets\img\trend\bs-2.jpg" />
+    <Content Include="Assets\img\trend\bs-3.jpg" />
+    <Content Include="Assets\img\trend\f-1.jpg" />
+    <Content Include="Assets\img\trend\f-2.jpg" />
+    <Content Include="Assets\img\trend\f-3.jpg" />
+    <Content Include="Assets\img\trend\ht-1.jpg" />
+    <Content Include="Assets\img\trend\ht-2.jpg" />
+    <Content Include="Assets\img\trend\ht-3.jpg" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\jquery-3.3.1.min.js" />
+    <Content Include="Assets\js\jquery-ui.min.js" />
+    <Content Include="Assets\js\jquery.countdown.min.js" />
+    <Content Include="Assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="Assets\js\jquery.nicescroll.min.js" />
+    <Content Include="Assets\js\jquery.slicknav.js" />
     <Content Include="Assets\js\main.js" />
-    <Content Include="Assets\js\vmap.sampledata.js" />
-    <Content Include="Assets\js\widgets.js" />
-    <Content Include="Assets\scss\style.css" />
+    <Content Include="Assets\js\mixitup.min.js" />
+    <Content Include="Assets\js\owl.carousel.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1023,6 +1111,7 @@
     <Content Include="Images\avatar\6.jpg" />
     <Content Include="Images\avatar\64-1.jpg" />
     <Content Include="Images\avatar\64-2.jpg" />
+    <Content Include="Images\banner.png" />
     <Content Include="Images\bookshelf.png" />
     <Content Include="Images\favicon.png" />
     <Content Include="Images\logo.png" />
@@ -1038,6 +1127,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -1200,6 +1293,46 @@
     <Content Include="Areas\Admin\Views\AdminPhieuMuons\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhieuMuons\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhieuMuons\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCT_PM\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTheLoais\Index.cshtml" />
+    <Content Include="Assets\fonts\ElegantIcons.eot" />
+    <Content Include="Assets\fonts\ElegantIcons.ttf" />
+    <Content Include="Assets\fonts\ElegantIcons.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
+    <Content Include="Assets\sass\style.scss" />
+    <Content Include="Assets\sass\_base.scss" />
+    <Content Include="Assets\sass\_blog-details.scss" />
+    <Content Include="Assets\sass\_blog-sidebar.scss" />
+    <Content Include="Assets\sass\_blog.scss" />
+    <Content Include="Assets\sass\_breadcrumb.scss" />
+    <Content Include="Assets\sass\_categories.scss" />
+    <Content Include="Assets\sass\_checkout.scss" />
+    <Content Include="Assets\sass\_contact.scss" />
+    <Content Include="Assets\sass\_footer.scss" />
+    <Content Include="Assets\sass\_header.scss" />
+    <Content Include="Assets\sass\_home-page.scss" />
+    <Content Include="Assets\sass\_mixins.scss" />
+    <Content Include="Assets\sass\_product-details.scss" />
+    <Content Include="Assets\sass\_product.scss" />
+    <Content Include="Assets\sass\_responsive.scss" />
+    <Content Include="Assets\sass\_shop-cart.scss" />
+    <Content Include="Assets\sass\_shop.scss" />
+    <Content Include="Assets\sass\_variable.scss" />
+    <Content Include="libman.json" />
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Areas\Admin\Views\AdminDocGias\ExportPDF.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -1207,23 +1340,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminCT_PM\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
-    <Content Include="Assets\css\style.css.map" />
-    <Content Include="Assets\fonts\icomoon\icomoon.eot" />
-    <Content Include="Assets\fonts\icomoon\icomoon.ttf" />
-    <Content Include="Assets\fonts\icomoon\icomoon.woff" />
-    <Content Include="Assets\scss\style.css.map" />
-    <Content Include="Assets\scss\style.scss" />
-    <Content Include="Images\logo.psd" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminTheLoais\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1249,8 +1365,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
-    <Content Include="Views\ListBook\TimKiem.cshtml" />
-    <Content Include="Views\ListBook\Index.cshtml" />
     <Content Include="Views\GioSach\Show.cshtml" />
     <Content Include="Views\GioSach\BagBook.cshtml" />
     <Content Include="Views\GioSach\Muon_Success.cshtml" />
@@ -1258,10 +1372,9 @@
     <Content Include="Views\Shared\LeftPanel.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\Home\SachMoiCapNhat.cshtml" />
-    <Content Include="Views\Home\SachMuonNhieu.cshtml" />
-    <Content Include="Views\Home\SachDocNhieu.cshtml" />
-    <Content Include="Views\Home\SachTheoTheLoai.cshtml" />
+    <Content Include="Views\Sach\Index.cshtml" />
+    <Content Include="Views\CacCuonSachDaMuon\Index.cshtml" />
+    <Content Include="Views\ThongTinCaNhan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

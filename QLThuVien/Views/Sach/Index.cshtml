@@ -1,0 +1,80 @@
+﻿@using QLThuVien.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<QLThuVien.Models.Sach>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @*List<MatHang> hangtheotheloai = ViewBag.MatHangTheoTheLoai;*@
+}
+
+
+<!-- Tìm kiếm theo tên sản phẩm -->
+<form class="nav-link search" style="width:700px; float:right; margin-right:150px">
+    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên sách" name="tensach">
+</form>
+<!-- Tìm kiếm theo tên sản phẩm -->
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="shop__sidebar">
+                    <div class="sidebar__categories">
+                        <div class="section-title">
+                            <h4>Các thể loại sách</h4>
+                        </div>
+                        <ul style="list-style:none">
+
+                            <li style="padding:15px">
+                                <a style="color:black" href="~/Sach/index">Tất cả sách</a>
+                            </li>
+                            @foreach (TheLoai item in @ViewBag.theLoai)
+                            {
+                                <li style="padding:15px">
+                                    <a style="color:black" href="~/Sach/index/?theloai=@item.NameCate">@item.NameCate</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-9 col-md-9">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product__item">
+                                <a href="~/ChiTietCuonSach/Index/@item.IDSach">
+                                    <div class="product__item__pic set-bg" style="background-image:url('@Url.Content(item.HinhAnh)')">
+
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6>@item.TenSach</h6>
+                                        <div class="product__price">@item.TacGia</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    }
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }),
+                        new PagedListRenderOptions
+                        {
+                            LiElementClasses = new string[] { "pagination__option" },
+                            DisplayLinkToIndividualPages = true,
+                            DisplayPageCountAndCurrentLocation = false,
+                            MaximumPageNumbersToDisplay = 10,
+
+                        })                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->

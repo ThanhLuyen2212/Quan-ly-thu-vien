@@ -1,5 +1,6 @@
 ﻿@using QLThuVien.Models;
 
+
 <nav class="navbar p-0 fixed-top d-flex flex-row">
     <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="~/Areas/Admin/Assets/images/logo-mini.svg" alt="logo" /></a>
@@ -19,7 +20,7 @@
                     <h6 class="p-3 mb-0">Thông báo</h6>
                     <div class="dropdown-divider"></div>
 
-                    @if (!@Session["PhieuMuonDangCho"].ToString().Equals("0"))
+                    @if (!Session["PhieuMuonDangCho"].ToString().Equals("0") && Session["PhieuMuonDangCho"] != null)
                     {
                         <a class="dropdown-item preview-item" href="~/Admin/AdminPhieuMuons">
                             <div class="preview-thumbnail">

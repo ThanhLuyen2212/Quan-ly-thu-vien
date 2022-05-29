@@ -13,7 +13,7 @@ namespace QLThuVien.Areas.Admin.Controllers
 {
     public class AdminSachesController : Controller
     {
-        private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
+        private QuanLyThuVienEntities db = new QuanLyThuVienEntities();
 
         // GET: Admin/AdminSaches
         public ActionResult Index(string tensach)
@@ -26,11 +26,11 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 if(tensach == null)
                 {                    
-                    return View(db.Saches.Include(s => s.TheLoai1));
+                    return View(db.Saches.ToList());
                 }
                 else if (tensach.Equals(""))
                 {
-                    return View(db.Saches.Include(s => s.TheLoai1));
+                    return View(db.Saches.ToList());
                 }
                 else
                 {                    
@@ -57,10 +57,9 @@ namespace QLThuVien.Areas.Admin.Controllers
 
         // GET: Admin/AdminSaches/Create
         public ActionResult Create()
-        {
-            List<TheLoai> list = db.TheLoais.ToList();
+        {  
+            List<TheLoai> list = db.TheLoais.ToList();          
             ViewBag.TheLoai = new SelectList(db.TheLoais, "IDCate", "NameCate");
-
             Sach sach = new Sach();
             return View(sach);
         }
@@ -84,18 +83,17 @@ namespace QLThuVien.Areas.Admin.Controllers
                     filename = filename + ex;
                     sach.HinhAnh = "~/Images/" + filename;
                     sach.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Images/"), filename));
-
                 }
-                ViewBag.listcate = new SelectList(list, "IDCate", "NameCate", 1);
+                ViewBag.listcase = new SelectList(list, "IDCate", "NameCate", 1);
                 db.Saches.Add(sach);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+        }
             catch
             {
-                return Content("<script language='javascript' type='text/javascript'>alert     ('Vui lòng kiểm tra lại thông tin!');</script>");
-            }
-        }
+                return Content("<script language='javascript' type='text/javascript'>alert ('Vui lòng kiểm tra lại thông tin!');</script>");
+    }
+}
 
         // GET: Admin/AdminSaches/Edit/5
         public ActionResult Edit(string id)

@@ -12,7 +12,7 @@ namespace QLThuVien.Areas.Admin.Controllers
 {
     public class AdminCT_PMController : Controller
     {
-        private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
+        private QuanLyThuVienEntities db = new QuanLyThuVienEntities();
 
         // GET: Admin/AdminCT_PM
         public ActionResult Index(string IDPM)
@@ -26,16 +26,16 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 if (IDPM == null)
                 {
-                    return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach));
+                    return View(db.CT_PM.Include(c => c.PhieuMuon).Include(c => c.Sach));
                 }
                 else if (IDPM.Equals(""))
                 {
-                    return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach));
+                    return View(db.CT_PM.Include(c => c.PhieuMuon).Include(c => c.Sach));
                 }
                 else
                 {
                     int id = int.Parse(IDPM);
-                    return View(db.CT_PM.Include(c => c.DocGia).Include(c => c.PhieuMuon).Include(c => c.Sach).Where(c => c.IDPM == id));
+                    return View(db.CT_PM.Include(c => c.PhieuMuon).Include(c => c.Sach).Where(c => c.IDPM == id));
                 }
 
             }
@@ -69,7 +69,7 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
+        
             ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
             return View(cT_PM);
@@ -88,7 +88,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", cT_PM.IDDG);
+           
             ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "TenDG", cT_PM.IDPM);
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
             return View(cT_PM);

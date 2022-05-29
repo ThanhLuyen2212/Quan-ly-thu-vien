@@ -9,7 +9,7 @@ namespace QLThuVien.Controllers
 {
     public class LoginController : Controller
     {
-        QuanLyThuVienEntities1 data = new QuanLyThuVienEntities1();
+        QuanLyThuVienEntities data = new QuanLyThuVienEntities();
         // GET: Login
         public ActionResult Index()
         {
@@ -32,7 +32,9 @@ namespace QLThuVien.Controllers
                 Session["UserName"] = user.UserName;
                 Session["Password"] = user.Password;
                 Session["TenDocGia"] = check.TenDG;
-                
+                Session["DocGia"] = check;
+
+
                 return RedirectToAction("Index", "Home");
             }
         }

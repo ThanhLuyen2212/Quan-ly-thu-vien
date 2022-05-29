@@ -1,0 +1,67 @@
+﻿@model QLThuVien.Models.DocGia
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExportPDF</title>
+</head>
+<body>
+    <div class="containt">        
+           
+        <table>
+            <h3 > Thẻ thư viện</h3>
+            <tr>
+                <th>ID</th>
+                <td>@Html.DisplayFor(model => model.IDDG)</td>
+            </tr>
+            <tr>
+
+                <th>Tên độc giả</th>
+                <td>@Html.DisplayFor(model => model.TenDG)</td>
+            </tr>
+            <tr>
+                <th>Điện thoại</th>
+                <td>@Html.DisplayFor(model => model.DienThoai)</td>
+            </tr>
+
+        </table>
+
+       
+    </div>
+</body>
+</html>
+
+<style>
+    table, th, td {
+        border: none;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+    
+    table {
+        margin-top: 8px;
+        margin-left: 20px; 
+    }
+    h3{
+        margin-left:80px;
+    }
+    .containt {
+        width:300px;
+        height:150px;
+        background-color: aqua;
+    }
+    
+</style>
+
+
+
+

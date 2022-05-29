@@ -7,12 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QLThuVien.Models;
+using Rotativa;
 
 namespace QLThuVien.Areas.Admin.Controllers
 {
     public class AdminDocGiasController : Controller
     {
-        private QuanLyThuVienEntities1 db = new QuanLyThuVienEntities1();
+        private QuanLyThuVienEntities db = new QuanLyThuVienEntities();
 
         // GET: Admin/AdminDocGias
         public ActionResult Index(string TenDG)
@@ -20,10 +21,8 @@ namespace QLThuVien.Areas.Admin.Controllers
             if (Session["UserName"] == null)
             {
                 return RedirectToAction("Index", "AdminLogin", new { Areas = "Admin" });
-            }
-            else
-            {
-                if(TenDG != null)
+            }else
+            if (TenDG != null)
                 {
                     List<DocGia> docGias = db.DocGias.Where(c => c.TenDG == TenDG).ToList();
                     if (docGias.Count > 0)
@@ -33,7 +32,29 @@ namespace QLThuVien.Areas.Admin.Controllers
                     return View(db.DocGias.ToList());
                 }
                 return View(db.DocGias.ToList());
+            
+            
+        }
+
+        static string tempp = "1";
+        public ActionResult ExportPDF()
+        {
+            
+            DocGia docGia = db.DocGias.Find(int.Parse(tempp));
+            if (docGia == null)
+            {
+                return HttpNotFound();
             }
+            return View(docGia);
+        }
+
+        public ActionResult PrintViewToPdf(string id)
+        {
+            tempp = id;
+            return new ActionAsPdf("ExportPDF")
+            {
+                FileName = "test.pdf"
+            };
             
         }
 

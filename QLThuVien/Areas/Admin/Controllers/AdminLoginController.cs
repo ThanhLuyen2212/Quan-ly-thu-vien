@@ -12,7 +12,7 @@ namespace QLThuVien.Areas.Admin.Controllers
     public class AdminLoginController : Controller
     {
 
-        QuanLyThuVienEntities1 data = new QuanLyThuVienEntities1();
+        QuanLyThuVienEntities data = new QuanLyThuVienEntities();
 
         // GET: Admin/AdminLoign
         public ActionResult Index()

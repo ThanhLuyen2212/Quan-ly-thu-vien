@@ -9,10 +9,10 @@ namespace QLThuVien.Controllers
 {
     public class GioSachController : Controller
     {
-        QuanLyThuVienEntities1 data = new QuanLyThuVienEntities1();
+        QuanLyThuVienEntities data = new QuanLyThuVienEntities();
         // GET: GioSach
         public GioSach GetSach()
-        {            
+        {
             GioSach gio = Session["GioSach"] as GioSach;
             if (gio == null || Session["GioSach"] == null)
             {
@@ -48,7 +48,7 @@ namespace QLThuVien.Controllers
                     GetSach().Add(gio);
                 }
                 return RedirectToAction("Show", "GioSach");
-            }            
+            }
         }
 
         public ActionResult Show()
@@ -64,11 +64,11 @@ namespace QLThuVien.Controllers
 
             var username = Session["UserName"];
             var password = Session["Password"];
-            DocGia dg = data.DocGias.FirstOrDefault(s => s.UserName == username && s.Password == password );
+            DocGia dg = data.DocGias.FirstOrDefault(s => s.UserName == username && s.Password == password);
 
             if (dg != null)
             {
-               
+
                 ViewBag.IDDG = dg.IDDG;
                 ViewBag.TenDG = dg.TenDG;
             }
@@ -128,7 +128,7 @@ namespace QLThuVien.Controllers
                 PhieuMuon muon = new PhieuMuon();
                 muon.IDDG = int.Parse(form["IDdocgia"]);
                 muon.TenDG = form["Tendg"];
-                muon.NgayMuon = DateTime.Now;               
+                muon.NgayMuon = DateTime.Now;
                 muon.TienPhat = 0;
                 muon.GhiChu = "";
                 muon.TrangThai = 1;
@@ -149,7 +149,7 @@ namespace QLThuVien.Controllers
 
                 // check status phieumuon is return
                 List<PhieuMuon> listphieuMuon = data.PhieuMuons.Where(c => c.IDDG == muon.IDDG).ToList();
-                foreach(PhieuMuon item in listphieuMuon)
+                foreach (PhieuMuon item in listphieuMuon)
                 {
                     if (item.TrangThai == 2 || muon.TrangThai == 1)
                     {
@@ -157,7 +157,16 @@ namespace QLThuVien.Controllers
                         return Content("<script language='javascript' type='text/javascript'>alert     ('Lỗi ! Bạn chưa trả sách đã mượn nên không được mượn');</script>");
                     }
                 }
-               
+
+                foreach (var pm in data.PhieuMuons.Where(s => s.IDDG == muon.IDDG))
+                {
+                    if (pm.TienPhat != 0)
+                    {
+                        //return Content("Độc giả chưa đóng tiền phạt thì không được mượn thêm sách!");
+                        return Content("<script language='javascript' type='text/javascript'>alert     ('Độc giả chưa đóng tiền phạt thì không được mượn thêm sách!');</script>");
+                    }
+                }
+
                 if (TongSoNgay <= 0)
                 {
                     //return Content("Lỗi ! Vui lòng kiểm tra lại mốc thời gian");
@@ -192,24 +201,11 @@ namespace QLThuVien.Controllers
                     {
                         return Content("<script language='javascript' type='text/javascript'>alert     ('Không có sách thì không thể tạo phiếu mượn!');</script>");
                     }
-                   
-                    CT_PM Detail = new CT_PM();                  
+
+                    CT_PM Detail = new CT_PM();
                     Detail.IDPM = muon.IDPM;
                     Detail.IDSach = item.giosach.IDSach;
-                    Detail.TenSach = item.giosach.TenSach;
-                    Detail.IDDG = muon.IDDG;
-                    Detail.TenDG = muon.TenDG;
                     Detail.SoLuong = item._soluongSach;
-                    
-          
-                    foreach (var pm in data.PhieuMuons.Where(s => s.IDDG == muon.IDDG))
-                    {
-                        if (pm.TienPhat != 0)
-                        {
-                            //return Content("Độc giả chưa đóng tiền phạt thì không được mượn thêm sách!");
-                            return Content("<script language='javascript' type='text/javascript'>alert     ('Độc giả chưa đóng tiền phạt thì không được mượn thêm sách!');</script>");
-                        }
-                    }
 
 
                     // update số lượng sách
@@ -218,6 +214,7 @@ namespace QLThuVien.Controllers
                         var update_soluong = p.SoLuong - item._soluongSach;
                         p.SoLuong = update_soluong;
                     }
+
                     foreach (var p in data.Saches.Where(s => s.IDSach == Detail.IDSach))
                     {
                         if (p.SoLuong < item._soluongSach)
@@ -227,7 +224,7 @@ namespace QLThuVien.Controllers
                         }
                     }
 
-                  
+
                     //Add chi tiết phiếu mượn
                     data.CT_PM.Add(Detail);
                     data.SaveChanges();

@@ -1,99 +1,101 @@
 ﻿@model QLThuVien.Models.GioSach
 @{
     ViewBag.Title = "Show";
-   
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2 style="text-align:center; color:royalblue">Phiếu Mượn Sách</h2>
 
-
-
-<h1 style="text-align:center; color:royalblue">Phiếu Mượn Sách</h1>
-
-<a class="btn btn-default" href="@Url.Action("Index","ListBook") ">Tiếp tục Mượn </a>
 
 @if (Model != null)
 {
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Tên Sách</th>
-                <th>Tác giả</th>
-                <th>Hình ảnh</th>
-                <th>Thể Loại</th>
-                <th>Ngày xuất bản</th>
-                <th>Số Lượng</th>
-                <th>Tổng cộng</th>
-                <th>Xóa</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Item)
-            {
-                double sum = item._soluongSach * 1;
+    <div class="container">
+
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@Html.DisplayFor(Model => item.giosach.TenSach)</td>
-                    <td>@Html.DisplayFor(Model => item.giosach.TacGia)</td>
-                    <td><img src="@Url.Content(item.giosach.HinhAnh)" style="width:150px;height:150px" /></td>
-                    <td>@Html.DisplayFor(Model => item.giosach.TheLoai1.NameCate)</td>
-                    <td>@Html.DisplayFor(Model => item.giosach.NgayXuatBan)</td>
-                    <td>
-                        @using (Html.BeginForm("Update_quantity", "GioSach"))
+                    <th>Tên Sách</th>
+                    <th>Tác giả</th>
+                    <th>Hình ảnh</th>
+                    <th>Thể Loại</th>
+                    <th>Số Lượng</th>
+                    <th>Tổng cộng</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Item)
+                {
+                    double sum = item._soluongSach * 1;
+                    <tr>
+                        <td>@Html.DisplayFor(Model => item.giosach.TenSach)</td>
+                        <td>@Html.DisplayFor(Model => item.giosach.TacGia)</td>
+                        <td><img src="@Url.Content(item.giosach.HinhAnh)" style="width:150px;height:150px" /></td>
+                        <td>@Html.DisplayFor(Model => item.giosach.TheLoai1.NameCate)</td>
+                        <td>
+                            @using (Html.BeginForm("Update_quantity", "GioSach"))
+                            {
+                                <input type="hidden" value="@item.giosach.IDSach" name="Id sach" />
+                                <input type="number" value="@item._soluongSach" name="quantity" />
+                                <input type="submit" value="Update" />
+                            }
+                        </td>
+                        <td>ToTal: @sum</td>
+                        <td><a href="/GioSach/Remove/@item.giosach.IDSach">Xóa</a></td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="4" style="text-align:center">
+                        @using (Html.BeginForm("MuonSach", "GioSach", FormMethod.Post, new { enctype = "multipart/formdata" }))
                         {
-                            <input type="hidden" value="@item.giosach.IDSach" name="Id sach" />
-                            <input type="number" value="@item._soluongSach" name="quantity" />
-                            <input type="submit" value="Update" />
+                            <table style="border-collapse:separate;border-spacing:5px">
+
+                                <tr>
+                                    <td>ID độc giả:</td>
+                                    <td> <input type="text" name="IDdocgia" value="@ViewBag.IDDG" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Tên độc giả:</td>
+                                    <td><input type="text" name="Tendg" value="@ViewBag.TenDG" /></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày Mượn:</td>
+                                    <td><input type="datetime" value="@DateTime.Now" /></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày Trả:</td>
+                                    <td><input type="datetime-local" name="NgayTra" /></td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+
+                                    <td>
+                                        <input class="btn site-btn" type="submit" name="Muon" value="Mượn Sách" />
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
                         }
                     </td>
-                    <td>ToTal: @sum</td>
-                    <td><a href="/GioSach/Remove/@item.giosach.IDSach">Xóa</a></td>
+
                 </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="4" style="text-align:center">
-                    @using (Html.BeginForm("MuonSach", "GioSach", FormMethod.Post, new { enctype = "multipart/formdata" }))
-                    {
-                        <table style="border-collapse:separate;border-spacing:5px">
-              
-                            <tr>
-                                <td>ID độc giả:</td>
-                                <td> <input type="text" name="IDdocgia" value="@ViewBag.IDDG" /></td>
-                            </tr>
-                            <tr>
-                                <td>Tên độc giả:</td>
-                                <td><input type="text" name="Tendg" value="@ViewBag.TenDG"/></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Ngày Mượn:</td>
-                                <td><input type="datetime" value="@DateTime.Now" /></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Ngày Trả:</td>
-                                <td><input type="datetime-local" name="NgayTra" /></td>
-                                <td></td>
-                            </tr>
+                <tr>
+                    <td colspan="5" style="text-align:right">Tổng Cộng: @Model.sum()</td>
+                </tr>
+                <div class="product__details__button" style="float:left">
+                    <a href="~/Sach/index" class="cart-btn">Tiếp tục mượn sách</a>
 
-                            <tr>
-                                <td></td>
-                                <td>    
-                                    <input type="submit" name="Muon" value="Mượn Sách" class="btn btn-success" />
-
-                                </td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td colspan="5" style="text-align:right">Tổng Cộng: @Model.sum()</td>
-            </tr>
-        </tfoot>
-    </table>
+                </div>
+            </tfoot>
+        </table>
+    </div>
 }
 

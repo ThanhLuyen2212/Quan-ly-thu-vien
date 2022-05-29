@@ -1,0 +1,66 @@
+﻿@model QLThuVien.Models.DocGia
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-lg-7 col-md-7">
+                <h2 style="margin-bottom:60px">Thông tin cá nhân</h2>
+                <div class="contact__content">
+                    <div class="contact__address">
+
+                        <ul>
+                            <li>
+                                <h6><i class="fa fa-navicon"></i> Tên</h6>
+                                <p>@Model.TenDG</p>
+                            </li>
+                            <li>
+                                <h6><i class="fa fa-phone"></i> Số điện thoại</h6>
+                                <p>@Model.DienThoai</p>
+                            </li>
+                            <li>
+                                <h6><i class="fa fa-map-marker"></i> DiaChi</h6>
+                                <p>@Model.DiaChi</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    @using (Html.BeginForm("ChangePassword", "ThongTinCaNhan", FormMethod.Post, new { enctype = "multipart/formdata" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="contact__form">
+                            <h5>Thay đổi mật khẩu</h5>
+
+                            <input type="password" placeholder="Old password" id="Old password" name="Old password">
+                            <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                            <input type="password" placeholder="New passwrod" id="New passwrod" name="New password">
+                            <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                            <input type="password" placeholder="Confirm password" id="Confirm password" name="Confirm password">
+                            <button type="submit" value="ChangePassword" class="site-btn">Change password</button>
+
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    input {
+        width:500px;
+        height:50px;
+        margin-bottom: 30px;
+    }
+</style>

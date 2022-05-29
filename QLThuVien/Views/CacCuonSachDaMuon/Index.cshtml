@@ -1,0 +1,56 @@
+﻿@model IEnumerable<QLThuVien.Models.Sach>
+@using QLThuVien.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="shop-cart spad">
+    <div class="container">
+        <h2 style="margin-bottom:70px;text-align:center">Các cuốn sách đã mượn</h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên cuốn sách</th>
+                                <th>Tác giả</th>
+                                <th>Thể loại</th>
+                                <th>Ngày xuất bản</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Sach item in Model)
+                            {
+                                <tr>
+                                    <td class="cart__product__item">
+                                        <img width="100px" src="@Url.Content(item.HinhAnh)" alt="">
+                                        <div class="cart__product__item__title">
+                                            <h6> @item.TenSach</h6>
+
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">@item.TacGia</td>
+                                    <td class="cart__price">@item.TheLoai1.NameCate</td>
+                                    <td class="cart__total">@item.NgayXuatBan</td>                                   
+                                </tr>
+                            }                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="cart__btn">
+                    <a href="~/Sach/index">Trở về</a>
+                </div>
+            </div>        
+        </div>       
+    </div>
+</section>

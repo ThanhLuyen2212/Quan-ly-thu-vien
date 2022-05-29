@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QuanLyThuVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QuanLyThuVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="IDAdmin" />
@@ -30,10 +30,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDPM" Type="int" />
-          <Property Name="IDDG" Type="int" />
-          <Property Name="TenDG" Type="nvarchar" MaxLength="50" />
           <Property Name="IDSach" Type="nvarchar" MaxLength="10" />
-          <Property Name="TenSach" Type="nvarchar" MaxLength="50" />
           <Property Name="SoLuong" Type="int" />
         </EntityType>
         <EntityType Name="DocGia">
@@ -56,10 +53,10 @@
           <Property Name="TenDG" Type="nvarchar" MaxLength="50" />
           <Property Name="NgayMuon" Type="datetime" />
           <Property Name="NgayTra" Type="datetime" />
+          <Property Name="NgayTraThucTe" Type="datetime" />
           <Property Name="TienPhat" Type="int" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
           <Property Name="TrangThai" Type="int" />
-          <Property Name="NgayTraThucTe" Type="datetime" />
         </EntityType>
         <EntityType Name="Sach">
           <Key>
@@ -89,7 +86,9 @@
           <Property Name="TenTrangThai" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_ChiTietSach_Sach">
-          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ChiTietSach" Type="Self.ChiTietSach" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sach">
@@ -100,20 +99,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CT_PM_DocGia">
-          <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
-          <End Role="CT_PM" Type="Self.CT_PM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DocGia">
-              <PropertyRef Name="IDDG" />
-            </Principal>
-            <Dependent Role="CT_PM">
-              <PropertyRef Name="IDDG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CT_PM_PhieuMuon">
-          <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="0..1" />
+          <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="CT_PM" Type="Self.CT_PM" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhieuMuon">
@@ -185,10 +174,6 @@
             <End Role="Sach" EntitySet="Sach" />
             <End Role="ChiTietSach" EntitySet="ChiTietSach" />
           </AssociationSet>
-          <AssociationSet Name="FK_CT_PM_DocGia" Association="Self.FK_CT_PM_DocGia">
-            <End Role="DocGia" EntitySet="DocGia" />
-            <End Role="CT_PM" EntitySet="CT_PM" />
-          </AssociationSet>
           <AssociationSet Name="FK_CT_PM_PhieuMuon" Association="Self.FK_CT_PM_PhieuMuon">
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
             <End Role="CT_PM" EntitySet="CT_PM" />
@@ -210,7 +195,8 @@
             <End Role="Sach" EntitySet="Sach" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyThuVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -234,6 +220,17 @@
           <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Sach" Relationship="Self.FK_ChiTietSach_Sach" FromRole="ChiTietSach" ToRole="Sach" />
         </EntityType>
+        <EntityType Name="CT_PM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPM" Type="Int32" />
+          <Property Name="IDSach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Int32" />
+          <NavigationProperty Name="PhieuMuon" Relationship="Self.FK_CT_PM_PhieuMuon" FromRole="CT_PM" ToRole="PhieuMuon" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK_CT_PM_Sach" FromRole="CT_PM" ToRole="Sach" />
+        </EntityType>
         <EntityType Name="DocGia">
           <Key>
             <PropertyRef Name="IDDG" />
@@ -245,7 +242,6 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PhieuMuons" Relationship="Self.FK_PHIEUMUON_DOCGIA" FromRole="DocGia" ToRole="PhieuMuon" />
-          <NavigationProperty Name="CT_PM" Relationship="QuanLyThuVienModel.FK_CT_PM_DocGia" FromRole="DocGia" ToRole="CT_PM" />
         </EntityType>
         <EntityType Name="PhieuMuon">
           <Key>
@@ -256,13 +252,13 @@
           <Property Name="TenDG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayMuon" Type="DateTime" Precision="3" />
           <Property Name="NgayTra" Type="DateTime" Precision="3" />
+          <Property Name="NgayTraThucTe" Type="DateTime" Precision="3" />
           <Property Name="TienPhat" Type="Int32" />
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="Int32" />
+          <NavigationProperty Name="CT_PM" Relationship="Self.FK_CT_PM_PhieuMuon" FromRole="PhieuMuon" ToRole="CT_PM" />
           <NavigationProperty Name="DocGia" Relationship="Self.FK_PHIEUMUON_DOCGIA" FromRole="PhieuMuon" ToRole="DocGia" />
           <NavigationProperty Name="TrangThai1" Relationship="Self.FK_PHIEUMUON_TRANGTHAI" FromRole="PhieuMuon" ToRole="TrangThai" />
-          <Property Name="NgayTraThucTe" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CT_PM" Relationship="QuanLyThuVienModel.FK_CT_PM_PhieuMuon" FromRole="PhieuMuon" ToRole="CT_PM" />
         </EntityType>
         <EntityType Name="Sach">
           <Key>
@@ -277,8 +273,8 @@
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChiTietSaches" Relationship="Self.FK_ChiTietSach_Sach" FromRole="Sach" ToRole="ChiTietSach" />
+          <NavigationProperty Name="CT_PM" Relationship="Self.FK_CT_PM_Sach" FromRole="Sach" ToRole="CT_PM" />
           <NavigationProperty Name="TheLoai1" Relationship="Self.FK_SACH_THELOAI" FromRole="Sach" ToRole="TheLoai" />
-          <NavigationProperty Name="CT_PM" Relationship="QuanLyThuVienModel.FK_CT_PM_Sach" FromRole="Sach" ToRole="CT_PM" />
         </EntityType>
         <EntityType Name="TheLoai">
           <Key>
@@ -297,13 +293,41 @@
           <NavigationProperty Name="PhieuMuons" Relationship="Self.FK_PHIEUMUON_TRANGTHAI" FromRole="TrangThai" ToRole="PhieuMuon" />
         </EntityType>
         <Association Name="FK_ChiTietSach_Sach">
-          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ChiTietSach" Type="Self.ChiTietSach" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sach">
               <PropertyRef Name="IDSach" />
             </Principal>
             <Dependent Role="ChiTietSach">
+              <PropertyRef Name="IDSach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_PM_PhieuMuon">
+          <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CT_PM" Type="Self.CT_PM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuMuon">
+              <PropertyRef Name="IDPM" />
+            </Principal>
+            <Dependent Role="CT_PM">
+              <PropertyRef Name="IDPM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_PM_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+          <End Role="CT_PM" Type="Self.CT_PM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="IDSach" />
+            </Principal>
+            <Dependent Role="CT_PM">
               <PropertyRef Name="IDSach" />
             </Dependent>
           </ReferentialConstraint>
@@ -344,9 +368,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QuanLyThuVienEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QuanLyThuVienEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="ChiTietSaches" EntityType="Self.ChiTietSach" />
+          <EntitySet Name="CT_PM" EntityType="Self.CT_PM" />
           <EntitySet Name="DocGias" EntityType="Self.DocGia" />
           <EntitySet Name="PhieuMuons" EntityType="Self.PhieuMuon" />
           <EntitySet Name="Saches" EntityType="Self.Sach" />
@@ -355,6 +380,14 @@
           <AssociationSet Name="FK_ChiTietSach_Sach" Association="Self.FK_ChiTietSach_Sach">
             <End Role="Sach" EntitySet="Saches" />
             <End Role="ChiTietSach" EntitySet="ChiTietSaches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PM_PhieuMuon" Association="Self.FK_CT_PM_PhieuMuon">
+            <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+            <End Role="CT_PM" EntitySet="CT_PM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_PM_Sach" Association="Self.FK_CT_PM_Sach">
+            <End Role="Sach" EntitySet="Saches" />
+            <End Role="CT_PM" EntitySet="CT_PM" />
           </AssociationSet>
           <AssociationSet Name="FK_PHIEUMUON_DOCGIA" Association="Self.FK_PHIEUMUON_DOCGIA">
             <End Role="DocGia" EntitySet="DocGias" />
@@ -368,77 +401,13 @@
             <End Role="TheLoai" EntitySet="TheLoais" />
             <End Role="Sach" EntitySet="Saches" />
           </AssociationSet>
-          <EntitySet Name="CT_PM" EntityType="QuanLyThuVienModel.CT_PM" />
-          <AssociationSet Name="FK_CT_PM_DocGia" Association="QuanLyThuVienModel.FK_CT_PM_DocGia">
-            <End Role="DocGia" EntitySet="DocGias" />
-            <End Role="CT_PM" EntitySet="CT_PM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CT_PM_PhieuMuon" Association="QuanLyThuVienModel.FK_CT_PM_PhieuMuon">
-            <End Role="PhieuMuon" EntitySet="PhieuMuons" />
-            <End Role="CT_PM" EntitySet="CT_PM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CT_PM_Sach" Association="QuanLyThuVienModel.FK_CT_PM_Sach">
-            <End Role="Sach" EntitySet="Saches" />
-            <End Role="CT_PM" EntitySet="CT_PM" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="CT_PM">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDPM" Type="Int32" />
-          <Property Name="IDDG" Type="Int32" />
-          <Property Name="TenDG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IDSach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="TenSach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="DocGia" Relationship="QuanLyThuVienModel.FK_CT_PM_DocGia" FromRole="CT_PM" ToRole="DocGia" />
-          <NavigationProperty Name="PhieuMuon" Relationship="QuanLyThuVienModel.FK_CT_PM_PhieuMuon" FromRole="CT_PM" ToRole="PhieuMuon" />
-          <NavigationProperty Name="Sach" Relationship="QuanLyThuVienModel.FK_CT_PM_Sach" FromRole="CT_PM" ToRole="Sach" />
-        </EntityType>
-        <Association Name="FK_CT_PM_DocGia">
-          <End Type="QuanLyThuVienModel.DocGia" Role="DocGia" Multiplicity="0..1" />
-          <End Type="QuanLyThuVienModel.CT_PM" Role="CT_PM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DocGia">
-              <PropertyRef Name="IDDG" />
-            </Principal>
-            <Dependent Role="CT_PM">
-              <PropertyRef Name="IDDG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CT_PM_PhieuMuon">
-          <End Type="QuanLyThuVienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="0..1" />
-          <End Type="QuanLyThuVienModel.CT_PM" Role="CT_PM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PhieuMuon">
-              <PropertyRef Name="IDPM" />
-            </Principal>
-            <Dependent Role="CT_PM">
-              <PropertyRef Name="IDPM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CT_PM_Sach">
-          <End Type="QuanLyThuVienModel.Sach" Role="Sach" Multiplicity="0..1" />
-          <End Type="QuanLyThuVienModel.CT_PM" Role="CT_PM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sach">
-              <PropertyRef Name="IDSach" />
-            </Principal>
-            <Dependent Role="CT_PM">
-              <PropertyRef Name="IDSach" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QuanLyThuVienModelStoreContainer" CdmEntityContainer="QuanLyThuVienEntities1">
+        <EntityContainerMapping StorageEntityContainer="QuanLyThuVienModelStoreContainer" CdmEntityContainer="QuanLyThuVienEntities">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="QuanLyThuVienModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
@@ -460,6 +429,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CT_PM">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.CT_PM">
+              <MappingFragment StoreEntitySet="CT_PM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDPM" ColumnName="IDPM" />
+                <ScalarProperty Name="IDSach" ColumnName="IDSach" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DocGias">
             <EntityTypeMapping TypeName="QuanLyThuVienModel.DocGia">
               <MappingFragment StoreEntitySet="DocGia">
@@ -475,12 +454,12 @@
           <EntitySetMapping Name="PhieuMuons">
             <EntityTypeMapping TypeName="QuanLyThuVienModel.PhieuMuon">
               <MappingFragment StoreEntitySet="PhieuMuon">
-                <ScalarProperty Name="NgayTraThucTe" ColumnName="NgayTraThucTe" />
                 <ScalarProperty Name="IDPM" ColumnName="IDPM" />
                 <ScalarProperty Name="IDDG" ColumnName="IDDG" />
                 <ScalarProperty Name="TenDG" ColumnName="TenDG" />
                 <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
                 <ScalarProperty Name="NgayTra" ColumnName="NgayTra" />
+                <ScalarProperty Name="NgayTraThucTe" ColumnName="NgayTraThucTe" />
                 <ScalarProperty Name="TienPhat" ColumnName="TienPhat" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
@@ -514,19 +493,6 @@
               <MappingFragment StoreEntitySet="TrangThai">
                 <ScalarProperty Name="IDTrangThai" ColumnName="IDTrangThai" />
                 <ScalarProperty Name="TenTrangThai" ColumnName="TenTrangThai" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CT_PM">
-            <EntityTypeMapping TypeName="QuanLyThuVienModel.CT_PM">
-              <MappingFragment StoreEntitySet="CT_PM">
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="TenSach" ColumnName="TenSach" />
-                <ScalarProperty Name="IDSach" ColumnName="IDSach" />
-                <ScalarProperty Name="TenDG" ColumnName="TenDG" />
-                <ScalarProperty Name="IDDG" ColumnName="IDDG" />
-                <ScalarProperty Name="IDPM" ColumnName="IDPM" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

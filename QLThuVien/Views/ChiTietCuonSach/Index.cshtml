@@ -1,28 +1,51 @@
-﻿@using QLThuVien.Models;
+﻿@model QLThuVien.Models.Sach
 @{
     ViewBag.Title = "Chi tiet cuon sach";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Sach sach = ViewBag.sach;
 }
 
-<h2>Chi tiet cuon sach</h2>
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Chi tiet cuon sach</title>
 
-</head>
-<body>
-   
-    <img src="@Url.Content(sach.HinhAnh)" style="width:5000px; height:700px" alt="hinh anh cuon sach" />
 
-    <a href="~/ListBook/Index">content</a>
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product__details__pic">
+                       
+                       
+                                <img width="400px" src="@Url.Content(Model.HinhAnh)" alt="">
+                               
+                            
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product__details__text">
+                        <h3>@Model.TenSach </h3>
+                        <div class="product__details__price" style="font-size:22px">Tác giả: @Model.TacGia</div>
+                        <p>Số lượng: @Model.SoLuong</p>
+                       
+                        <div class="product__details__button">
+                            <a href="~/GioSach/Addto/@Model.IDSach" class="cart-btn">Mượn sách</a>
 
-    <button>
-        back to list
-    </button>
-</body>
-</html>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <div style="background-color:black;height:2px; margin-bottom:30px"><p>.</p></div>
+                        <h3 style="text-align: center; font-style: unset; margin-bottom: 30px">Mô tả sản phẩm</h3>
+
+                        
+                            <h6>@Model.MoTa</h6>
+
+                        
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </section>
+    <!-- Product Details Section End -->
 
 
 
