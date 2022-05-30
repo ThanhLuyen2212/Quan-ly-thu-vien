@@ -125,9 +125,10 @@ namespace QLThuVien.Controllers
             try
             {
                 GioSach gio = Session["GioSach"] as GioSach;
+                DocGia docgia = Session["DocGia"] as DocGia;
                 PhieuMuon muon = new PhieuMuon();
-                muon.IDDG = int.Parse(form["IDdocgia"]);
-                muon.TenDG = form["Tendg"];
+                muon.IDDG = docgia.IDDG;
+                muon.TenDG = docgia.TenDG;
                 muon.NgayMuon = DateTime.Now;
                 muon.TienPhat = 0;
                 muon.GhiChu = "";

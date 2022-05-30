@@ -54,6 +54,7 @@ namespace QLThuVien.Controllers
         public sosachmuon(string idsach , int sophieumuon)
         {
             this.IDsach = idsach;
+
             this.SoPhieuMuon=sophieumuon;
         }
 
