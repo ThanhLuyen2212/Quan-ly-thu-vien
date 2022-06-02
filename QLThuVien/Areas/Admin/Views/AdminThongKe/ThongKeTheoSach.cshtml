@@ -1,0 +1,58 @@
+﻿@model IEnumerable<QLThuVien.Areas.Admin.Model.ThongKeTheoSach>
+@{
+    ViewBag.Title = "ThongKeTheoSach";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Thống kê doanh thu theo sách</h2>
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                Tên sách
+                            </th>
+
+                            <th style="color:white">
+                                Số cuốn sách đã được mượn
+                            </th>
+                            <th style="color:white">
+                                Số sách còn sử dụng
+                            </th>
+
+                            <th style="color:white">
+                                Số sách hư hỏng
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenSach)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoSachDUocMuon)
+                                </td>
+                                <td> @item.SoSachConSuDungDuoc </td>
+                                <td>
+                                    <div>@Html.DisplayFor(modelItem => item.SoSachHuHong) </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -35,6 +35,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                 Session["Username"] = admin.UserName;
                 Session["Password"] = admin.Password;
                 Session["TenAdmin"] = check.TenAdmin;
+                Session["Admin"] = check;
                 return RedirectToAction("Index", "AdminHome", new {Areas = "Admin"});
             }
         }
