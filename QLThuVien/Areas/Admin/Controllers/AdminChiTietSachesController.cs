@@ -76,7 +76,19 @@ namespace QLThuVien.Areas.Admin.Controllers
             {
                 db.ChiTietSaches.Add(chiTietSach);
                 db.SaveChanges();
+
+                // Tăng số lượng sách lên 1
+                Sach sach = db.Saches.FirstOrDefault(c => c.IDSach == chiTietSach.IDSach);
+                sach.SoLuong += 1;
+                db.SaveChanges();
+
+                Sach sach1 = new Sach();
+                sach1 = db.Saches.FirstOrDefault(c => c.IDSach == chiTietSach.IDSach);
+                sach1.SoLuong = db.ChiTietSaches.Where(c => c.TinhTrang != "Hư hỏng").Count();
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
+                
             }
 
             ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", chiTietSach.IDSach);
@@ -110,7 +122,12 @@ namespace QLThuVien.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(chiTietSach).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(chiTietSach).State = System.Data.Entity.EntityState.Modified;                
+                db.SaveChanges();
+
+                Sach sach = new Sach();
+                sach = db.Saches.FirstOrDefault(c => c.IDSach == chiTietSach.IDSach);
+                sach.SoLuong = db.ChiTietSaches.Where(c => c.TinhTrang != "Hư hỏng").Count();
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -146,8 +163,12 @@ namespace QLThuVien.Areas.Admin.Controllers
             sach.SoLuong = soluongsahc;
 
             db.ChiTietSaches.Remove(chiTietSach);
-         
-            
+
+            Sach sacha = new Sach();
+            sacha = db.Saches.FirstOrDefault(c => c.IDSach == chiTietSach.IDSach);
+            sacha.SoLuong = db.ChiTietSaches.Where(c => c.TinhTrang != "Hư hỏng").Count();
+            db.SaveChanges();
+
             db.SaveChanges();
 
             return RedirectToAction("Index");

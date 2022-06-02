@@ -19,20 +19,18 @@
                 <nav class="header__menu" style="margin-left:200px">
                     <ul>
                         <li><a href="~/Home/index">Home</a></li>
-                        <li><a href="~/Sach/index">Sách</a></li>
-                        @if (Session["DocGia"] != null)
-                        {
-                            if (Session["GioSach"] != null)
-                            {
-                                <li><a href="~/GioSach/show">Giỏ sách</a></li>
-                            }
-                            <li><a href="~/CacCuonSachDaMuon/Index">Các cuốn sách đã mượn</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="~/GioSach/show">Giỏ sách</a></li>
-                            <li><a href="~/CacCuonSachDaMuon/Index">Các cuốn sách đã mượn</a></li>
-                        }
+                        <li><a href="~/Sach/index">Sách</a></li>                       
+                        <li><a href="~/GioSach/show">Giỏ sách</a></li> 
+                        <li>
+                            <a href="#">Các phiếu mượn</a>
+                            <ul class="dropdown" style="width:max-content">
+                                <li><a href="/ThongBao/CacPhieuMuonDangChoMuon">Các phiếu mượn đang chờ xác nhân</a></li>
+                                <li><a href="/ThongBao/TatCaCacPhieuMuon">Tất cả các phiếu mượn</a></li>
+                                <li><a href="/ThongBao/CacCuonSachDaMuon">Các cuốn sách đã mượn</a></li>
+                            </ul>
+                        </li>
+
+
 
                     </ul>
                 </nav>

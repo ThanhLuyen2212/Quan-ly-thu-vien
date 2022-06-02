@@ -1,12 +1,8 @@
-﻿@model IEnumerable<QLThuVien.Models.Sach>
-@using QLThuVien.Models;
-
+﻿@model IEnumerable<QLThuVien.Models.CT_PM>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CacCuonSachDaMuon";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 
 <section class="shop-cart spad">
     <div class="container">
@@ -20,26 +16,30 @@
                                 <th>Tên cuốn sách</th>
                                 <th>Tác giả</th>
                                 <th>Thể loại</th>
-                                <th>Ngày xuất bản</th>
-                               
+                                <th>Ngày mượn</th>
+                                <th>Ngày trả</th>
+                                <th>Trạng thái</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Sach item in Model)
+                            @foreach (var item in Model)
                             {
                                 <tr>
                                     <td class="cart__product__item">
-                                        <img width="100px" src="@Url.Content(item.HinhAnh)" alt="">
+                                        <img width="100px" src="@Url.Content(item.Sach.HinhAnh)" alt="">
                                         <div class="cart__product__item__title">
-                                            <h6> @item.TenSach</h6>
+                                            <h6> @item.Sach.TenSach</h6>
 
                                         </div>
                                     </td>
-                                    <td class="cart__price">@item.TacGia</td>
-                                    <td class="cart__price">@item.TheLoai1.NameCate</td>
-                                    <td class="cart__total">@item.NgayXuatBan</td>                                   
+                                    <td class="cart__price">@item.Sach.TacGia</td>
+                                    <td class="cart__price">@item.Sach.TheLoai1.NameCate</td>
+                                    <td class="cart__total">@item.PhieuMuon.NgayMuon</td>
+                                    <td class="cart__total">@item.PhieuMuon.NgayTra</td>
+                                    <td class="cart__total">@item.PhieuMuon.TrangThai1.TenTrangThai</td>
                                 </tr>
-                            }                           
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -50,7 +50,8 @@
                 <div class="cart__btn">
                     <a href="~/Sach/index">Trở về</a>
                 </div>
-            </div>        
-        </div>       
+            </div>
+        </div>
     </div>
 </section>
+

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using QLThuVien.Models;
+using QLThuVien.Areas.Admin.Model;
 
 namespace QLThuVien.Areas.Admin.Controllers
 {
@@ -25,7 +27,7 @@ namespace QLThuVien.Areas.Admin.Controllers
             List<DocGia> docGias = db.DocGias.ToList();
             Session["Độc giả"] = docGias.Count();
 
-            List<Sach> saches = db.Saches.ToList();
+            List<ChiTietSach> saches = db.ChiTietSaches.ToList();
             Session["Số sách"] = saches.Count();
 
             List<PhieuMuon> phieuMuons1 = db.PhieuMuons.ToList();
@@ -34,31 +36,55 @@ namespace QLThuVien.Areas.Admin.Controllers
             List<PhieuMuon> phieuMuons2 = db.PhieuMuons.Where(c => c.TrangThai == 2).ToList();
             Session["Số phiếu mượn chưa được trả"] = phieuMuons2.Count();
 
+            ViewBag.SoLuongSachDangDuocMuon = db.CT_PM.Sum(c => c.SoLuong);
 
-            List<TheLoai> theLoais = db.TheLoais.ToList();
-            List<TheLoai_Sach> theLoai_Saches = new List<TheLoai_Sach>();
-         /*   foreach (TheLoai item in theLoais)
-            {                
-                int sum = (int)db.Saches.Where(c => c.TheLoai1 == theLoais[0]).Sum(s => s.SoLuong);
-                TheLoai_Sach theLoai_Sach = new TheLoai_Sach(item.NameCate, sum);
-                theLoai_Saches.Add(theLoai_Sach);
-            }*/
 
-           /* Session["Số Sách Theo Thệ Loại"] = theLoai_Saches;*/
+            //thong kê theo sách
+            List<Sach> listSach = new List<Sach>();
 
+            listSach = db.Saches.ToList();
+            List<ThongKeTheoSach> thongke = new List<ThongKeTheoSach>();
+
+            foreach (Sach item in listSach)
+            {
+                if (db.CT_PM.FirstOrDefault(c => c.IDSach == item.IDSach) == null) continue;
+                ThongKeTheoSach sach = new ThongKeTheoSach();
+                sach.TenSach = item.TenSach;
+
+                sach.SoSachDUocMuon = db.CT_PM.Count(c => c.IDSach == item.IDSach);
+                sach.SoSachConSuDungDuoc = db.ChiTietSaches.Where(c => c.TinhTrang != "Đang còn sử dụng").Count();
+                sach.SoSachHuHong = db.ChiTietSaches.Where(c => c.TinhTrang == "Hư hỏng").Count();
+                thongke.Add(sach);
+            }
+
+            ViewBag.ThongKeTheoSach = thongke;
+
+
+            List<DocGia> listDocGia = new List<DocGia>();
+
+            listDocGia = db.DocGias.ToList();
+            List<ThongKeTheoDocGia> thongke1 = new List<ThongKeTheoDocGia>();
+
+            foreach (DocGia item in listDocGia)
+            {
+                if (db.PhieuMuons.FirstOrDefault(c => c.IDDG == item.IDDG) == null) continue;
+                ThongKeTheoDocGia dg = new ThongKeTheoDocGia();
+                dg.TenDocGia = item.TenDG;
+                dg.SoLuongSachMuon = 0;
+                List<PhieuMuon> phieuMuonss = new List<PhieuMuon>();
+                phieuMuonss = db.PhieuMuons.Where(c => c.IDDG == item.IDDG).ToList();
+                foreach (PhieuMuon phieuMuon in phieuMuonss)
+                {
+                    dg.SoLuongSachMuon += (int)db.CT_PM.Where(c => c.IDPM == phieuMuon.IDPM).Sum(c => c.SoLuong);
+                    dg.SoTienPhat += (int)db.PhieuMuons.Sum(c => c.TienPhat);
+                }
+                dg.doanhThu = dg.SoTienPhat;
+                thongke1.Add(dg);
+            }
+
+            ViewBag.ThongKeTheoDocGia = thongke1;
+           
             return View();      
-        }
-    }
-
-    public class TheLoai_Sach
-    {
-        string theloai { get; set; }
-        int soluong { get; set; }
-        
-        public TheLoai_Sach(string theloai, int soluong)
-        {
-            this.theloai = theloai;
-            this.soluong = soluong;
         }
     }
 }

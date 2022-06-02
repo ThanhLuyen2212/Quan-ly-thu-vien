@@ -10,6 +10,7 @@
 namespace QLThuVien.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
     
     public partial class TrangThai
@@ -21,6 +22,7 @@ namespace QLThuVien.Models
         }
     
         public int IDTrangThai { get; set; }
+        [Required]
         public string TenTrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

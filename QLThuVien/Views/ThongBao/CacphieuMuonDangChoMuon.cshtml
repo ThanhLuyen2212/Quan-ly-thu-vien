@@ -1,0 +1,113 @@
+﻿@model IEnumerable<QLThuVien.Models.PhieuMuon>
+
+@{
+    ViewBag.Title = "CacphieuMuonDangChoMuon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+<!-- Shop Cart Section Begin -->
+<section class="shop-cart spad">
+    <div class="container">
+        <h2 style="margin-bottom:50px; text-align:center">Các phiếu đang chờ xác nhận</h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop__cart__table">
+                    @foreach (var item in Model)
+                    {
+                        <div class="Large_table">
+                            @using (Html.BeginForm("HuyPhieuMuon", "ThongBao"))
+                            {
+                                <table class="hoadon">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Phiếu mượn</th>
+                                            <th>Ngày mượn</th>
+                                            <th>Ngày Trả</th>
+                                            <th>Trạng thái</th>
+                                            <th>Tiền phạt</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr> 
+                                             <input type="hidden" value="@item.IDPM" name="ID PhieuMuon" />
+                                             <td class="cart__product__item__title">@Html.DisplayFor(Model => item.IDPM)  </td>
+                                            <td class="cart__product__item__title" >@Html.DisplayFor(Model => item.NgayMuon)  </td>
+                                            <td class="cart__product__item__title">@Html.DisplayFor(Model => item.NgayTra)</td>
+                                            <td class="cart__product__item__title">@Html.DisplayFor(Model => item.TrangThai1.TenTrangThai)</td>
+                                            <td class="cart__product__item__title">@Html.DisplayFor(Model => item.TienPhat) VND</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="btnhuy">
+                                    <input type="submit" name="HuyPhieuMuon" value="Hủy phiếu mượn" class="site-btn">
+                                </div>
+                            }
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:left">Tên sách</th>
+                                        <th>Tác giả</th>
+                                        <th>Thể loại</th>
+                                        <th>Số lượng</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var items in item.CT_PM)
+                                    {
+                                        <tr>
+                                            <td class="cart__product__item__title" style="text-align:left">@Html.DisplayFor(Model => items.Sach.TenSach)</td>
+                                            <td class="cart__product__item__title">@Html.DisplayFor(Model => items.Sach.TacGia)  </td>
+                                            <td class="cart__price money">@Html.DisplayFor(Model => items.Sach.TheLoai1.NameCate)  </td>
+                                            <td class="cart__product__item__title">@Html.DisplayFor(Model => items.SoLuong)  </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Cart Section End -->
+
+<style>
+    .btnhuy {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .Large_table {
+        padding: 40px;
+        border: solid 3px;
+        border-radius: 10px 10px 10px 10px;
+        margin-bottom: 20px;
+    }
+
+    .hoadon {
+        color: red;
+    }
+
+    td {
+        text-align: center;
+        margin: 5px;
+    }
+
+    th {
+        margin: 5px;
+        text-align: center;
+    }
+</style>
+

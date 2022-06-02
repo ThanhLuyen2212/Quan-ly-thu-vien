@@ -13,6 +13,7 @@ namespace QLThuVien.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Sach
     {
@@ -26,10 +27,13 @@ namespace QLThuVien.Models
     
         public string IDSach { get; set; }
         public string TenSach { get; set; }
+        [Required]
         public Nullable<int> TheLoai { get; set; }
         public string MoTa { get; set; }
+        [Required]
         public string TacGia { get; set; }
         public Nullable<System.DateTime> NgayXuatBan { get; set; }
+        [MinLength(1)]
         public Nullable<int> SoLuong { get; set; }
         public string HinhAnh { get; set; }
     
