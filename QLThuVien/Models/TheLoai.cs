@@ -19,10 +19,8 @@ namespace QLThuVien.Models
         public TheLoai()
         {
             this.Saches = new HashSet<Sach>();
-        }
-    
-        public int IDCate { get; set; }
-        [Required]
+        }    
+        public int IDCate { get; set; }  
         public string NameCate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

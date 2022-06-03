@@ -23,11 +23,11 @@ namespace QLThuVien.Models
     
         public int IDDG { get; set; }
         public string TenDG { get; set; }
-        [Phone]
+
         public string DienThoai { get; set; }
         public string DiaChi { get; set; }
         public string UserName { get; set; }
-        [Range(8,16)]
+
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

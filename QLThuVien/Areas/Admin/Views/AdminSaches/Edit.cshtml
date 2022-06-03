@@ -5,8 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -75,8 +73,6 @@
                     <a href="~/Admin/AdminSaches/Index">
                         <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
                     </a>
-
-
                 </form>
             </div>
         </div>

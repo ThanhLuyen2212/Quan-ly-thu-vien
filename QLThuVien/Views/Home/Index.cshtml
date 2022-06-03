@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="section-title" style="width:500px">
-                    <h4>Những cuốn sách mới nhất</h4>
+                    <h4 style="color:red">Những cuốn sách mới nhất</h4>
                 </div>
             </div>
         </div>
@@ -52,7 +52,8 @@
                 <a href="~/ChiTietCuonSach/Index/@item.IDSach">
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" style="background-image: url(@Url.Content(item.HinhAnh))">
+                            <div>
+                                <img src="@Url.Content(item.HinhAnh)" width="262px" height="360px" alt="Alternate Text" />
                             </div>
                             <div class="product__item__text">
                                 <h6><a href="#">@item.TacGia</a></h6>
@@ -134,7 +135,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="section-title" style="width:900px">
-                    <h4> Những cuốn sách được mượn nhiều nhất</h4>
+                    <h4 style="color:red"> Những cuốn sách được mượn nhiều nhất</h4>
                 </div>
             </div>
         </div>
@@ -147,8 +148,8 @@
                 <a href="~/ChiTietCuonSach/Index/@item.IDSach">
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" style="background-image: url(@Url.Content(item.HinhAnh))">
-                                
+                            <div>
+                                <img src="@Url.Content(item.HinhAnh)" width="262px" height="360px" alt="Alternate Text" />
                             </div>
                             <div class="product__item__text">
                                 <h6><a href="#">@item.TacGia</a></h6>

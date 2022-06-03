@@ -22,10 +22,12 @@
                 <div class="col-lg-6">
                     <div class="product__details__text">
                         <h3>@Model.TenSach </h3>
-                        <div class="product__details__price" style="font-size:22px">Tác giả: @Model.TacGia</div>
-                        <p>Số lượng: @Model.SoLuong</p>
-                       
-                        <div class="product__details__button">
+                        <div style="font-size:22px;margin:10px">Tác giả: @Model.TacGia</div>
+                        <div style="font-size: 22px; margin: 10px">Thể loại: @Model.TheLoai1.NameCate</div>
+
+                        <p style="font-size: 18px; margin: 10px">Số lượng: @Model.SoLuong</p>
+
+                        <div class="product__details__button" style="margin-top:20px">
                             <a href="~/GioSach/Addto/@Model.IDSach" class="cart-btn">Mượn sách</a>
 
                         </div>

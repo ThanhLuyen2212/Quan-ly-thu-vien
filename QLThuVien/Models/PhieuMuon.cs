@@ -24,9 +24,9 @@ namespace QLThuVien.Models
         public int IDPM { get; set; }
         public Nullable<int> IDDG { get; set; }
         public string TenDG { get; set; }
-        [Required]
+
         public Nullable<System.DateTime> NgayMuon { get; set; }
-        [Required]
+
         public Nullable<System.DateTime> NgayTra { get; set; }
 
         public Nullable<System.DateTime> NgayTraThucTe { get; set; }

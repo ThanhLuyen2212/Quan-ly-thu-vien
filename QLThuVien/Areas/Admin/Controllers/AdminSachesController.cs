@@ -84,7 +84,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                     sach.HinhAnh = "~/Images/" + filename;
                     sach.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Images/"), filename));
                 }
-                ViewBag.listcase = new SelectList(list, "IDCate", "NameCate", 1);
+                ViewBag.TheLoai = new SelectList(db.TheLoais, "IDCate", "NameCate", sach.TheLoai);
                 db.Saches.Add(sach);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -124,7 +124,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TheLoai = new SelectList(db.TheLoais, "IDCate", "NameCate", sach.TheLoai);
+            ViewBag.TheLoai = new SelectList(db.TheLoais, "IDCate", "IDCate", sach.TheLoai);
             return View(sach);
         }
 

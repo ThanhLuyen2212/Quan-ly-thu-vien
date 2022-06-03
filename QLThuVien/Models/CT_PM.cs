@@ -18,7 +18,6 @@ namespace QLThuVien.Models
         public int ID { get; set; }
         public Nullable<int> IDPM { get; set; }
         public string IDSach { get; set; }
-        [MinLength(1)]
         public Nullable<int> SoLuong { get; set; }    
         public virtual PhieuMuon PhieuMuon { get; set; }
         public virtual Sach Sach { get; set; }

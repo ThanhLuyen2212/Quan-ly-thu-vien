@@ -197,7 +197,7 @@ namespace QLThuVien.Controllers
                         return Content("<script language='javascript' type='text/javascript'>alert     ('Vui lòng kiểm tra số lượng! Do có sách không còn đủ số lượng');</script>");
                         //return Content("Vui lòng kiểm tra số lượng! Do có sách không còn đủ số lượng");
 
-                    };
+                    }
                     if (tongsach == 0)
                     {
                         return Content("<script language='javascript' type='text/javascript'>alert     ('Không có sách thì không thể tạo phiếu mượn!');</script>");
