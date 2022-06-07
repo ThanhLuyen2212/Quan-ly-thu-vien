@@ -30,7 +30,8 @@ namespace QLThuVien.Models
         public Nullable<int> TheLoai { get; set; }
         public string MoTa { get; set; }      
         public string TacGia { get; set; }
-        public Nullable<System.DateTime> NgayXuatBan { get; set; }       
+        public Nullable<System.DateTime> NgayXuatBan { get; set; }
+        [Range(1,10000)]
         public Nullable<int> SoLuong { get; set; }
         public string HinhAnh { get; set; }
     

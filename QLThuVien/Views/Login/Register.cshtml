@@ -21,7 +21,8 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="~/Areas/Admin/Assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/favicon.png" />
+    <title>Thư viện</title>
+    <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/bookshelf.png" />
 </head>
 <body>
     <div id="form-register">
@@ -44,7 +45,7 @@
                                         <div class="form-group">
                                             <label>Tên độc giả</label> <br />
                                             <input id="TenDG" name="TenDG" style="field-validation-error" class="form-control p_input" type="text" value="">
-                                            <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                                            <td>@Html.ValidationMessageFor(model => model.TenDG)</td>
                                         </div>
 
                                         <div class="form-group">
@@ -58,6 +59,7 @@
                                             <input id="DiaChi" name="DiaChi" type="DiaChi" class="form-control p_input">
                                             <td>@Html.ValidationMessageFor(model => model.DiaChi)</td>
                                         </div>
+                                       
 
                                         <div class="form-group">
                                             <label>UserName</label><br />
@@ -76,11 +78,11 @@
                                         }
 
 
-                                        <div class="text-center" style="margin-top:30px; justify-content: center; display: flex">                                           
+                                        <div class="text-center" style="margin-top:30px; justify-content: center; display: flex">
                                             <input type="submit" class="btn btn-primary btn-block enter-btn" value="Register" style="height: 50px; width: 200px" />
                                         </div>
                                         <p style="margin-top:30px">Bạn đã có tài khoản???<a href="@Url.Action("Index","Login")"> Login</a></p>
-                                        
+
 
 
                                     </form>

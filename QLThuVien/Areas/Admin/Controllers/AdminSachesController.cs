@@ -34,7 +34,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                 }
                 else
                 {                    
-                    return View(db.Saches.Where(s => s.TenSach.Equals(tensach)).ToList());
+                    return View(db.Saches.Where(s => s.TenSach.ToLower().Contains(tensach.ToLower())).ToList());
                 }
                
             }           

@@ -18,11 +18,12 @@ namespace QLThuVien.Controllers
 
             if (theloai != null)
             {
-                return View(data.Saches.Where(c => c.TheLoai1.NameCate == theloai).OrderByDescending(c => c.NgayXuatBan).ToPagedList(page,pagelist));
+                return View(data.Saches.Where(c => c.TheLoai1.NameCate.ToLower().Contains(theloai.ToLower())).OrderByDescending(c => c.NgayXuatBan).ToPagedList(page,pagelist));
             }
             if (tensach != null)
             {
-                return View(data.Saches.Where(c => c.TenSach == tensach).OrderByDescending(c => c.NgayXuatBan).ToPagedList(page, pagelist));
+                
+                return View(data.Saches.Where(c => c.TenSach.ToLower().Contains(tensach.ToLower())).OrderByDescending(c => c.NgayXuatBan).ToPagedList(page, pagelist));
             }
             return View(data.Saches.OrderByDescending(c => c.NgayXuatBan).ToPagedList(page, pagelist));
         }

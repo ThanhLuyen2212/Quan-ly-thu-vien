@@ -61,14 +61,11 @@ namespace QLThuVien.Controllers
             {
                 return RedirectToAction("Show", "GioSach");
             }
-
-            var username = Session["UserName"];
-            var password = Session["Password"];
-            DocGia dg = data.DocGias.FirstOrDefault(s => s.UserName == username && s.Password == password);
+        
+            DocGia dg = Session["DocGia"] as DocGia;
 
             if (dg != null)
             {
-
                 ViewBag.IDDG = dg.IDDG;
                 ViewBag.TenDG = dg.TenDG;
             }
@@ -152,7 +149,7 @@ namespace QLThuVien.Controllers
                 List<PhieuMuon> listphieuMuon = data.PhieuMuons.Where(c => c.IDDG == muon.IDDG).ToList();
                 foreach (PhieuMuon item in listphieuMuon)
                 {
-                    if (item.TrangThai == 2 || muon.TrangThai == 1)
+                    if (item.TrangThai == 2 || item.TrangThai == 1)
                     {
                         //return Content("Lỗi ! Chưa trả sách mượn lần trước");
                         return Content("<script language='javascript' type='text/javascript'>alert     ('Lỗi ! Bạn chưa trả sách đã mượn nên không được mượn');</script>");
@@ -177,13 +174,13 @@ namespace QLThuVien.Controllers
                 int total = gio.Total();
                 if (total > 3)
                 {
-                    return Content("<script language='javascript' type='text/javascript'>alert     ('Tối đa được mượn 3 loại/quyển sách');</script>");
+                    return Content("<script language='javascript' type='text/javascript'>alert     ('Tối đa được mượn 3 quyển sách');</script>");
                     //return Content("Tối đa được mượn 3 loại sách");
                 }
 
                 //Add phiếu mượn
                 data.PhieuMuons.Add(muon);
-                data.SaveChanges();
+               
 
 
                 foreach (var item in gio.Item)
@@ -228,7 +225,7 @@ namespace QLThuVien.Controllers
 
                     //Add chi tiết phiếu mượn
                     data.CT_PM.Add(Detail);
-                    data.SaveChanges();
+                  
                 }
                 data.SaveChanges();
                 gio.clear();
