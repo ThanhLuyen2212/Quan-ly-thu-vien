@@ -69,7 +69,7 @@
           <Property Name="TacGia" Type="nvarchar" MaxLength="50" />
           <Property Name="NgayXuatBan" Type="datetime" />
           <Property Name="SoLuong" Type="int" />
-          <Property Name="HinhAnh" Type="nvarchar(max)" />
+          <Property Name="HinhAnh" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TheLoai">
           <Key>
@@ -271,7 +271,7 @@
           <Property Name="TacGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayXuatBan" Type="DateTime" Precision="3" />
           <Property Name="SoLuong" Type="Int32" />
-          <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="ChiTietSaches" Relationship="Self.FK_ChiTietSach_Sach" FromRole="Sach" ToRole="ChiTietSach" />
           <NavigationProperty Name="CT_PM" Relationship="Self.FK_CT_PM_Sach" FromRole="Sach" ToRole="CT_PM" />
           <NavigationProperty Name="TheLoai1" Relationship="Self.FK_SACH_THELOAI" FromRole="Sach" ToRole="TheLoai" />

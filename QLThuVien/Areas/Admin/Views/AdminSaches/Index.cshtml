@@ -70,8 +70,12 @@
                                     @Html.DisplayFor(modelItem => item.SoLuong)
                                 </td>
                                 <td>
-                                    <img src="@Url.Content(item.HinhAnh)" style="width: 100px; height: 150px; border-radius:0%" />
-                                </td>
+                                    @{
+                                        var base64 = Convert.ToBase64String(item.HinhAnh);
+                                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                    }
+                                    <img src='@imgSrc' style="width: 100px; height: 150px; border-radius:0%" />
+                                </td>                           
                                 <td>
                                     @Html.DisplayFor(modelItem => item.TheLoai1.NameCate)
                                 </td>

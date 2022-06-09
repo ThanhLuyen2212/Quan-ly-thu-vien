@@ -21,6 +21,14 @@
             <form class="forms-sample">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.IDPM)
+
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID độc giả</label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.IDDG, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IDDG, "", new { @class = "text-danger" })
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên độc giả</label>
                     <div class="col-sm-9">
@@ -44,7 +52,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày trả</label>
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày trả thực tế</label>
                     <div class="col-sm-9">
                         @Html.EditorFor(model => model.NgayTraThucTe, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NgayTraThucTe, "", new { @class = "text-danger" })

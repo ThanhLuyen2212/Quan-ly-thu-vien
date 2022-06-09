@@ -36,7 +36,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                 sach.TenSach = item.TenSach;
 
                 sach.SoSachDUocMuon = data.CT_PM.Count(c => c.IDSach == item.IDSach);
-                sach.SoSachConSuDungDuoc = data.ChiTietSaches.Where(c => c.TinhTrang != "Đang còn sử dụng").Count();
+                sach.SoSachConSuDungDuoc = data.ChiTietSaches.Where(c => c.TinhTrang != "Đang còn sử dụng").Where(c => c.IDSach == item.IDSach).Count();
                 sach.SoSachHuHong = data.ChiTietSaches.Where(c => c.TinhTrang == "Hư hỏng").Count();
                 thongke.Add(sach);
             }

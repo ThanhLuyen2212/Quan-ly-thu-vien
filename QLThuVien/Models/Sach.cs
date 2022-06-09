@@ -11,9 +11,9 @@ namespace QLThuVien.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
-    using System.ComponentModel.DataAnnotations;
 
     public partial class Sach
     {
@@ -22,18 +22,17 @@ namespace QLThuVien.Models
         {
             this.ChiTietSaches = new HashSet<ChiTietSach>();
             this.CT_PM = new HashSet<CT_PM>();
-            
         }
     
         public string IDSach { get; set; }
-        public string TenSach { get; set; }  
+        public string TenSach { get; set; }
         public Nullable<int> TheLoai { get; set; }
-        public string MoTa { get; set; }      
+        public string MoTa { get; set; }
         public string TacGia { get; set; }
         public Nullable<System.DateTime> NgayXuatBan { get; set; }
-        [Range(1,10000)]
+        [Range(1, 10000)]
         public Nullable<int> SoLuong { get; set; }
-        public string HinhAnh { get; set; }
+        public byte[] HinhAnh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSach> ChiTietSaches { get; set; }

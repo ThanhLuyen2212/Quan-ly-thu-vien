@@ -23,7 +23,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult LoginAdmin(Models.Admin admin)
         {
-            Models.Admin  check = data.Admins.Where(s => s.UserName == admin.UserName && s.Password == admin.Password).FirstOrDefault();
+            Models.Admin check = data.Admins.Where(s => s.UserName == admin.UserName && s.Password == admin.Password).FirstOrDefault();
             if (check == null)
             {
                 ViewBag.ErrorInfo = "Sai thông tin tài khoản";

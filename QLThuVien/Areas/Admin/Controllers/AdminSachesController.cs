@@ -67,7 +67,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         // POST: Admin/AdminSaches/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-       
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Create(Sach sach)
@@ -75,25 +75,23 @@ namespace QLThuVien.Areas.Admin.Controllers
             try
             {
                 List<TheLoai> list = db.TheLoais.ToList();
-
                 if (sach.UploadImage != null)
                 {
-                    string filename = Path.GetFileNameWithoutExtension(sach.UploadImage.FileName);
-                    string ex = Path.GetExtension(sach.UploadImage.FileName);
-                    filename = filename + ex;
-                    sach.HinhAnh = "~/Images/" + filename;
-                    sach.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Images/"), filename));
+                    using (var binaryReader = new BinaryReader(sach.UploadImage.InputStream))
+                        sach.HinhAnh = binaryReader.ReadBytes(sach.UploadImage.ContentLength);
                 }
                 ViewBag.TheLoai = new SelectList(db.TheLoais, "IDCate", "NameCate", sach.TheLoai);
                 db.Saches.Add(sach);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-        }
+            }
             catch
             {
                 return Content("<script language='javascript' type='text/javascript'>alert ('Vui lòng kiểm tra lại thông tin!');</script>");
-    }
-}
+            }
+        }
+
+     
 
         // GET: Admin/AdminSaches/Edit/5
         public ActionResult Edit(string id)
@@ -103,6 +101,7 @@ namespace QLThuVien.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Sach sach = db.Saches.Find(id);
+            Session["HinhAnh"] = sach.HinhAnh;
             if (sach == null)
             {
                 return HttpNotFound();
@@ -111,15 +110,34 @@ namespace QLThuVien.Areas.Admin.Controllers
             return View(sach);
         }
 
+        
         // POST: Admin/AdminSaches/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDSach,TenSach,TheLoai,MoTa,TacGia,NgayXuatBan,SoLuong,HinhAnh")] Sach sach)
+        public ActionResult Edit(Sach sach)
         {
+            
+            if(sach.UploadImage != null)
+            {
+                using (var binaryReader = new BinaryReader(sach.UploadImage.InputStream))
+                    sach.HinhAnh = binaryReader.ReadBytes(sach.UploadImage.ContentLength);
+            }
+            else
+            {
+                if (Session["HinhAnh"] != null)
+                {
+                    sach.HinhAnh = (byte[])Session["HinhAnh"];
+                    Session.Remove("HinhAnh");
+                }
+                
+                else return RedirectToAction("Index");
+
+            }
             if (ModelState.IsValid)
             {
+                
                 db.Entry(sach).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

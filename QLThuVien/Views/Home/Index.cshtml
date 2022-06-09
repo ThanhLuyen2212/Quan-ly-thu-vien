@@ -45,18 +45,23 @@
         </div>
 
 
-
         <div class="row property__gallery">
             @foreach (Sach item in newProduct)
             {
                 <a href="~/ChiTietCuonSach/Index/@item.IDSach">
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product__item">
-                            <div>
-                                <img src="@Url.Content(item.HinhAnh)" width="262px" height="360px" alt="Alternate Text" />
+                        <div class="product__item" style="width:250px">
+                            <div>                               
+                                    @{
+                                        var base64 = Convert.ToBase64String(item.HinhAnh);
+                                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                    }
+                                <img src='@imgSrc' style="width:262px; height:360px"/>
+                               
+                                @*<img src="@Url.Content(item.HinhAnh)" width="262px" height="360px" alt="Alternate Text" />*@
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">@item.TacGia</a></h6>
+                                <h6>@item.TacGia</h6>
                                 <div class="product__price">@item.TenSach</div>
                             </div>
                         </div>
@@ -147,12 +152,17 @@
             {
                 <a href="~/ChiTietCuonSach/Index/@item.IDSach">
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product__item">
+                        <div class="product__item" style="width:250px">
                             <div>
-                                <img src="@Url.Content(item.HinhAnh)" width="262px" height="360px" alt="Alternate Text" />
-                            </div>
+                                @{
+                                    var base64 = Convert.ToBase64String(item.HinhAnh);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+                                <img src='@imgSrc' style="width:262px;height:360px" />                                
+                            </div>                           
+
                             <div class="product__item__text">
-                                <h6><a href="#">@item.TacGia</a></h6>
+                                <h6>@item.TacGia</h6>
                                 <div class="product__price">@item.TenSach</div>
                             </div>
                         </div>
@@ -165,3 +175,4 @@
     </div>
 </section>
 <!-- Bestseller product Section End -->
+

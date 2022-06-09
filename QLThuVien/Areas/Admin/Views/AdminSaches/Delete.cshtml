@@ -48,7 +48,12 @@
                 <div class="form-group row">
                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Hình ảnh</label>
                     <div class="col-sm-9">
-                        <img src="@Url.Content(Model.HinhAnh)" style="width: 100px; height: 150px; border-radius:0%" />
+                        @* <img src="@Url.Content(Model.HinhAnh)" style="width: 100px; height: 150px; border-radius:0%" />*@
+                        @{
+                            var base64 = Convert.ToBase64String(Model.HinhAnh);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        <img src='@imgSrc' style="width: 100px; height: 150px; border-radius:0%" />
                     </div>
                 </div>
                 <div class="form-group row">

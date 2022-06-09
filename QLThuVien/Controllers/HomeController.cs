@@ -29,11 +29,11 @@ namespace QLThuVien.Controllers
             }
             list.Sort((a, b) => a.SoPhieuMuon.CompareTo(b.SoPhieuMuon));
             List<Sach> sachs = new List<Sach>();
-            foreach (sosachmuon item in list.Take(5))
+            foreach (sosachmuon item in list)
             {
                 sachs.Add(data.Saches.FirstOrDefault(c => c.IDSach == item.IDsach));
             }
-            ViewBag.sachMuonNhieuNhat = sachs.Take(5).ToList();           
+            ViewBag.sachMuonNhieuNhat = sachs.Take(8).ToList();           
             return View(data.Saches.ToList());
         }
     }

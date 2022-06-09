@@ -31,7 +31,17 @@
                     <tr>
                         <td>@Html.DisplayFor(Model => item.giosach.TenSach)</td>
                         <td>@Html.DisplayFor(Model => item.giosach.TacGia)</td>
-                        <td><img src="@Url.Content(item.giosach.HinhAnh)" style="width:150px;height:150px" /></td>
+                        <td>
+                            @{
+                                var base64 = Convert.ToBase64String(item.giosach.HinhAnh);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            }
+                            <img src='@imgSrc' style="width:150px;height:150px" />
+                        </td>
+                       @* <td>
+                            width="400px"
+                            <img src="@Url.Content(item.giosach.HinhAnh)" style="width:150px;height:150px" />
+                        </td>*@
                         <td>@Html.DisplayFor(Model => item.giosach.TheLoai1.NameCate)</td>
                         <td>
                             @using (Html.BeginForm("Update_quantity", "GioSach"))

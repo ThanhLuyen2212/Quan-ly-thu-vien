@@ -22,7 +22,7 @@ namespace QLThuVien.Controllers
             DocGia check = data.DocGias.Where(s => s.UserName == user.UserName && s.Password == user.Password).FirstOrDefault();
             if (check == null)
             {
-                ViewBag.ErrorInfor = "Sai thông tin tài khoản";
+                ViewBag.ErrorInfo = "Sai thông tin tài khoản";
                 return View("Index");
             }
             else

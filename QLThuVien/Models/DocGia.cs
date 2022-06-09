@@ -30,7 +30,7 @@ namespace QLThuVien.Models
         public string DiaChi { get; set; }
         [Required]
         public string UserName { get; set; }
-        [MinLength(8),MaxLength(16)]
+        [MinLength(8), MaxLength(16)]
         [Required]
         public string Password { get; set; }
     
