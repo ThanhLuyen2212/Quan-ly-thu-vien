@@ -57,6 +57,37 @@ namespace QLThuVien.Areas.Admin.Controllers
             return View(cT_PM);
         }
 
+
+        public ActionResult Create()
+        {
+            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "IDPM");
+            ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach");
+            return View();
+        }
+
+        // POST: Admin/tmpCT_PM/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CT_PM cT_PM)
+        {
+            if (ModelState.IsValid)
+            {
+                db.CT_PM.Add(cT_PM);
+                Sach sach = db.Saches.FirstOrDefault(c => c.IDSach.Equals(cT_PM.IDSach));
+                sach.SoLuong = sach.SoLuong - cT_PM.SoLuong;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.IDPM = new SelectList(db.PhieuMuons, "IDPM", "IDPM", cT_PM.IDPM);
+            ViewBag.IDSach = new SelectList(db.Saches, "IDSach", "TenSach", cT_PM.IDSach);
+            return View(cT_PM);
+        }
+
+
+
         // GET: Admin/AdminCT_PM/Edit/5
         public ActionResult Edit(int? id)
         {

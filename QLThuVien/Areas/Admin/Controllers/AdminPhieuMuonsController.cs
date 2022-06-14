@@ -147,6 +147,35 @@ namespace QLThuVien.Areas.Admin.Controllers
         }
 
 
+        // GET: Admin/TMPPhieuMuons/Create
+        public ActionResult Create()
+        {
+            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG");
+            ViewBag.TrangThai = new SelectList(db.TrangThais, "IDTrangThai", "TenTrangThai");
+            return View();
+        }
+
+        // POST: Admin/TMPPhieuMuons/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PhieuMuon phieuMuon)
+        {
+            if (ModelState.IsValid)
+            {
+                phieuMuon.TenDG = db.DocGias.FirstOrDefault(c => c.IDDG == phieuMuon.IDDG).TenDG.ToString();
+                db.PhieuMuons.Add(phieuMuon);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.IDDG = new SelectList(db.DocGias, "IDDG", "TenDG", phieuMuon.IDDG);
+            ViewBag.TrangThai = new SelectList(db.TrangThais, "IDTrangThai", "TenTrangThai", phieuMuon.TrangThai);
+            return View(phieuMuon);
+        }
+
+
 
         // GET: Admin/AdminPhieuMuons/Delete/5
         public ActionResult Delete(int? id)

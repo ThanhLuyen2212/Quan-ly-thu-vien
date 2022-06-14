@@ -11,6 +11,10 @@
         <div class="card-body">
             <h2 class="card-title">Danh sách chi tiết các phiếu mượn</h2>
 
+            <a href="~/Admin/AdminCT_PM/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo một chi tiết phiếu mượn mới</button>
+            </a>
+
             <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                 <input type="text" class="form-control" placeholder="Tìm kiếm theo IDPM" name="IDPM">
             </form>
@@ -21,7 +25,7 @@
                         <tr>
                             <th style="color:white">
                                 IDPM
-                            </th>                          
+                            </th>
                             <th style="color:white">
                                 Tên sách
                             </th>
@@ -40,7 +44,7 @@
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.IDPM)
-                                </td>                               
+                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Sach.TenSach)
                                 </td>
@@ -67,7 +71,7 @@
                 </table>
             </div>
 
-            <a href="~/Admin/AdminPhieuMuons/Index">    
+            <a href="~/Admin/AdminPhieuMuons/Index">
                 <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
 
             </a>

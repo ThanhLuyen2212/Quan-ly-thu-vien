@@ -10,6 +10,10 @@
         <div class="card-body">
             <h2 class="card-title">Danh sách phiếu mượn</h2>
 
+            <a href="~/Admin/AdminPhieuMuons/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo một phiếu mượn mới</button>
+            </a>
+
             <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                 <input type="text" class="form-control" placeholder="Tìm kiếm theo IDPM/ Tên độc giả/ Trạng thái" name="TimKiem">
             </form>
@@ -19,11 +23,11 @@
                     <thead>
                         <tr>
                             <th style="color:white">
-                                
+
                                 IDPM
                             </th>
                             <th style="color:white">
-                                Tên độc giả                              
+                                Tên độc giả
                             </th>
                             <th style="color:white">
                                 Ngày mượn
@@ -36,17 +40,17 @@
                             </th>
                             <th style="color:white">
                                 Trạng thái
-                         
+
                             </th>
                             <th style="color:white">
                                 Tiền phạt
-                                
+
                             </th>
                             <th style="color:white">
                                 Ghi chú
-                                
+
                             </th>
-                            
+
                             <th></th>
                         </tr>
                     </thead>
@@ -55,51 +59,51 @@
 
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IDPM)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TenDG)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NgayMuon)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NgayTra)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NgayTraThucTe)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TrangThai1.TenTrangThai)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TienPhat)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.GhiChu)
-                            </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDPM)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDG)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayMuon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayTra)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayTraThucTe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TrangThai1.TenTrangThai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TienPhat)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GhiChu)
+                                </td>
 
 
-                            <td>
+                                <td>
 
-                                <a href="~/Admin/AdminPhieuMuons/Details/@item.IDPM">
-                                    <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
-                                </a>
-                                <a href="~/Admin/AdminPhieuMuons/Edit/@item.IDPM">
-                                    <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
-                                </a>
-                                <a href="~/Admin/AdminPhieuMuons/Delete/@item.IDPM">
-                                    <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
-                                </a>
-                                <a href="~/Admin/AdminCT_PM/Index/?IDPM=@item.IDPM.ToString()">
-                                    <button style="min-width:50px" type="button" class="btn btn-outline-light btn-fw">Chi tiết các phiếu mượn</button>
-                                </a>
+                                    <a href="~/Admin/AdminPhieuMuons/Details/@item.IDPM">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminPhieuMuons/Edit/@item.IDPM">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminPhieuMuons/Delete/@item.IDPM">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+                                    <a href="~/Admin/AdminCT_PM/Index/?IDPM=@item.IDPM.ToString()">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-light btn-fw">Chi tiết các phiếu mượn</button>
+                                    </a>
 
-                            </td>                           
-                        </tr>
-                        }                      
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
