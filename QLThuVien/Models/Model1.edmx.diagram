@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fbce89eaf6cf48b5b13cc344306c8142" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyThuVienModel.Admin" Width="1.5" PointX="6.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.Admin" Width="1.5" PointX="3.5" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.ChiTietSach" Width="1.5" PointX="1.375" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.CT_PM" Width="1.5" PointX="1.125" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.DocGia" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.DocGia" Width="1.5" PointX="5.875" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon" Width="1.5" PointX="3.375" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyThuVienModel.Sach" Width="1.5" PointX="1.125" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.TheLoai" Width="1.5" PointX="3.125" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.TrangThai" Width="1.5" PointX="3.375" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TheLoai" Width="1.5" PointX="3.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyThuVienModel.TrangThai" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_ChiTietSach_Sach" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_CT_PM_PhieuMuon" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyThuVienModel.FK_CT_PM_Sach" ManuallyRouted="false" />

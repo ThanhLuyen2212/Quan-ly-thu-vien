@@ -16,7 +16,8 @@ namespace QLThuVien.Models
     {
         public string IDChiTietSach { get; set; }
         public string IDSach { get; set; }
-        public string TinhTrang { get; set; }    
+        public string TinhTrang { get; set; }
+    
         public virtual Sach Sach { get; set; }
     }
 }

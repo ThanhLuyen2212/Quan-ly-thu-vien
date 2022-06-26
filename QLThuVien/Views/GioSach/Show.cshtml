@@ -38,10 +38,7 @@
                             }
                             <img src='@imgSrc' style="width:150px;height:150px" />
                         </td>
-                       @* <td>
-                            width="400px"
-                            <img src="@Url.Content(item.giosach.HinhAnh)" style="width:150px;height:150px" />
-                        </td>*@
+                       
                         <td>@Html.DisplayFor(Model => item.giosach.TheLoai1.NameCate)</td>
                         <td>
                             @using (Html.BeginForm("Update_quantity", "GioSach"))
